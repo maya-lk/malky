@@ -1,0 +1,25 @@
+.wizardNavigation {
+    width: 100%;
+    justify-content: space-between;
+
+    .nav-link {
+        flex: 1;
+        background-color: #253340;
+        font-weight: 600;
+        color: #3c4c5f;
+        padding: 0.5rem 2rem;
+        display: inline-flex;
+        align-items: center;
+        border-right: 1px solid #1a232d;
+
+        &.active{
+            background-color: #374d64;
+            color: #d9e7f4;
+        }
+
+        .number {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+        }
+    }
+}
