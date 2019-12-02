@@ -1,4 +1,11 @@
 .vehicleListingWrap{
     width: 70%;
-    padding: 1rem;
+    padding: 1.5rem 2rem 0;
+    background-color: #fafafa;
+    
+    .listingInnerWrap{
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        grid-gap: 15px;
+    }
 }
