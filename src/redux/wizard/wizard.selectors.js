@@ -1,8 +1,13 @@
 import { createSelector } from 'reselect';
 
-const selectCommonAPI = state => state.common;
+const selectWizardAPI = state => state.wizard;
 
-export const selectToggleMenu = createSelector(
-    [selectCommonAPI],
-    (common) => common.toggleMenu
+export const selectActiveStep = createSelector(
+    [selectWizardAPI],
+    (wizard) => wizard.activeStep
+);
+
+export const selectDoneSteps = createSelector(
+    [selectWizardAPI],
+    (wizard) => wizard.doneSteps
 );

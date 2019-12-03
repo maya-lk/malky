@@ -1,19 +1,25 @@
-import { commonActionTypes } from './common.types';
+import { wizardActionTypes } from './wizard.types';
 
 const INITIAL_STATE = {
-    toggleMenu: false,
+    activeStep: null,
+    doneSteps : []
 }
 
-const commonReducer = ( state = INITIAL_STATE , action ) => {
+const wizardReducer = ( state = INITIAL_STATE , action ) => {
     switch (action.type) {
-        case commonActionTypes.SET_TOGGLE_MENU:
+        case wizardActionTypes.SET_ACTIVE_STEP:
             return{
                 ...state , 
-                toggleMenu : !state.toggleMenu
+                activeStep : action.payload
+            }
+        case wizardActionTypes.SET_DONE_STEP:
+            return{
+                ...state,
+                doneSteps : action.payload
             }
         default:
             return state;
     }
 }
 
-export default commonReducer;
+export default wizardReducer;

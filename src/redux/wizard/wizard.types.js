@@ -1,3 +1,4 @@
-export const commonActionTypes = {
-    SET_TOGGLE_MENU : 'SET_TOGGLE_MENU',
+export const wizardActionTypes = {
+    SET_ACTIVE_STEP : 'SET_ACTIVE_STEP',
+    SET_DONE_STEP : 'SET_DONE_STEP',
 }
