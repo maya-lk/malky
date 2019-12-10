@@ -11,10 +11,12 @@
         display: inline-flex;
         align-items: center;
         border-right: 1px solid #1a232d;
+        cursor: pointer;
 
         &.active{
             background-color: #374d64;
             color: #d9e7f4;
+            cursor: unset;
         }
 
         .number {

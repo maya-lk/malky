@@ -12,7 +12,7 @@ const MainSearch = () => (
             />
             <div className="input-group-append">
                 <span className="input-group-text">
-                    <button type="submit" className="btn"><i class="fas fa-search"></i> Search</button>
+                    <button type="submit" className="btn"><i className="fas fa-search"></i> Search</button>
                 </span>
             </div>
         </div>
