@@ -9,6 +9,8 @@ import { selectToggleMenu } from '../../redux/common/common.selectors';
 import Logo from '../../assets/images/logo.png';
 import UserLogo from '../../assets/images/user-logo.png';
 
+import MainSearch from '../main-search/main-search.component';
+
 import './header.styles.scss';
 
 const Header = ({ setToggleMenu , toggleMenu }) => {
@@ -23,6 +25,9 @@ const Header = ({ setToggleMenu , toggleMenu }) => {
                 <Link to="/dashboard">
                     <img src={Logo} alt="Malkey"/>
                 </Link>
+            </div>
+            <div className="searchWrap">
+                <MainSearch />
             </div>
             <nav className="navbar navbar-expand-lg">
                 <ul className="navbar-nav mr-auto">

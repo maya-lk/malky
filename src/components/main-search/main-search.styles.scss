@@ -1,0 +1,32 @@
+.mainSearchForm{
+    width: 100%;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+
+    .input-group{
+        .form-control{
+            border: none;
+            background-color: #f6f6f6;
+            height: 62px;
+            padding: 0 1rem;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .input-group-append{
+            .input-group-text{
+                padding: 2px;
+                background-color: transparent;
+                border: none;
+
+                .btn {
+                    background-color: #4b8cd0;
+                    text-transform: uppercase;
+                    color: #fff;
+                    font-weight: 600;
+                    padding: 1rem 2rem;
+                }
+            }
+        }
+    }
+}
