@@ -1,0 +1,45 @@
+.wizardContent{
+    &.wizardStep3{
+        .recomondations{
+            width: 20%;
+            padding: 3rem 3rem;
+            background-color: #edf0f5;
+
+            h3 {
+                color: #6d6e70;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        .searchVehicle{
+            width: 60%;
+            padding: 3rem 3rem;
+            background-color: #fff;
+
+            h3 {
+                color: #6d6e70;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        .reservationSummery {
+            background-color: #ebebeb;
+            width: 20%;
+            padding: 3rem 2rem;
+
+            h3 {
+                color: #6d6e70;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}
