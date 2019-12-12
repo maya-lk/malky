@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon , Input , DatePicker , Select , TimePicker , AutoComplete } from 'antd';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { 
     setPickupLocation , 
@@ -15,6 +16,19 @@ import {
     setToddlers , 
     setLaguage
 } from '../../redux/wizard/wizard.actions';
+import {
+    selectPickupLocation , 
+    selectPickupDate , 
+    selectPickupTime , 
+    selectDropoffLocation , 
+    selectDropoffDate , 
+    selectDropoffTime , 
+    selectCustomerName , 
+    selectAdults , 
+    selectKids , 
+    selectToddlers , 
+    selectLaguage 
+} from '../../redux/wizard/wizard.selectors';
 
 import ReservationSummery from '../reservation-summery/reservation-summery.component';
 
@@ -40,7 +54,18 @@ class WizardStepTwo extends React.Component {
             setAdults , 
             setKids , 
             setToddlers , 
-            setLaguage
+            setLaguage , 
+            pickupLocation ,
+            pickupDate ,
+            pickupTime ,
+            dropoffLocation ,
+            dropoffDate ,
+            dropoffTime ,
+            customerName ,
+            adults ,
+            kids ,
+            toddlers ,
+            laguage ,
         } = this.props;
         return(
             <div className="wizardContent wizardStep2 d-flex flex-wrap">
@@ -64,6 +89,7 @@ class WizardStepTwo extends React.Component {
                                         }
                                         className="location"
                                         onChange={ (e) => setPickupLocation(e.target.value) }
+                                        value={pickupLocation}
                                     />
                                 </div>
 
@@ -106,6 +132,7 @@ class WizardStepTwo extends React.Component {
                                         }
                                         className="location"
                                         onChange={ (e) => setDropoffLocation(e.target.value) }
+                                        value={dropoffLocation}
                                     />
                                 </div>
 
@@ -144,6 +171,7 @@ class WizardStepTwo extends React.Component {
                             <AutoComplete
                                 placeholder="Start typing here"
                                 onChange={ (value) => setCustomerName(value) }
+                                value={customerName}
                             />
                         </div>
                     </div>
@@ -160,6 +188,7 @@ class WizardStepTwo extends React.Component {
                                 <Select
                                     defaultValue="2"
                                     onChange={ (value) => setAdults(value) }
+                                    value={adults}
                                 >
                                     <Option value="1">1 Person</Option>
                                     <Option value="2">2 Person</Option>
@@ -175,6 +204,7 @@ class WizardStepTwo extends React.Component {
                                 <Select
                                     defaultValue="2"
                                     onChange={ (value) => setKids(value) }
+                                    value={kids}
                                 >
                                     <Option value="">None</Option>
                                     <Option value="1">1 Kids</Option>
@@ -191,6 +221,7 @@ class WizardStepTwo extends React.Component {
                                 <Select
                                     defaultValue="2"
                                     onChange={ (value) => setToddlers(value) }
+                                    value={toddlers}
                                 >
                                     <Option value="">None</Option>
                                     <Option value="1">1 Toddlers</Option>
@@ -207,6 +238,7 @@ class WizardStepTwo extends React.Component {
                                 <Select
                                     defaultValue="4"
                                     onChange={ (value) => setLaguage(value) }
+                                    value={laguage}
                                 >
                                     <Option value="">None</Option>
                                     <Option value="1">1 Bags</Option>
@@ -245,6 +277,20 @@ const mapDispatchToProps = dispatch => ({
     setKids : (kids) => dispatch(setKids(kids)),
     setToddlers : (toddlers) => dispatch(setToddlers(toddlers)),
     setLaguage : (laguage) => dispatch(setLaguage(laguage)),
-});   
+});  
 
-export default connect(null , mapDispatchToProps)(WizardStepTwo);
+const mapStateToProps = createStructuredSelector({
+    pickupLocation : selectPickupLocation,
+    pickupDate : selectPickupDate,
+    pickupTime : selectPickupTime,
+    dropoffLocation : selectDropoffLocation,
+    dropoffDate : selectDropoffDate,
+    dropoffTime : selectDropoffTime,
+    customerName : selectCustomerName,
+    adults : selectAdults,
+    kids : selectKids,
+    toddlers : selectToddlers,
+    laguage : selectLaguage,
+});
+
+export default connect(mapStateToProps , mapDispatchToProps)(WizardStepTwo);

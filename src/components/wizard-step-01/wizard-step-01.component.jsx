@@ -41,6 +41,7 @@ const WizardStepOne = ({ setReservationType , setBookingType , reservationType ,
                             className="custom-control-input" 
                             value="Self Drive"
                             onChange={(e) => handleReservationType(e)}
+                            checked={`${(reservationType === 'Self Drive') ? 'checked' : ''}`}
                         />
                         <label className="custom-control-label selfDrive" htmlFor="selfDrive" >
                             <span style={{ backgroundImage : `url(${SelfDriveInactive})`}} />
@@ -55,6 +56,7 @@ const WizardStepOne = ({ setReservationType , setBookingType , reservationType ,
                             className="custom-control-input" 
                             value="With Driver" 
                             onChange={(e) => handleReservationType(e)}
+                            checked={`${(reservationType === 'With Driver') ? 'checked' : ''}`}
                         />
                         <label className="custom-control-label withDrive" htmlFor="withDrive" >
                             <span style={{ backgroundImage : `url(${WithDriveInactive})` }} />
@@ -76,6 +78,7 @@ const WizardStepOne = ({ setReservationType , setBookingType , reservationType ,
                             className="custom-control-input" 
                             value="Wedding Hire"
                             onChange={(e) => handleBookingType(e)}
+                            checked={`${(bookingType === 'Wedding Hire') ? 'checked' : ''}`}
                         />
                         <label className="custom-control-label wedding" htmlFor="wedding" style={{ backgroundImage : `url(${Wedding})` }}>
                             Wedding Hire
@@ -90,6 +93,7 @@ const WizardStepOne = ({ setReservationType , setBookingType , reservationType ,
                             className="custom-control-input" 
                             value="Airport Drop/Pickup" 
                             onChange={(e) => handleBookingType(e)}
+                            checked={`${(bookingType === 'Airport Drop/Pickup') ? 'checked' : ''}`}
                         />
                         <label className="custom-control-label airport" htmlFor="airport" style={{ backgroundImage : `url(${Airport})` }}>
                             Airport Drop/Pickup
@@ -104,6 +108,7 @@ const WizardStepOne = ({ setReservationType , setBookingType , reservationType ,
                             className="custom-control-input" 
                             value="Regular Bookings" 
                             onChange={(e) => handleBookingType(e)}
+                            checked={`${(bookingType === 'Regular Bookings') ? 'checked' : ''}`}
                         />
                         <label className="custom-control-label regular" htmlFor="regular" style={{ backgroundImage : `url(${Regulart})` }}>
                             Regular Bookings
