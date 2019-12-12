@@ -16,7 +16,7 @@ const WizardNavigation = ({ activeStep , setActiveStep , setDoneSteps , doneStep
         if(doneSteps.indexOf(number) < 0){
             setDoneSteps(number);
         }else{
-            removeDoneSteps(number);
+            //removeDoneSteps(number);
         }
 
     }

@@ -7,6 +7,7 @@ import Header from './components/header/header.component';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'antd/dist/antd.css';
 
 class App extends React.Component {
   render(){

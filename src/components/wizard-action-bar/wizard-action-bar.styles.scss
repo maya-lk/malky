@@ -1,0 +1,29 @@
+.wizardActionBar {
+    background-color: #ebebeb;
+    padding: 1rem 2rem;
+    align-items: center;
+
+    .reservationID {
+        text-transform: uppercase;
+        color: #414448;
+        font-weight: 600;
+    }
+
+    .wizardActions{
+        .btn {
+            margin-left: 1rem;
+            background-color: #8c8d8f;
+            color: #fff;
+            border-radius: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 0.75rem 2rem;
+
+            i {
+                font-weight: 400;
+                margin-right: 0.5rem;
+            }
+        }
+    }
+}
