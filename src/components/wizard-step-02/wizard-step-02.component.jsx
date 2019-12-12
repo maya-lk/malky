@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon , Input , DatePicker , Select , TimePicker  } from 'antd';
+import { Icon , Input , DatePicker , Select , TimePicker , AutoComplete } from 'antd';
 
 import ReservationSummery from '../reservation-summery/reservation-summery.component';
 
@@ -97,6 +97,83 @@ class WizardStepTwo extends React.Component {
                 <div className="personalDetailsWrap">
 
                     <h3>Personal Details</h3>
+
+                    <div className="form-group">
+                        <div className="input-group">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">Find Existing Client</span>
+                            </div>
+                            <AutoComplete
+                                placeholder="Start typing here"
+                            />
+                        </div>
+                    </div>
+
+                    <span className="btn addNewBtn">Or Add new Client</span>
+
+                    <div className="passengerWrap">
+                        <h3>Passenger Details</h3>
+
+                        <div className="d-flex flex-wrap row">
+
+                            <div className="form-group col-md-4 col-12">
+                                <label>Number of Adults</label>
+                                <Select
+                                    defaultValue="2"
+                                >
+                                    <Option value="1">1 Person</Option>
+                                    <Option value="2">2 Person</Option>
+                                    <Option value="3">3 Person</Option>
+                                    <Option value="4">4 Person</Option>
+                                    <Option value="5">5 Person</Option>
+                                    <Option value="6">6 Person</Option>
+                                </Select>
+                            </div>
+
+                            <div className="form-group col-md-4 col-12">
+                                <label>Number of Kids</label>
+                                <Select
+                                    defaultValue="2"
+                                >
+                                    <Option value="1">1 Kids</Option>
+                                    <Option value="2">2 Kids</Option>
+                                    <Option value="3">3 Kids</Option>
+                                    <Option value="4">4 Kids</Option>
+                                    <Option value="5">5 Kids</Option>
+                                    <Option value="6">6 Kids</Option>
+                                </Select>
+                            </div>
+
+                            <div className="form-group col-md-4 col-12">
+                                <label>Number of Toddlers</label>
+                                <Select
+                                    defaultValue="2"
+                                >
+                                    <Option value="1">1 Toddlers</Option>
+                                    <Option value="2">2 Toddlers</Option>
+                                    <Option value="3">3 Toddlers</Option>
+                                    <Option value="4">4 Toddlers</Option>
+                                    <Option value="5">5 Toddlers</Option>
+                                    <Option value="6">6 Toddlers</Option>
+                                </Select>
+                            </div>
+
+                            <div className="form-group col-md-4 col-12">
+                                <label>Number of Laguage</label>
+                                <Select
+                                    defaultValue="4"
+                                >
+                                    <Option value="1">1 Bags</Option>
+                                    <Option value="2">2 Bags</Option>
+                                    <Option value="3">3 Bags</Option>
+                                    <Option value="4">4 Bags</Option>
+                                    <Option value="5">5 Bags</Option>
+                                    <Option value="6">6 Bags</Option>
+                                </Select>
+                            </div>
+
+                        </div>
+                    </div>
 
                 </div>
                 <div className="reservationSummery">
