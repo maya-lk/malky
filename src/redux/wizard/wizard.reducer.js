@@ -1,8 +1,11 @@
 import { wizardActionTypes } from './wizard.types';
+import { removeStepFromWizard } from './wizard.utils';
 
 const INITIAL_STATE = {
-    activeStep: null,
-    doneSteps : []
+    activeStep: 1,
+    doneSteps : [1],
+    reservationType: null,
+    bookingType: null,
 }
 
 const wizardReducer = ( state = INITIAL_STATE , action ) => {
@@ -15,7 +18,12 @@ const wizardReducer = ( state = INITIAL_STATE , action ) => {
         case wizardActionTypes.SET_DONE_STEP:
             return{
                 ...state,
-                doneSteps : action.payload
+                doneSteps : [ ...state.doneSteps , action.payload ]
+            }
+        case wizardActionTypes.REMOVE_DONE_STEPS:
+            return{
+                ...state,
+                doneSteps : removeStepFromWizard( state.doneSteps , action.payload )
             }
         default:
             return state;

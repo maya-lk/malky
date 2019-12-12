@@ -1,0 +1,166 @@
+.wizardContent{
+    background-color: #fff;
+    
+    &.wizardStep1{
+        padding: 5rem 3rem;
+
+        .form-group{
+            text-align: center;
+
+            h3 {
+                color: #364d63;
+                text-transform: uppercase;
+                font-weight: 600;
+                font-size: 1.75rem;
+                margin-bottom: 3rem;
+            }
+
+            h5 {
+                margin-top: 3rem;
+                margin-bottom: 3rem;
+                color: #354d65;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+
+            .btn-group{
+                width: 50%;
+                justify-content: space-between;
+    
+                .custom-control {
+                    width: 49%;
+                    padding: 0;
+                    
+                    .custom-control-label {
+                        width: 100%;
+                        text-align: center;
+                        display: inline-flex;
+                        align-items: center;
+                        cursor: pointer;
+                        justify-content: center;
+                        font-size: 2rem;
+                        color: #374d64;
+                        font-weight: 600;
+                        background-color: #fff;
+                        padding: 3rem 0;
+                        border-radius: 3px;
+                        background-color: #f0f0f0;
+                        flex-direction: column;
+                        border: 1px solid #c7d3dc;
+
+                        &::before , 
+                        &::after{
+                            display: none;
+                        }
+
+                        span{
+                            display: inline-block;
+                        }
+
+                        &.selfDrive{
+                            span{                                
+                                width: 32px;
+                                height: 32px;
+                            }
+                        }
+
+                        &.withDrive{
+                            span{                                
+                                width: 34px;
+                                height: 31px;
+                            }
+                        }
+
+                    }
+
+                    .custom-control-input{
+                        &:checked{
+                            ~ .custom-control-label{
+                                background-color: #374d64;
+                                color: #6282a0;
+
+                                span {
+                                    background-blend-mode: screen;
+                                    background-color: #374d64;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .typeWrap{
+                width: 50%;
+                margin-left: auto;
+                margin-right: auto;
+
+                .type {
+                    border: 1px solid #c6d0da;
+                    width: 32%;
+                    border-radius: 5px;
+                    overflow: hidden;
+                    padding: 0;
+                    color: #374d64;
+                    font-weight: 700;
+                    font-size: 0.9rem;
+                    line-height: 1;
+
+                    .custom-control-label{
+                        background-color: #fafafa;
+                        padding: 4rem 6rem 2rem 1.5rem;
+                        display: inline-block;
+                        width: 100%;
+                        height: 100%;
+                        background-repeat: no-repeat;
+                        background-position: top right;
+                        cursor: pointer;
+                        font-size: 1.5rem;
+                        text-align: left;
+
+                        &::before{
+                            left: 23px;
+                            top: 15px;
+                            background-color: #e9e9eb;
+                            border-color: #b5bec7;
+                            width: 40px;
+                            height: 40px;
+                        }
+
+                        &::after {
+                            left: 24px;
+                            top: 16px;
+                            background-image: none;
+                            width: 38px;
+                            height: 38px;
+                        }
+                    }
+
+                    .custom-control-input{
+                        &:checked{
+                            ~ .custom-control-label{
+                                background-color: #374d64;
+                                color: #b9cee3;
+                                background-blend-mode: soft-light;
+
+                                &::before{
+                                    background-color: #8191a0;
+                                }
+
+                                &::after {
+                                    border: 4px solid #1a2b3d;
+                                    border-radius: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            h6 {
+                color: #7f7e7e;
+                font-size: 0.9rem;
+                font-weight: 600;
+            }
+        }
+    }
+}

@@ -9,3 +9,8 @@ export const setDoneSteps = doneSteps => ({
     type : wizardActionTypes.SET_DONE_STEP,
     payload : doneSteps
 });
+
+export const removeDoneSteps = doneSteps => ({
+    type : wizardActionTypes.REMOVE_DONE_STEPS,
+    payload : doneSteps
+});
