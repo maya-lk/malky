@@ -1,0 +1,67 @@
+.vehicleItem{
+    position: relative;
+
+    input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        visibility: hidden;
+        opacity: 0;
+
+        &:checked{
+            ~ .vehicleLable{
+                background-color: #373a4d;
+
+                .vehicleContent{
+                    .name {
+                        color: #979fb1;
+                    }
+
+                    .numberPlate {
+                        color: #fefefd;
+                    }
+
+                    .yard {
+                        color: #7997b5;
+                    }
+                }
+            }
+        }
+    }
+
+    .vehicleLable {
+        border: 1px solid  #e3e4e6;
+        background-color: #fff;
+        border-radius: 5px;
+        margin-bottom: 0;
+        padding: 0.5rem;
+        cursor: pointer;
+
+        .vehicleImage {
+            width: 40%;
+        }
+
+        .vehicleContent {
+            width: 60%;
+            padding-left: 0.5rem;
+
+            .name {
+                color: #626a7a;
+                font-weight: 600;
+                font-size: 13px;
+            }
+
+            .numberPlate {
+                color: #111a22;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+
+            .yard {
+                color: #8caece;
+                font-weight: 600;
+                font-size: 11px;
+            }
+        }
+    }
+}
