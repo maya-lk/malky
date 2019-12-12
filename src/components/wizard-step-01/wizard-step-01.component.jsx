@@ -1,4 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { setReservationType , setBookingType , setActiveStep , setDoneSteps } from '../../redux/wizard/wizard.actions';
+import { selectReservationType , selectBookingType } from '../../redux/wizard/wizard.selectors';
 
 import SelfDriveInactive from '../../assets/images/self-drive-inactive.png';
 import WithDriveInactive from '../../assets/images/with-driver-inactive.png';
@@ -8,7 +13,20 @@ import Regulart from '../../assets/images/regular.png';
 
 import './wizard-step-01.styles.scss';
 
-const WizardStepOne = () => {
+const WizardStepOne = ({ setReservationType , setBookingType , reservationType , bookingType , setActiveStep , setDoneSteps }) => {
+
+    const handleReservationType = (e) => {
+
+        setReservationType(e.target.value);
+
+    }
+
+    const handleBookingType = (e) => {
+
+        setBookingType(e.target.value);
+
+    }
+
     return(
         <div className="wizardContent wizardStep1">
 
@@ -16,14 +34,28 @@ const WizardStepOne = () => {
                 <h3>Select Reservation Type</h3>
                 <div className="btn-group">
                     <div className="custom-control custom-radio">
-                        <input type="radio" id="selfDrive" name="driveType" className="custom-control-input" value="Self Drive" />
+                        <input 
+                            type="radio" 
+                            id="selfDrive" 
+                            name="driveType" 
+                            className="custom-control-input" 
+                            value="Self Drive"
+                            onChange={(e) => handleReservationType(e)}
+                        />
                         <label className="custom-control-label selfDrive" htmlFor="selfDrive" >
                             <span style={{ backgroundImage : `url(${SelfDriveInactive})`}} />
                             SELF DRIVE
                         </label>
                     </div>
                     <div className="custom-control custom-radio">
-                        <input type="radio" id="withDrive" name="driveType" className="custom-control-input" value="With Drive" />
+                        <input 
+                            type="radio" 
+                            id="withDrive" 
+                            name="driveType" 
+                            className="custom-control-input" 
+                            value="With Driver" 
+                            onChange={(e) => handleReservationType(e)}
+                        />
                         <label className="custom-control-label withDrive" htmlFor="withDrive" >
                             <span style={{ backgroundImage : `url(${WithDriveInactive})` }} />
                             WITH DRIVER
@@ -37,21 +69,42 @@ const WizardStepOne = () => {
                 <div className="typeWrap d-flex justify-content-between">
 
                     <div className="type custom-control custom-radio">
-                        <input type="radio" id="wedding" name="reservationType" className="custom-control-input" value="Wedding Hire" />
+                        <input 
+                            type="radio" 
+                            id="wedding" 
+                            name="reservationType" 
+                            className="custom-control-input" 
+                            value="Wedding Hire"
+                            onChange={(e) => handleBookingType(e)}
+                        />
                         <label className="custom-control-label wedding" htmlFor="wedding" style={{ backgroundImage : `url(${Wedding})` }}>
                             Wedding Hire
                         </label>
                     </div>
 
                     <div className="type custom-control custom-radio">
-                        <input type="radio" id="airport" name="reservationType" className="custom-control-input" value="Airport Drop/Pickup" />
+                        <input 
+                            type="radio" 
+                            id="airport" 
+                            name="reservationType" 
+                            className="custom-control-input" 
+                            value="Airport Drop/Pickup" 
+                            onChange={(e) => handleBookingType(e)}
+                        />
                         <label className="custom-control-label airport" htmlFor="airport" style={{ backgroundImage : `url(${Airport})` }}>
                             Airport Drop/Pickup
                         </label>
                     </div>
 
                     <div className="type custom-control custom-radio">
-                        <input type="radio" id="regular" name="reservationType" className="custom-control-input" value="Regular Bookings" />
+                        <input 
+                            type="radio" 
+                            id="regular" 
+                            name="reservationType" 
+                            className="custom-control-input" 
+                            value="Regular Bookings" 
+                            onChange={(e) => handleBookingType(e)}
+                        />
                         <label className="custom-control-label regular" htmlFor="regular" style={{ backgroundImage : `url(${Regulart})` }}>
                             Regular Bookings
                         </label>
@@ -64,4 +117,16 @@ const WizardStepOne = () => {
     )
 };
 
-export default WizardStepOne;
+const mapDispatchToProps = dispatch => ({
+    setReservationType : (reservationType) => dispatch(setReservationType(reservationType)),
+    setBookingType : (bookingType) => dispatch(setBookingType(bookingType)),
+    setActiveStep : (activeStep) => dispatch(setActiveStep(activeStep)),
+    setDoneSteps : (doneSteps) => dispatch(setDoneSteps(doneSteps)),
+});
+
+const mapStateToProps = createStructuredSelector({
+    reservationType : selectReservationType,
+    bookingType : selectBookingType
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(WizardStepOne);

@@ -2,7 +2,7 @@ import React from 'react';
 //import { connect } from 'react-redux';
 import { Switch , Route } from 'react-router-dom';
 
-import HomePage from './pages/home/home.component';
+import Wizard from './pages/wizard/wizard.component';
 import Header from './components/header/header.component';
 
 import './App.css';
@@ -14,7 +14,7 @@ class App extends React.Component {
       <div className="appWrappe">
         <Header/>
         <Switch>
-          <Route exact path="/" component={HomePage} />
+          <Route path="/wizard" component={Wizard} />
         </Switch>
       </div>
     )

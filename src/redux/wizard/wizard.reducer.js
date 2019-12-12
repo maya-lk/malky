@@ -25,6 +25,16 @@ const wizardReducer = ( state = INITIAL_STATE , action ) => {
                 ...state,
                 doneSteps : removeStepFromWizard( state.doneSteps , action.payload )
             }
+        case wizardActionTypes.SET_RESERVATION_TYPE:
+            return{
+                ...state,
+                reservationType : action.payload
+            }
+        case wizardActionTypes.SET_BOOKING_TYPE:
+            return{
+                ...state,
+                bookingType : action.payload
+            }
         default:
             return state;
     }

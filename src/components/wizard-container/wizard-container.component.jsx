@@ -7,9 +7,9 @@ import './wizard-container.styles.scss';
 
 const WizardContainer = () => (
     <div className="wizardContainer">
-        <Switch>
-          <Route exact path="/" component={WizardStepOne} />
-        </Switch>
+      <Switch>
+        <Route exact path="/wizard" component={WizardStepOne} />
+      </Switch>
     </div>
 );
 
