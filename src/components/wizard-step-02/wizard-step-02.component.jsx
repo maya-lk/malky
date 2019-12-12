@@ -1,5 +1,20 @@
 import React from 'react';
 import { Icon , Input , DatePicker , Select , TimePicker , AutoComplete } from 'antd';
+import { connect } from 'react-redux';
+
+import { 
+    setPickupLocation , 
+    setPickupDate , 
+    setPickupTime , 
+    setDropoffLocation , 
+    setDropoffDate , 
+    setDropoffTime , 
+    setCustomerName , 
+    setAdults , 
+    setKids , 
+    setToddlers , 
+    setLaguage
+} from '../../redux/wizard/wizard.actions';
 
 import ReservationSummery from '../reservation-summery/reservation-summery.component';
 
@@ -14,6 +29,19 @@ const { Option } = Select;
 class WizardStepTwo extends React.Component {
 
     render(){
+        const { 
+            setPickupLocation , 
+            setPickupDate , 
+            setPickupTime , 
+            setDropoffLocation , 
+            setDropoffDate , 
+            setDropoffTime , 
+            setCustomerName , 
+            setAdults , 
+            setKids , 
+            setToddlers , 
+            setLaguage
+        } = this.props;
         return(
             <div className="wizardContent wizardStep2 d-flex flex-wrap">
                 <div className="bookingDetailsWrap">
@@ -35,19 +63,24 @@ class WizardStepTwo extends React.Component {
                                             <LocationIcon />
                                         }
                                         className="location"
+                                        onChange={ (e) => setPickupLocation(e.target.value) }
                                     />
                                 </div>
 
                                 <div className="d-flex row">
                                     <div className="form-group col-md-7 col-12">
                                         <label>Pickup Date</label>
-                                        <DatePicker placeholder="" />
+                                        <DatePicker 
+                                            placeholder="" 
+                                            onChange={ (date, dateString) => setPickupDate(dateString) }
+                                        />
                                     </div>
                                     <div className="form-group col-md-5 col-12">
                                         <label>Pickup Time</label>
                                         <TimePicker 
                                             use12Hours 
                                             format="h:mm A"
+                                            onChange={ (time, timeString) => setPickupTime(timeString) }
                                         />
                                     </div>
                                 </div>
@@ -72,19 +105,24 @@ class WizardStepTwo extends React.Component {
                                             <LocationIcon />
                                         }
                                         className="location"
+                                        onChange={ (e) => setDropoffLocation(e.target.value) }
                                     />
                                 </div>
 
                                 <div className="d-flex row">
                                     <div className="form-group col-md-7 col-12">
                                         <label>Pickup Date</label>
-                                        <DatePicker placeholder="" />
+                                        <DatePicker 
+                                            placeholder="" 
+                                            onChange={ (date, dateString) => setDropoffDate(dateString) }
+                                        />
                                     </div>
                                     <div className="form-group col-md-5 col-12">
                                         <label>Pickup Time</label>
                                         <TimePicker 
                                             use12Hours 
                                             format="h:mm A"
+                                            onChange={ (time, timeString) => setDropoffTime(timeString) }
                                         />
                                     </div>
                                 </div>
@@ -105,6 +143,7 @@ class WizardStepTwo extends React.Component {
                             </div>
                             <AutoComplete
                                 placeholder="Start typing here"
+                                onChange={ (value) => setCustomerName(value) }
                             />
                         </div>
                     </div>
@@ -120,6 +159,7 @@ class WizardStepTwo extends React.Component {
                                 <label>Number of Adults</label>
                                 <Select
                                     defaultValue="2"
+                                    onChange={ (value) => setAdults(value) }
                                 >
                                     <Option value="1">1 Person</Option>
                                     <Option value="2">2 Person</Option>
@@ -134,7 +174,9 @@ class WizardStepTwo extends React.Component {
                                 <label>Number of Kids</label>
                                 <Select
                                     defaultValue="2"
+                                    onChange={ (value) => setKids(value) }
                                 >
+                                    <Option value="">None</Option>
                                     <Option value="1">1 Kids</Option>
                                     <Option value="2">2 Kids</Option>
                                     <Option value="3">3 Kids</Option>
@@ -148,7 +190,9 @@ class WizardStepTwo extends React.Component {
                                 <label>Number of Toddlers</label>
                                 <Select
                                     defaultValue="2"
+                                    onChange={ (value) => setToddlers(value) }
                                 >
+                                    <Option value="">None</Option>
                                     <Option value="1">1 Toddlers</Option>
                                     <Option value="2">2 Toddlers</Option>
                                     <Option value="3">3 Toddlers</Option>
@@ -162,7 +206,9 @@ class WizardStepTwo extends React.Component {
                                 <label>Number of Laguage</label>
                                 <Select
                                     defaultValue="4"
+                                    onChange={ (value) => setLaguage(value) }
                                 >
+                                    <Option value="">None</Option>
                                     <Option value="1">1 Bags</Option>
                                     <Option value="2">2 Bags</Option>
                                     <Option value="3">3 Bags</Option>
@@ -187,4 +233,18 @@ class WizardStepTwo extends React.Component {
     }
 };
 
-export default WizardStepTwo;
+const mapDispatchToProps = dispatch => ({
+    setPickupLocation : (pickupLocation) => dispatch(setPickupLocation(pickupLocation)),
+    setPickupDate : (pickupDate) => dispatch(setPickupDate(pickupDate)),
+    setPickupTime : (pickupTime) => dispatch(setPickupTime(pickupTime)),
+    setDropoffLocation : (dropoffLocation) => dispatch(setDropoffLocation(dropoffLocation)),
+    setDropoffDate : (dropoffDate) => dispatch(setDropoffDate(dropoffDate)),
+    setDropoffTime : (dropoffTime) => dispatch(setDropoffTime(dropoffTime)),
+    setCustomerName : (customerName) => dispatch(setCustomerName(customerName)),
+    setAdults : (adults) => dispatch(setAdults(adults)),
+    setKids : (kids) => dispatch(setKids(kids)),
+    setToddlers : (toddlers) => dispatch(setToddlers(toddlers)),
+    setLaguage : (laguage) => dispatch(setLaguage(laguage)),
+});   
+
+export default connect(null , mapDispatchToProps)(WizardStepTwo);
