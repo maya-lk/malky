@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteBase /malkey/site/
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /malkey/site/index.html [L]
