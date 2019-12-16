@@ -10,7 +10,7 @@ const VehicleItem = ({ imageUrl , name , numberPlate , yard , ID }) => (
             id={`vehicle${ID}`}
             value={ID}
         />
-        <label class="vehicleLable d-flex" htmlFor={`vehicle${ID}`}>
+        <label className="vehicleLable d-flex" htmlFor={`vehicle${ID}`}>
             <div className="vehicleImage">
                 <img src={imageUrl} alt={name}/>
             </div>

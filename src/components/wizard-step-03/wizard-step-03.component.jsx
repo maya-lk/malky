@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon, Input, AutoComplete , Select } from 'antd';
+import { withRouter } from 'react-router-dom';
 
 import ReservationSummery from '../reservation-summery/reservation-summery.component';
 import VehicleItem from '../vehicle-item/vehicle-item.component';
@@ -8,7 +9,12 @@ import './wizard-step-03.styles.scss';
 
 const { Option } = Select;
 
-const WizardStepThree = () => {
+const WizardStepThree = ({ history }) => {
+
+    const handleNextPage = () => {
+        history.push('/wizard/payment-details');
+    }
+
     return(
         <div className="wizardContent wizardStep3 d-flex flex-wrap">
             <div className="recomondations">
@@ -76,7 +82,7 @@ const WizardStepThree = () => {
                         <VehicleItem/>
                     </div>
 
-                    <span className="btn submitBtn">Confirm and Proceed</span>
+                    <span className="btn submitBtn" onClick={() => handleNextPage()}>Confirm and Proceed</span>
 
                 </div>
             </div>
@@ -88,4 +94,4 @@ const WizardStepThree = () => {
     )
 };
 
-export default WizardStepThree;
+export default withRouter(WizardStepThree);

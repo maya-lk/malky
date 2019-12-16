@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon , Input , DatePicker , Select , TimePicker , AutoComplete } from 'antd';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { withRouter } from 'react-router-dom';
 
 import { 
     setPickupLocation , 
@@ -42,6 +43,11 @@ const { Option } = Select;
 
 class WizardStepTwo extends React.Component {
 
+    handleNextPage = () => {
+        const { history } = this.props;
+        history.push('/wizard/vehicle-selection');
+    }
+
     render(){
         const { 
             setPickupLocation , 
@@ -65,8 +71,9 @@ class WizardStepTwo extends React.Component {
             adults ,
             kids ,
             toddlers ,
-            laguage ,
+            laguage 
         } = this.props;
+
         return(
             <div className="wizardContent wizardStep2 d-flex flex-wrap">
                 <div className="bookingDetailsWrap">
@@ -253,6 +260,11 @@ class WizardStepTwo extends React.Component {
                         </div>
                     </div>
 
+                    <span 
+                        className="btn submitBtn"
+                        onClick={this.handleNextPage}
+                    >Confirm and Proceed</span>
+
                 </div>
                 <div className="reservationSummery">
                     
@@ -293,4 +305,4 @@ const mapStateToProps = createStructuredSelector({
     laguage : selectLaguage,
 });
 
-export default connect(mapStateToProps , mapDispatchToProps)(WizardStepTwo);
+export default withRouter(connect(mapStateToProps , mapDispatchToProps)(WizardStepTwo));

@@ -143,6 +143,18 @@
             .passengerWrap {
                 margin-top: 3rem;
             }
+
+            .btn.submitBtn {
+                width: 100%;
+                color: #fff;            
+                background-color: #2d81d9;
+                text-transform: uppercase;
+                font-weight: 600;
+                font-size: 14px;
+                padding: 1.3rem 0;
+                margin-top: 4rem;
+                cursor: pointer;
+            }
         }
 
         .reservationSummery {
