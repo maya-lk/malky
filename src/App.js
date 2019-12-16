@@ -4,6 +4,7 @@ import { Switch , Route } from 'react-router-dom';
 
 import Wizard from './pages/wizard/wizard.component';
 import Header from './components/header/header.component';
+import AvailabilityCalender from './pages/availability-calender/availability-calender.component';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,6 +17,7 @@ class App extends React.Component {
         <Header/>
         <Switch>
           <Route path="/wizard" component={Wizard} />
+          <Route path="/availability-calender" component={AvailabilityCalender} />
         </Switch>
       </div>
     )
