@@ -92,6 +92,36 @@
                 color: #a3b2c1;
             }
         }
+
+        .calenderWrap {
+            margin-top: 1.5rem;
+            background-color: #fff;
+            padding-top: 1rem;
+
+            .fc-toolbar.fc-header-toolbar {
+                margin-bottom: 0;
+                border-top: 1px solid #eee;
+
+                .fc-button-group {
+                    .fc-button {
+                        border-radius: 0 !important;
+                        background-color: #fff;
+                        color: #000;
+                        border: 1px solid #eee;
+                        box-shadow: none;
+                        outline : none;
+                    }
+                }
+
+                .fc-center {
+                    h2 {
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
     }
 
     .bookingDetailsWrap {

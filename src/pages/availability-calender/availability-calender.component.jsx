@@ -1,10 +1,14 @@
 import React from 'react';
 import { Select } from 'antd';
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
 
 import AvaliableVehicleItem from '../../components/avaliable-vehicle-item/avaliable-vehicle-item.component';
 import PartiallyItem from '../../components/partially-item/partially-item.component';
 
 import './availability-calender.styles.scss';
+import '@fullcalendar/core/main.css';
+import '@fullcalendar/daygrid/main.css';
 
 const { Option } = Select;
 
@@ -122,7 +126,11 @@ const AvailabilityCalender = () => {
                 <div className="booking">
                     There are <span className="bookingCount">7 Booking</span> for the Day
                 </div>
-                <div className="calenderWrap"></div>
+
+                <div className="calenderWrap">
+                    <FullCalendar defaultView="dayGridMonth" plugins={[ dayGridPlugin ]} header={{ left: 'prev,next', center: 'title', right: '' }} />
+                </div>
+
             </div>
 
             <div className="bookingDetailsWrap d-flex justify-content-between">
