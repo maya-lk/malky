@@ -9,7 +9,7 @@ import './wizard.styles.scss';
 
 const Wizard = () => (
     <div className="wizardPageWrapper">
-        <Route path="/wizard/:wizardStep" component={WizardActionBar} />
+        <Route path="/wizard/:wizardStep" render={() => <WizardActionBar reservationID="1245856ADc" />} />
         <div className="wizardWrap">
             <WizardNavigation/>
             <WizardContainer/>
