@@ -1,0 +1,432 @@
+.homeFrontWrap{
+    .bookingContainer{
+        padding: 1rem 2rem;
+        background-color: #f6f6f6;
+
+        .reservationType {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+
+            .btn.availibityBtn {
+                background-color: #e9e9e9;                
+                padding: 0 2.5rem;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                text-transform: uppercase;
+                color: #36485b;                
+                font-weight: 600;                
+                border: 1px solid #e4e4e4;            
+            }
+        }
+
+        .type {
+            display: flex;
+            align-items: center;
+            flex: 1;
+
+            h3 {
+                margin-bottom: 0;
+                color: #7e7d7e;
+                text-transform: uppercase;
+                font-weight: 600;
+                font-size: 18px;
+                width: 220px;
+                text-align: center;
+            }
+
+            .custom-control {
+                width: 200px;
+                padding: 0;
+                margin-right: 1rem;
+                
+                .custom-control-label {
+                    width: 100%;
+                    text-align: center;
+                    display: inline-flex;
+                    align-items: center;
+                    cursor: pointer;
+                    justify-content: center;
+                    font-size: 17px;
+                    color: #374d64;
+                    font-weight: 600;
+                    padding: 2rem 0;
+                    border-radius: 3px;
+                    background-color: #f0f0f0;
+                    border: 1px solid #c7d3dc;
+
+                    &::before , 
+                    &::after{
+                        display: none;
+                    }
+
+                    span{
+                        display: inline-block;
+                        margin-right: 1rem;
+                    }
+
+                    &.selfDrive{
+                        span{                                
+                            width: 32px;
+                            height: 32px;
+                        }
+                    }
+
+                    &.withDrive{
+                        span{                                
+                            width: 34px;
+                            height: 31px;
+                        }
+                    }
+
+                }
+
+                .custom-control-input{
+                    &:checked{
+                        ~ .custom-control-label{
+                            background-color: #374d64;
+                            color: #6282a0;
+
+                            span {
+                                background-blend-mode: screen;
+                                background-color: #374d64;
+                            }
+                        }
+                    }
+                }
+
+                &.typeRadio{
+                    .custom-control-label {
+                        background-color: #fafafa;
+                        padding: 3rem 1.5rem 1rem;
+                        display: inline-block;
+                        width: 100%;
+                        height: 100%;
+                        background-repeat: no-repeat;
+                        background-position: top right;
+                        cursor: pointer;
+                        font-size: 15px;
+                        text-align: left;
+                        min-height: 98px;
+
+                        &::before{
+                            display: block;
+                            left: 23px;
+                            top: 15px;
+                            background-color: #e9e9eb;
+                            border-color: #b5bec7;
+                            width: 20px;
+                            height: 20px;
+                        }
+
+                        &::after {
+                            display: block;
+                            left: 24px;
+                            top: 16px;
+                            background-image: none;
+                            width: 18px;
+                            height: 18px;
+                        }
+                    }
+
+                    .custom-control-input{
+                        &:checked{
+                            ~ .custom-control-label{
+                                background-color: #374d64;
+                                color: #b9cee3;
+                                background-blend-mode: soft-light;
+
+                                &::before{
+                                    background-color: #8191a0;
+                                }
+
+                                &::after {
+                                    border: 4px solid #1a2b3d;
+                                    border-radius: 100%;
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            }
+
+        }
+
+        .bookingSecWrap{
+            .bookingForm{
+                width: 40%;
+                padding: 1rem 2rem;
+                background-color: #edf0f5;
+
+                h3 {
+                    color: #6d6e70;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    font-size: 1rem;
+                    margin-bottom: 2rem;
+                }
+
+                .tabWrap{
+                    margin-bottom: 1rem;
+    
+                    .nav-link{
+                        &.active{
+                            background-color: #374d64;
+                            border-radius: 3px 3px 0 0;
+                            text-transform: uppercase;
+                            font-weight: 600;
+                            padding: 0.5rem 2.5rem;
+                            min-width: 158px;
+                        }
+                    }
+                    
+                    .tab-content{
+                        background-color: #fff;
+    
+                        .tab-pane{
+                            padding: 1.5rem;
+    
+                            .form-group{
+    
+                                .location{
+                                    .anticon{
+                                        width: 10px;
+                                        color: #9b9b9c;
+                                    }
+                                }
+    
+                                .ant-input {
+                                    height: 45px;
+                                    border-color: #ced8e0;
+                                    background-color: #fafafa;
+                                }
+    
+                                label {
+                                    color: #a2a2a2;
+                                    font-weight: 600;
+                                    font-size: 12px;
+                                    display: inline-block;
+                                    width: 100%;
+                                }
+    
+                                .ant-time-picker{
+                                    width: 100%;
+    
+                                    .ant-time-picker-input{
+                                        height: 45px;
+                                        border-color: #ced8e0;
+                                        background-color: #fafafa;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .passengerWrap {
+                    margin-bottom: 1.5rem;
+        
+                    .form-group {
+                        label {
+                            color: #a2a2a2;
+                            font-weight: 600;
+                            font-size: 12px;
+                            display: inline-block;
+                            width: 100%;
+                        }
+        
+                        .ant-select{
+                            width: 100%;
+
+                            .ant-select-selection{
+                                background-color: transparent;
+                                border-radius: 0;
+                                -webkit-border-radius: 0;
+                                -moz-border-radius: 0;
+                                -ms-border-radius: 0;
+                                -o-border-radius: 0;
+                                border-left: none;
+                                border-top: none;
+                                border-right: none;
+                                box-shadow: none;
+                            }
+                        }
+                    }
+        
+                    .btn.addNewBtn {
+                        width: 100%;
+                        background-color: #656565;
+                        border-radius: 0;
+                        color: #fff;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        font-size: 13px;
+                        padding: 0.75rem 0;
+                        cursor: pointer;
+                    }
+                }
+
+                .form-group {
+                    .input-group{
+                        .input-group-prepend{
+                            .input-group-text {
+                                color: #fff;
+                                border-radius: 0;
+                                border: none;
+                                background-color: #374d64;
+                                font-weight: 600;
+                                text-transform: uppercase;
+                                font-size: 13px;
+                                padding: 1rem 1rem;
+                            }
+                        }
+    
+                        .ant-select-auto-complete {
+                            width: 100%;
+                            flex: 1 1 0%;
+                            height: 52px;
+    
+                            .ant-select-selection__rendered{
+                                height: 52px;
+                            }
+    
+                            .ant-input {
+                                height: 52px;
+                                border-radius: 0;
+                            }
+                        }
+                    }
+    
+                    label {
+                        color: #a2a2a2;
+                        font-weight: 600;
+                        font-size: 12px;
+                        display: inline-block;
+                        width: 100%;
+                    }
+                }
+    
+                .btn.addNewBtn {
+                    width: 100%;
+                    background-color: #656565;
+                    border-radius: 0;
+                    color: #fff;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    font-size: 13px;
+                    padding: 0.75rem 0;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .recomondations {
+            width: 20%;
+            padding: 1rem;
+            background-color: #fff;
+
+            h3 {
+                color: #6d6e70;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        .filters {
+            background-color: #f9f9f9;
+            width: 40%;
+
+            .ant-input-search{
+                .ant-input {
+                    width: 100%;
+                    border-radius: 0;
+                    border: none;
+                    background-color: #232b36;
+                    padding: 0.5rem 2rem;
+                    color: #5c6f84;
+                    font-weight: 600;
+                    font-size: 13px;
+                    height: 56px;
+
+                    &::placeholder {
+                        color: #5c6f84;
+                    }
+                }
+
+                .ant-input-search-icon{
+                    color: #fff;
+                }
+            }
+
+            .filtersWrap{
+                padding: 1rem 2rem;
+
+                .form-group{
+                    .ant-select{
+                        width: 100%;
+
+                        .ant-select-selection{
+                            background-color: transparent;
+                            border-radius: 0;
+                            -webkit-border-radius: 0;
+                            -moz-border-radius: 0;
+                            -ms-border-radius: 0;
+                            -o-border-radius: 0;
+                            border-left: none;
+                            border-top: none;
+                            border-right: none;
+                            box-shadow: none;
+
+                            .ant-select-selection__placeholder{
+                                color: #8c8c8c;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+
+                .vehiclesList {
+                    display: grid;
+                    grid-template-columns: repeat(3 , 1fr);
+                    gap: 20px;
+                    height: 450px;
+                    overflow: auto;
+
+                    .vehicleItem {
+                        .vehicleLable {
+                            flex-direction: column;
+
+                            .vehicleImage {
+                                width: 100%;
+                            }
+
+                            .vehicleContent{
+                                width: 100%;
+                                padding: 0;
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+
+                .btn.submitBtn {
+                    width: 100%;
+                    color: #fff;            
+                    background-color: #2d81d9;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    font-size: 14px;
+                    padding: 1.3rem 0;
+                    margin-top: 1rem;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

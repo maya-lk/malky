@@ -22,7 +22,7 @@ const Header = ({ setToggleMenu , toggleMenu }) => {
     return(
         <div className="headerWrap">
             <div className="logoWrap">
-                <Link to="/dashboard">
+                <Link to="/">
                     <img src={Logo} alt="Malkey"/>
                 </Link>
             </div>
