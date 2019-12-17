@@ -15,7 +15,9 @@ import {
     setAdults , 
     setKids , 
     setToddlers , 
-    setLaguage
+    setLaguage , 
+    setActiveStep , 
+    setDoneSteps
 } from '../../redux/wizard/wizard.actions';
 import {
     selectPickupLocation , 
@@ -44,8 +46,10 @@ const { Option } = Select;
 class WizardStepTwo extends React.Component {
 
     handleNextPage = () => {
-        const { history } = this.props;
+        const { history , setActiveStep , setDoneSteps } = this.props;
         history.push('/wizard/vehicle-selection');
+        setActiveStep(3);
+        setDoneSteps(3);
     }
 
     render(){
@@ -289,6 +293,8 @@ const mapDispatchToProps = dispatch => ({
     setKids : (kids) => dispatch(setKids(kids)),
     setToddlers : (toddlers) => dispatch(setToddlers(toddlers)),
     setLaguage : (laguage) => dispatch(setLaguage(laguage)),
+    setActiveStep : (activeStep) => dispatch(setActiveStep(activeStep)),
+    setDoneSteps : (doneSteps) => dispatch(setDoneSteps(doneSteps)),
 });  
 
 const mapStateToProps = createStructuredSelector({
