@@ -1,6 +1,9 @@
 import React from 'react';
 import { Icon, Input, AutoComplete , Select } from 'antd';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { setActiveStep , setDoneSteps } from '../../redux/wizard/wizard.actions';
 
 import ReservationSummery from '../reservation-summery/reservation-summery.component';
 import VehicleItem from '../vehicle-item/vehicle-item.component';
@@ -9,10 +12,12 @@ import './wizard-step-03.styles.scss';
 
 const { Option } = Select;
 
-const WizardStepThree = ({ history }) => {
+const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
 
     const handleNextPage = () => {
         history.push('/wizard/payment-details');
+        setActiveStep(4);
+        setDoneSteps(4);
     }
 
     return(
@@ -176,4 +181,9 @@ const WizardStepThree = ({ history }) => {
     )
 };
 
-export default withRouter(WizardStepThree);
+const mapDispatchToProps = dispatch => ({
+    setActiveStep : (activeStep) => dispatch(setActiveStep(activeStep)),
+    setDoneSteps : (doneSteps) => dispatch(setDoneSteps(doneSteps)),
+});
+
+export default withRouter(connect(null,mapDispatchToProps)(WizardStepThree));
