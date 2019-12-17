@@ -5,12 +5,57 @@
             padding: 2rem;
             background-color: #edf0f5;
 
-            h3 {
-                color: #6d6e70;
+            h3.vehicleName {
+                color: #636363;
                 font-weight: 600;
+                font-size: 1.7rem;
+                margin-bottom: 0;
+            }
+
+            .date {
+                color: #314559;
+                font-weight: 800;
                 text-transform: uppercase;
-                font-size: 1rem;
-                margin-bottom: 2rem;
+                font-size: 21px;
+            }
+
+            .basePrice {
+                color: #324458;
+                text-transform: uppercase;
+                font-weight: 800;
+                font-size: 18px;
+                margin-bottom: 1rem;
+
+                .price {
+                    display: inline-block;
+                    width: 100%;
+                    font-size: 30px;
+                }
+            }
+
+            .yard {
+                color: #354d64;
+                font-weight: 700;
+                font-size: 17px;
+                margin-bottom: 1rem;
+            }
+
+            .summeryWrap {
+                .summeryItem {
+                    .value{
+                        color: #464f5b;
+                    }
+
+                    .previous {
+                        display: inline-block;
+                        padding: 0.3rem 2rem;
+                        background-color: #cbccd0;
+                        color: #525254;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        margin-top: 0.5rem;
+                    }
+                }
             }
         }
 
@@ -20,39 +65,393 @@
             background-color: #ffffff;
 
             h3 {
-                color: #6d6e70;
-                font-weight: 600;
+                color: #626262;
+                font-weight: 700;
                 text-transform: uppercase;
                 font-size: 1rem;
+                margin-bottom: 1rem;
+                background-color: #edf0f5;
+                padding: 1rem 2rem;
+
+                .addNewAddon {
+                    color: #4e4e4e;
+                    font-size: 12px;
+                    cursor: pointer;
+                }
+            }
+
+            .tripTable {
+                width: 100%;
+                margin-bottom: 1rem;
+
+                th {
+                    color: #374d64;
+                    text-transform: uppercase;
+                    font-size: 16px;
+                    padding: 1rem 1.5rem;
+                }
+
+                td {
+                    color: #49525b;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    font-size: 16px;
+
+                    span {
+                        color: #909090;
+                        display: inline-block;
+                        width: 100%;
+                        font-size: 13px;
+                    }
+                }
+            }
+
+            .tripOtherDetail{
+                padding: 2rem 1.5rem 0;
+                position: relative;
                 margin-bottom: 2rem;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    width: 95%;
+                    height: 1px;
+                    background-color: #f0f2f6;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                }
+
+                .otherDetail {
+                    color: #49525d;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    font-size: 23px;
+                    line-height: 1;
+                    
+                    span {
+                        display: inline-block;
+                        width: 100%;
+                        color: #8d8d8d;
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .addOnList{
+                margin-bottom: 2rem;
+
+                .addonItem {
+                    border-bottom: 1px solid #edf0f5;
+                    padding: 1rem 1.5rem;
+
+                    .item {
+                        max-width: 50%;
+                        flex: 1 1 50%;
+
+                        .ant-select {
+                            width: 100%;
+
+                            .ant-select-selection {
+                                border-radius: 0;
+                                border: none;
+                                box-shadow: none;
+
+                                .ant-select-arrow {
+                                    display: none;
+                                }
+
+                                .ant-select-selection__placeholder {
+                                    color: #22323f;
+                                    font-weight: 600;
+                                    text-transform: uppercase;
+                                    font-size: 15px;
+                                }
+
+                                .ant-select-selection-selected-value {
+                                    color: #22323f;
+                                    font-weight: 600;
+                                    text-transform: uppercase;
+                                    font-size: 15px;
+                                }
+                            }
+                        }
+                    }
+
+                    .quantity {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        max-width: 40%;
+                        flex: 1 1 40%;
+
+                        .ant-select {
+                            width: 30%;
+
+                            .ant-select-selection {
+                                border-radius: 0;
+                                border: none;
+                                box-shadow: none;
+
+                                .ant-select-selection-selected-value {
+                                    color: #22323f;
+                                    font-weight: 600;
+                                    text-transform: uppercase;
+                                    font-size: 15px;
+                                }
+                            }
+                        }
+
+                        .info {
+                            color: #777;
+                            font-weight: 600;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+            }
+
+            .paymentType{
+                width: 100%;
+
+                .ant-select-selection {
+                    border-radius: 0;
+                    box-shadow: none;
+                    border-left: none;
+                    border-top: none;
+                    border-right: none;
+
+                    .ant-select-selection-selected-value {
+                        color: #22323f;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        font-size: 15px;
+                    }
+
+                    .ant-select-selection__placeholder {
+                        color: #22323f;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        font-size: 15px;
+                    }
+                }
             }
         }
 
-        .discounts {
-            width: 20%;
-            padding: 1rem;
+        .paymentWrap{
             background-color: #edf0f5;
+            width: 40%;
+            display: flex;
+            flex-wrap: wrap;
 
-            h3 {
-                color: #6d6e70;
-                font-weight: 600;
-                text-transform: uppercase;
-                font-size: 1rem;
-                margin-bottom: 2rem;
+            .discounts {
+                width: 50%;
+                padding: 1rem 1rem 0;
+                background-color: #edf0f5;
+    
+                h3 { 
+                    color: #666;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    font-size: 1rem;
+                    margin-bottom: 1rem;
+                    background-color: #fff;
+                    padding: 1rem 1rem;
+                }
+
+                .discountItem {
+                    background-color: #fff;                
+                    margin-bottom: 0.5rem;
+                    border: 1px solid #e5e6e9;
+                    padding: 0.5rem;
+                    border-radius: 5px;
+                    flex-wrap: wrap;
+                    
+                    .discount {
+                        width: 60%;
+                        padding-right: 1rem;
+
+                        .ant-input-affix-wrapper {
+                            max-width: 80px;
+
+                            .ant-input {
+                                border-radius: 0;
+                                border-left: none;
+                                border-top: none;
+                                border-right: none;
+                                border-bottom: 1px solid #d8d8d8;
+                                box-shadow: none;
+                                color: #636a7b;
+                                font-weight: 800;
+                                font-size: 30px;
+                            }
+
+                            .ant-input-suffix {
+                                color: #c2c2c2;
+                                font-weight: 600;
+                                font-size: 19px;
+                            }
+                        }
+
+                        label {
+                            color: #6e7683;
+                            font-weight: 700;
+                            font-size: 12px;
+                            margin-bottom: 1rem;
+                        }
+                        
+                        span {
+                            color: #8e8e8e;
+                            font-size: 12px;
+                            font-weight: 600;
+                        }
+                    }
+
+                    .remarkWrap {
+                        width: 40%;
+
+                        .ant-input {
+                            background-color: #f9f9f9;
+                            border: 1px solid #e4e4e4;
+                            font-size: 12px;
+                            font-weight: 600;
+                            box-shadow: none;
+                            min-height: 88px;
+
+                            &::placeholder {
+                                color: #b2b2b2;
+                            }
+                        }
+                    }
+                }
+
+                .toggleBtns {
+                    background-color: #fff;                
+                    margin-top: 1rem;
+                    border: 1px solid #e5e6e9;
+                    padding: 1rem 0.75rem;
+                    border-radius: 5px;
+                    min-height: 150px;
+
+                    .item {
+                        color: #4e4e4e;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        font-size: 13px;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 1rem;
+                    }
+                }
             }
-        }
+    
+            .paymentTotalWrap {
+                width: 50%;
+                background-color: #ffffff;
+                display: flex;
+                flex-direction: column;
+    
+                .totalWrap {
+                    background-color: #374d64;
+                    color: #fff;
+                    text-transform: uppercase;
+                    display: flex;
+                    justify-content: space-between;
+                    font-weight: 700;
+                    font-size: 24px;
+                    padding: 1rem;
+                    margin-top: auto;
+                }
 
-        .paymentTotalWrap {
-            width: 20%;
-            padding: 1rem;
-            background-color: #ffffff;
+                .paymentDetails {
+                    padding: 1rem;
+                    
+                    .item {
+                        padding: 0.5rem 0;
 
-            h3 {
-                color: #6d6e70;
-                font-weight: 600;
-                text-transform: uppercase;
-                font-size: 1rem;
-                margin-bottom: 2rem;
+                        .name {
+                            color: #787878;
+                            font-weight: 600;
+                            text-transform: uppercase;
+                            font-size: 16px;
+                            flex: 1;
+                        }
+
+                        .value {
+                            color: #25323f;
+                            font-weight: 600;
+                            text-transform: uppercase;
+                            font-size: 16px;
+                        }
+
+                        &.baseTotal {
+                            border-bottom: 1px solid #eee;
+                            margin-bottom: 1.5rem;
+
+                            .name {
+                                color: #393939;
+                                font-size: 19px;
+                                font-weight: 700;
+                            }
+    
+                            .value {
+                                color: #393939;
+                                font-size: 19px;
+                                font-weight: 700;
+                            }
+                        }
+
+                        &.vat {
+                            margin-bottom: 2rem;
+                        }
+
+                        &.addon{
+                            border-bottom: 1px solid #eee;
+                        }
+
+                        &.driver {
+                            margin-top: 1.5rem;
+                        }
+                    }
+
+                    h4 {
+                        color: #374c63;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        font-size: 17px;
+                        margin: 1rem 0;
+                    }
+
+                    .subTotal {
+                        background-color: #f8f8f8;
+                        padding: 1rem;
+                        display: flex;
+                        justify-content: space-between;
+                        text-transform: uppercase;
+                        font-weight: 700;
+                        font-size: 18px;
+                        color: #393939;
+                        margin: 1rem 0 1.5rem;
+                    }
+                }
+            }
+
+            .submitWrap {
+                padding: 1rem;
+                width: 100%;
+
+                .btn.submitBtn {
+                    width: 100%;
+                    color: #fff;            
+                    background-color: #2d81d9;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    font-size: 14px;
+                    padding: 1.3rem 0;
+                    margin-top: 1rem;
+                    cursor: pointer;
+                }
             }
         }
     }
