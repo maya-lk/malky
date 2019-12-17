@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { withRouter } from 'react-router-dom';
 
 import { setReservationType , setBookingType , setActiveStep , setDoneSteps } from '../../redux/wizard/wizard.actions';
 import { selectReservationType , selectBookingType } from '../../redux/wizard/wizard.selectors';
@@ -13,17 +14,29 @@ import Regulart from '../../assets/images/regular.png';
 
 import './wizard-step-01.styles.scss';
 
-const WizardStepOne = ({ setReservationType , setBookingType , reservationType , bookingType , setActiveStep , setDoneSteps }) => {
+const WizardStepOne = ({ setReservationType , setBookingType , reservationType , bookingType , setActiveStep , setDoneSteps , history }) => {
 
     const handleReservationType = (e) => {
 
         setReservationType(e.target.value);
+
+        if( bookingType ){
+            history.push('/wizard/reservation-details');
+            setActiveStep(2);
+            setDoneSteps(2);
+        }
 
     }
 
     const handleBookingType = (e) => {
 
         setBookingType(e.target.value);
+
+        if( reservationType ){
+            history.push('/wizard/reservation-details');
+            setActiveStep(2);
+            setDoneSteps(2);
+        }
 
     }
 
@@ -134,4 +147,4 @@ const mapStateToProps = createStructuredSelector({
     bookingType : selectBookingType
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(WizardStepOne);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(WizardStepOne));
