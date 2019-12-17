@@ -110,6 +110,7 @@ class WizardStepTwo extends React.Component {
                                         <DatePicker 
                                             placeholder="" 
                                             onChange={ (date, dateString) => setPickupDate(dateString) }
+                                            defaultValue={pickupDate}
                                         />
                                     </div>
                                     <div className="form-group col-md-5 col-12">
@@ -118,6 +119,7 @@ class WizardStepTwo extends React.Component {
                                             use12Hours 
                                             format="h:mm A"
                                             onChange={ (time, timeString) => setPickupTime(timeString) }
+                                            defaultValue={pickupTime}
                                         />
                                     </div>
                                 </div>
@@ -136,7 +138,7 @@ class WizardStepTwo extends React.Component {
                             <div className="tab-pane fade show active" id="dropOff" role="tabpanel" aria-labelledby="dropOff-tab">
 
                                 <div className="form-group">
-                                    <label>Pickup Location</label>
+                                    <label>Drop Off Location</label>
                                     <Input
                                         suffix={
                                             <LocationIcon />
@@ -149,18 +151,20 @@ class WizardStepTwo extends React.Component {
 
                                 <div className="d-flex row">
                                     <div className="form-group col-md-7 col-12">
-                                        <label>Pickup Date</label>
+                                        <label>Drop Off Date</label>
                                         <DatePicker 
                                             placeholder="" 
                                             onChange={ (date, dateString) => setDropoffDate(dateString) }
+                                            defaultValue={ dropoffDate }
                                         />
                                     </div>
                                     <div className="form-group col-md-5 col-12">
-                                        <label>Pickup Time</label>
+                                        <label>Drop Off Time</label>
                                         <TimePicker 
                                             use12Hours 
                                             format="h:mm A"
                                             onChange={ (time, timeString) => setDropoffTime(timeString) }
+                                            defaultValue={ dropoffTime }
                                         />
                                     </div>
                                 </div>
