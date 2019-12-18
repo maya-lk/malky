@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal , Input } from 'antd';
+import { Modal , Input , message } from 'antd';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -43,6 +43,8 @@ const AddNewClient = ({
 
         event.preventDefault();
 
+        message.success('Successfully Add new Client');
+        toggleAddNewClient();
         
     }
 

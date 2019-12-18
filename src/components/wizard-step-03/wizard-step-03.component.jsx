@@ -124,7 +124,7 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
                             name="Maruti Suzuki Baleno"
                             numberPlate="ABS - 10258"
                             yard="Polhengoda"
-                            ID="125"
+                            ID="1"
                         />
 
                         <VehicleItem
@@ -132,7 +132,7 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
                             name="VW Golf VII Automatik"
                             numberPlate="ABS - 10258"
                             yard="Polhengoda"
-                            ID="145"
+                            ID="2"
                         />
 
                         <VehicleItem
@@ -140,7 +140,7 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
                             name="Maruti Suzuki Baleno"
                             numberPlate="ABS - 10258"
                             yard="Polhengoda"
-                            ID="526"
+                            ID="3"
                         />
 
                         <VehicleItem
@@ -148,7 +148,7 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
                             name="VW Golf VII Automatik"
                             numberPlate="ABS - 10258"
                             yard="Polhengoda"
-                            ID="874"
+                            ID="4"
                         />
 
                         <VehicleItem
@@ -156,7 +156,7 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
                             name="VW Golf VII Automatik"
                             numberPlate="ABS - 10258"
                             yard="Polhengoda"
-                            ID="548"
+                            ID="5"
                         />
 
                         <VehicleItem
@@ -164,7 +164,7 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
                             name="Maruti Suzuki Baleno"
                             numberPlate="ABS - 10258"
                             yard="Polhengoda"
-                            ID="527"
+                            ID="6"
                         />
 
                         <VehicleItem
@@ -172,7 +172,7 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
                             name="VW Golf VII Automatik"
                             numberPlate="ABS - 10258"
                             yard="Polhengoda"
-                            ID="889"
+                            ID="7"
                         />
 
                     </div>
