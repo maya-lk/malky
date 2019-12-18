@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 import { wizardActionTypes } from './wizard.types';
 import { removeStepFromWizard } from './wizard.utils';
 
@@ -7,11 +9,11 @@ const INITIAL_STATE = {
     reservationType: null,
     bookingType: null,
     pickupLocation: null,
-    pickupDate: null,
-    pickupTime: null,
+    pickupDate: moment().format('YYYY-MM-DD'),
+    pickupTime: moment().format('HH:MM A'),
     dropoffLocation: null,
-    dropoffDate: null,
-    dropoffTime: null,
+    dropoffDate: moment().format('YYYY-MM-DD'),
+    dropoffTime: moment().format('HH:MM A'),
     customerName: null,
     adults: null,
     kids: null,

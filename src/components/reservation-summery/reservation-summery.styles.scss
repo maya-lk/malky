@@ -16,6 +16,43 @@
             font-weight: 600;
             text-transform: uppercase;
             font-size: 16px;
+            display: inline-block;
+            width: 100%;
+
+            .ant-select {
+                width: 100%;
+                margin-top: 3px;
+
+                .ant-select-selection {
+                    border-radius: 0;
+                    border: none;
+                    background-color: transparent;
+                    box-shadow: none;
+                }
+            }
+
+            .ant-input{
+                color: #444d58;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-size: 16px;
+                border-radius: 0;
+                border: none;
+                box-shadow: none;
+            }
+
+            .ant-time-picker {
+                width: 100%;
+
+                .ant-time-picker-input {
+                    border: none;
+                    box-shadow: none;
+                    color: #444d58;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    font-size: 16px;
+                }
+            }
         }
 
         .ant-collapse {

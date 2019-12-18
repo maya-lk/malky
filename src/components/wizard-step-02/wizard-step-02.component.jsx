@@ -3,6 +3,7 @@ import { Icon , Input , DatePicker , Select , TimePicker , AutoComplete } from '
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
+import moment from 'moment';
 
 import { 
     setPickupLocation , 
@@ -113,7 +114,7 @@ class WizardStepTwo extends React.Component {
                                         <DatePicker 
                                             placeholder="" 
                                             onChange={ (date, dateString) => setPickupDate(dateString) }
-                                            defaultValue={pickupDate}
+                                            defaultValue={moment(pickupDate, 'YYYY-MM-DD')}
                                         />
                                     </div>
                                     <div className="form-group col-md-5 col-12">
@@ -122,7 +123,7 @@ class WizardStepTwo extends React.Component {
                                             use12Hours 
                                             format="h:mm A"
                                             onChange={ (time, timeString) => setPickupTime(timeString) }
-                                            defaultValue={pickupTime}
+                                            defaultValue={moment(pickupTime, 'HH:mm A')}
                                         />
                                     </div>
                                 </div>
@@ -158,7 +159,7 @@ class WizardStepTwo extends React.Component {
                                         <DatePicker 
                                             placeholder="" 
                                             onChange={ (date, dateString) => setDropoffDate(dateString) }
-                                            defaultValue={ dropoffDate }
+                                            defaultValue={moment(dropoffDate, 'YYYY-MM-DD')}
                                         />
                                     </div>
                                     <div className="form-group col-md-5 col-12">
@@ -167,7 +168,7 @@ class WizardStepTwo extends React.Component {
                                             use12Hours 
                                             format="h:mm A"
                                             onChange={ (time, timeString) => setDropoffTime(timeString) }
-                                            defaultValue={ dropoffTime }
+                                            defaultValue={moment(dropoffTime, 'HH:mm A')}
                                         />
                                     </div>
                                 </div>

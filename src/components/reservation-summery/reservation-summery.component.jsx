@@ -1,7 +1,8 @@
 import React from 'react';
-import { Collapse } from 'antd';
+import { Collapse , Select , AutoComplete , Input , DatePicker , TimePicker } from 'antd';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import moment from 'moment';
 
 import { 
     selectReservationType , 
@@ -18,42 +19,91 @@ import {
     selectToddlers , 
     selectLaguage 
 } from '../../redux/wizard/wizard.selectors';
+import { 
+    setReservationType , 
+    setBookingType ,
+    setPickupLocation , 
+    setPickupDate , 
+    setPickupTime , 
+    setDropoffLocation , 
+    setDropoffDate , 
+    setDropoffTime , 
+    setCustomerName , 
+    setAdults , 
+    setKids , 
+    setToddlers , 
+    setLaguage 
+} from '../../redux/wizard/wizard.actions';
 
 import './reservation-summery.styles.scss';
 
 const { Panel } = Collapse;
+const { Option } = Select;
 
 const ReservationSummery = ({ 
-    reservationType , 
-    bookingType , 
-    pickupLocation , 
-    pickupDate , 
-    pickupTime , 
-    dropoffLocation , 
-    dropoffDate , 
-    dropoffTime , 
-    customerName , 
-    adults , 
-    kids , 
-    toddlers , 
-    laguage  }) => (
+        reservationType , 
+        bookingType , 
+        pickupLocation , 
+        pickupDate , 
+        pickupTime , 
+        dropoffLocation , 
+        dropoffDate , 
+        dropoffTime , 
+        customerName , 
+        adults , 
+        kids , 
+        toddlers , 
+        laguage , 
+        setReservationType , 
+        setBookingType ,
+        setPickupLocation , 
+        setPickupDate , 
+        setPickupTime , 
+        setDropoffLocation , 
+        setDropoffDate , 
+        setDropoffTime , 
+        setCustomerName , 
+        setAdults , 
+        setKids , 
+        setToddlers , 
+        setLaguage 
+    }) => (
     <div className="summeryWrap">
 
         <div className="d-flex flex-wrap row">
             {
                 (reservationType)?
-                <div className="summeryItem col-md-6 col-12">
+                <div className="summeryItem col-12">
                     <span className="label">Reservation Type</span>
-                    <span className="value">{reservationType}</span>
+                    <span className="value">
+                        <Select
+                            placeholder="Reservation Type"
+                            value={reservationType}
+                            onChange={ (value) => setReservationType(value)}
+                        >
+                            <Option value="Self Drive">Self Drive</Option>
+                            <Option value="With Driver">With Driver</Option>
+                        </Select>
+                    </span>
                 </div>
                 : ''
             }
             
             {
                 (bookingType)?
-                <div className="summeryItem col-md-6 col-12">
+                <div className="summeryItem col-12">
                     <span className="label">Booking Type</span>
-                    <span className="value">{bookingType}</span>
+                    <span className="value">
+                        <Select
+                            placeholder="Booking Type"
+                            value={bookingType}
+                            onChange={ (value) => setBookingType(value)}
+                        >
+                            <Option value="Wedding Hire">Wedding Hire</Option>
+                            <Option value="Airport Drop/Pickup">Airport Drop/Pickup</Option>
+                            <Option value="Regular Bookings">Regular Bookings</Option>
+                        </Select>
+                    </span>
                 </div>
                 : ''
             }
@@ -64,7 +114,13 @@ const ReservationSummery = ({
             (customerName)?
             <div className="summeryItem">
                 <span className="label">Client Name</span>
-                <span className="value">{customerName}</span>
+                <span className="value">
+                    <AutoComplete
+                        placeholder="Client Name"
+                        onChange={ (value) => setCustomerName(value) }
+                        value={customerName}
+                    />
+                </span>
             </div>
             : ''
         }        
@@ -82,7 +138,13 @@ const ReservationSummery = ({
                             (pickupLocation)?
                             <div className="summeryItem">
                                 <span className="label">Location</span>
-                                <span className="value">{pickupLocation}</span>
+                                <span className="value">
+                                    <Input
+                                        className="location"
+                                        onChange={ (e) => setPickupLocation(e.target.value) }
+                                        value={pickupLocation}
+                                    />
+                                </span>
                             </div>
                             : ''
                         }
@@ -91,7 +153,13 @@ const ReservationSummery = ({
                             (pickupDate)?
                             <div className="summeryItem">
                                 <span className="label">Date</span>
-                                <span className="value">{pickupDate}</span>
+                                <span className="value">
+                                    <DatePicker 
+                                        placeholder="" 
+                                        onChange={ (date, dateString) => setPickupDate(dateString) }
+                                        defaultValue={moment(pickupDate, 'YYYY-MM-DD')}
+                                    />
+                                </span>
                             </div>
                             : ''
                         }
@@ -100,7 +168,14 @@ const ReservationSummery = ({
                             (pickupTime)?
                             <div className="summeryItem">
                                 <span className="label">Time</span>
-                                <span className="value">{pickupTime}</span>
+                                <span className="value">
+                                    <TimePicker 
+                                        use12Hours 
+                                        format="h:mm A"
+                                        onChange={ (time, timeString) => setPickupTime(timeString) }
+                                        defaultValue={moment(pickupTime, 'HH:mm A')}
+                                    />
+                                </span>
                             </div>
                             : ''
                         }
@@ -124,7 +199,13 @@ const ReservationSummery = ({
                             (dropoffLocation)?
                             <div className="summeryItem">
                                 <span className="label">Location</span>
-                                <span className="value">{dropoffLocation}</span>
+                                <span className="value">
+                                    <Input
+                                        className="location"
+                                        onChange={ (e) => setDropoffLocation(e.target.value) }
+                                        value={dropoffLocation}
+                                    />
+                                </span>
                             </div>
                             : ''
                         }
@@ -133,7 +214,13 @@ const ReservationSummery = ({
                             (dropoffDate)?
                             <div className="summeryItem">
                                 <span className="label">Date</span>
-                                <span className="value">{dropoffDate}</span>
+                                <span className="value">
+                                    <DatePicker 
+                                        placeholder="" 
+                                        onChange={ (date, dateString) => setDropoffDate(dateString) }
+                                        defaultValue={moment(dropoffDate, 'YYYY-MM-DD')}
+                                    />
+                                </span>
                             </div>
                             : ''
                         }
@@ -142,7 +229,14 @@ const ReservationSummery = ({
                             (dropoffTime)?
                             <div className="summeryItem">
                                 <span className="label">Time</span>
-                                <span className="value">{dropoffTime}</span>
+                                <span className="value">
+                                    <TimePicker 
+                                        use12Hours 
+                                        format="h:mm A"
+                                        onChange={ (time, timeString) => setDropoffTime(timeString) }
+                                        defaultValue={moment(dropoffTime, 'HH:mm A')}
+                                    />
+                                </span>
                             </div>
                             : ''
                         }                    
@@ -160,17 +254,59 @@ const ReservationSummery = ({
                 <span className="value">
                     {
                         (adults)?
-                        <span style={{ marginRight : '10px' }}>{adults} Adults</span>
+                        <span style={{ display : 'inline-block' , width : '100%' }}>
+                            <Select
+                                defaultValue="2"
+                                onChange={ (value) => setAdults(value) }
+                                value={adults}
+                            >
+                                <Option value="">None</Option>
+                                <Option value="1">1 Adults</Option>
+                                <Option value="2">2 Adults</Option>
+                                <Option value="3">3 Adults</Option>
+                                <Option value="4">4 Adults</Option>
+                                <Option value="5">5 Adults</Option>
+                                <Option value="6">6 Adults</Option>
+                            </Select>
+                        </span>
                         : ''
                     } 
                     {
                         (kids)?
-                        <span style={{ margin : '0px 15px' }}>{kids} Kids</span>
+                        <span style={{ display : 'inline-block' , width : '100%' }}>
+                            <Select
+                                defaultValue="2"
+                                onChange={ (value) => setKids(value) }
+                                value={kids}
+                            >
+                                <Option value="">None</Option>
+                                <Option value="1">1 Kids</Option>
+                                <Option value="2">2 Kids</Option>
+                                <Option value="3">3 Kids</Option>
+                                <Option value="4">4 Kids</Option>
+                                <Option value="5">5 Kids</Option>
+                                <Option value="6">6 Kids</Option>
+                            </Select>
+                        </span>
                         : ''
                     }
                     {
                         (toddlers)?
-                        <span style={{ marginLeft : '10px' }}>{toddlers} Toddlers</span>
+                        <span style={{ display : 'inline-block' , width : '100%' }}>
+                            <Select
+                                defaultValue="2"
+                                onChange={ (value) => setToddlers(value) }
+                                value={toddlers}
+                            >
+                                <Option value="">None</Option>
+                                <Option value="1">1 Toddlers</Option>
+                                <Option value="2">2 Toddlers</Option>
+                                <Option value="3">3 Toddlers</Option>
+                                <Option value="4">4 Toddlers</Option>
+                                <Option value="5">5 Toddlers</Option>
+                                <Option value="6">6 Toddlers</Option>
+                            </Select>
+                        </span>
                         : ''
                     }
                 </span>
@@ -182,7 +318,21 @@ const ReservationSummery = ({
             (laguage)?
             <div className="summeryItem">
                 <span className="label">Laguage Details</span>
-                <span className="value">{laguage} Travaling Bags</span>
+                <span className="value">
+                    <Select
+                        defaultValue="4"
+                        onChange={ (value) => setLaguage(value) }
+                        value={laguage}
+                    >
+                        <Option value="">None</Option>
+                        <Option value="1">1 Bags</Option>
+                        <Option value="2">2 Bags</Option>
+                        <Option value="3">3 Bags</Option>
+                        <Option value="4">4 Bags</Option>
+                        <Option value="5">5 Bags</Option>
+                        <Option value="6">6 Bags</Option>
+                    </Select>
+                </span>
             </div>
             : ''
         }
@@ -207,4 +357,20 @@ const mapStateToProps = createStructuredSelector({
     laguage : selectLaguage,
 });
 
-export default connect(mapStateToProps)(ReservationSummery);
+const mapDispatchToProps = dispatch => ({
+    setReservationType : (reservationType) => dispatch(setReservationType(reservationType)),
+    setBookingType : (bookingType) => dispatch(setBookingType(bookingType)),
+    setPickupLocation : (pickupLocation) => dispatch(setPickupLocation(pickupLocation)),
+    setPickupDate : (pickupDate) => dispatch(setPickupDate(pickupDate)),
+    setPickupTime : (pickupTime) => dispatch(setPickupTime(pickupTime)),
+    setDropoffLocation : (dropoffLocation) => dispatch(setDropoffLocation(dropoffLocation)),
+    setDropoffDate : (dropoffDate) => dispatch(setDropoffDate(dropoffDate)),
+    setDropoffTime : (dropoffTime) => dispatch(setDropoffTime(dropoffTime)),
+    setCustomerName : (customerName) => dispatch(setCustomerName(customerName)),
+    setAdults : (adults) => dispatch(setAdults(adults)),
+    setKids : (kids) => dispatch(setKids(kids)),
+    setToddlers : (toddlers) => dispatch(setToddlers(toddlers)),
+    setLaguage : (laguage) => dispatch(setLaguage(laguage)),
+});
+
+export default connect(mapStateToProps , mapDispatchToProps)(ReservationSummery);
