@@ -78,7 +78,9 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
                                 <Select
                                     placeholder="Vehicle Type"
                                 >
-                                    <Option value=""></Option>
+                                    <Option value="Cars">Cars</Option>
+                                    <Option value="Van">Van</Option>
+                                    <Option value="Bus">Bus</Option>
                                 </Select>
                             </div>
 
@@ -86,7 +88,9 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
                                 <Select
                                     placeholder="Vehicle Model"
                                 >
-                                    <Option value=""></Option>
+                                    <Option value="Hatchback">Hatchback</Option>
+                                    <Option value="Sedan">Sedan</Option>
+                                    <Option value="SUV">SUV</Option>
                                 </Select>
                             </div>
 
@@ -94,7 +98,9 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
                                 <Select
                                     placeholder="Colors"
                                 >
-                                    <Option value=""></Option>
+                                    <Option value="Red">Red</Option>
+                                    <Option value="Green">Green</Option>
+                                    <Option value="Black">Black</Option>
                                 </Select>
                             </div>
 
@@ -102,7 +108,9 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
                                 <Select
                                     placeholder="Price Range"
                                 >
-                                    <Option value=""></Option>
+                                    <Option value="100000-200000">100000-200000</Option>
+                                    <Option value="200000-300000">200000-300000</Option>
+                                    <Option value="400000-500000">400000-500000</Option>
                                 </Select>
                             </div>
 
