@@ -46,7 +46,7 @@ const Header = ({ setToggleMenu , toggleMenu }) => {
                             <span className="name">Malki <br/>Front Desk</span>
                         </span>
                         <div className={`${toggleMenu ? 'show' : ''} dropdown-menu`} aria-labelledby="navbarDropdown">
-                            <Link className="dropdown-item" to="/">Action</Link>
+                            <Link className="dropdown-item" to="/">Log Out</Link>
                         </div>
                     </li>
                 </ul>
