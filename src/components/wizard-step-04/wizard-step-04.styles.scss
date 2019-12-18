@@ -4,6 +4,7 @@
             width: 20%;
             padding: 2rem;
             background-color: #edf0f5;
+            border-top-left-radius: 6px;
 
             h3.vehicleName {
                 color: #636363;
@@ -244,6 +245,7 @@
             width: 40%;
             display: flex;
             flex-wrap: wrap;
+            border-top-right-radius: 6px;
 
             .discounts {
                 width: 50%;
@@ -351,6 +353,7 @@
                 background-color: #ffffff;
                 display: flex;
                 flex-direction: column;
+                border-top-right-radius: 6px;
     
                 .totalWrap {
                     background-color: #374d64;
