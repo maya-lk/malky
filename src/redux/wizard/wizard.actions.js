@@ -79,3 +79,32 @@ export const setLaguage = laguage => ({
     type : wizardActionTypes.SET_LAGUAGE,
     payload : laguage
 });
+
+export const toggleAddNewClient = () => ({
+    type : wizardActionTypes.SET_CLIENT_MODAL_TOGGLE
+});
+
+export const setClientName = clientName => ({
+    type : wizardActionTypes.SET_CLIENT_NAME,
+    payload : clientName
+});
+
+export const setClientCompany = clientCompany => ({
+    type : wizardActionTypes.SET_CLIENT_COMPANY,
+    payload : clientCompany
+});
+
+export const setClientEmail = clientEmail => ({
+    type : wizardActionTypes.SET_CLIENT_EMAIL,
+    payload : clientEmail
+});
+
+export const setClientContact = clientContact => ({
+    type : wizardActionTypes.SET_CLIENT_CONTACT,
+    payload : clientContact
+});
+
+export const setClientAddress = clientAddress => ({
+    type : wizardActionTypes.SET_CLIENT_ADDRESS,
+    payload : clientAddress
+});

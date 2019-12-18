@@ -17,6 +17,12 @@ const INITIAL_STATE = {
     kids: null,
     toddlers: null,
     laguage: null,
+    addNewClient : false,
+    clientName: null,
+    clientCompany: null,
+    clientEmail: null,
+    clientContact: null,
+    clientAddress: null,
 }
 
 const wizardReducer = ( state = INITIAL_STATE , action ) => {
@@ -100,6 +106,36 @@ const wizardReducer = ( state = INITIAL_STATE , action ) => {
             return{
                 ...state,
                 laguage : action.payload
+            }
+        case wizardActionTypes.SET_CLIENT_MODAL_TOGGLE:
+            return{
+                ...state,
+                addNewClient : !state.addNewClient
+            }
+        case wizardActionTypes.SET_CLIENT_NAME:
+            return{
+                ...state,
+                clientName : action.payload
+            }
+        case wizardActionTypes.SET_CLIENT_COMPANY:
+            return{
+                ...state,
+                clientCompany : action.payload
+            }
+        case wizardActionTypes.SET_CLIENT_EMAIL:
+            return {
+                ...state,
+                clientEmail : action.payload
+            }
+        case wizardActionTypes.SET_CLIENT_CONTACT:
+            return{
+                ...state,
+                clientContact : action.payload
+            }
+        case wizardActionTypes.SET_CLIENT_ADDRESS:
+            return{
+                ...state, 
+                clientAddress : action.payload
             }
         default:
             return state;

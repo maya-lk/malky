@@ -17,7 +17,8 @@ import {
     setToddlers , 
     setLaguage , 
     setActiveStep , 
-    setDoneSteps
+    setDoneSteps , 
+    toggleAddNewClient
 } from '../../redux/wizard/wizard.actions';
 import {
     selectPickupLocation , 
@@ -34,6 +35,7 @@ import {
 } from '../../redux/wizard/wizard.selectors';
 
 import ReservationSummery from '../reservation-summery/reservation-summery.component';
+import AddNewClient from '../add-new-client/add-new-client.component';
 
 import './wizard-step-02.styles.scss';
 
@@ -75,7 +77,8 @@ class WizardStepTwo extends React.Component {
             adults ,
             kids ,
             toddlers ,
-            laguage 
+            laguage ,
+            toggleAddNewClient
         } = this.props;
 
         return(
@@ -191,7 +194,11 @@ class WizardStepTwo extends React.Component {
                         </div>
                     </div>
 
-                    <span className="btn addNewBtn">Or Add new Client</span>
+                    <span 
+                        className="btn addNewBtn"
+                        onClick={() => toggleAddNewClient()}
+                    >Or Add new Client</span>
+                    <AddNewClient/>
 
                     <div className="passengerWrap">
                         <h3>Passenger Details</h3>
@@ -299,6 +306,7 @@ const mapDispatchToProps = dispatch => ({
     setLaguage : (laguage) => dispatch(setLaguage(laguage)),
     setActiveStep : (activeStep) => dispatch(setActiveStep(activeStep)),
     setDoneSteps : (doneSteps) => dispatch(setDoneSteps(doneSteps)),
+    toggleAddNewClient : () => dispatch(toggleAddNewClient())
 });  
 
 const mapStateToProps = createStructuredSelector({

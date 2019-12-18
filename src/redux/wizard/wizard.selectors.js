@@ -76,3 +76,33 @@ export const selectLaguage = createSelector(
     [selectWizardAPI],
     (wizard) => wizard.laguage
 );
+
+export const selectAddNewClient = createSelector(
+    [selectWizardAPI],
+    (wizard) => wizard.addNewClient
+);
+
+export const selectClientName = createSelector(
+    [selectWizardAPI],
+    (wizard) => wizard.clientName
+);
+
+export const selectClientCompany = createSelector(
+    [selectWizardAPI],
+    (wizard) => wizard.clientCompany
+);
+
+export const selectClientEmail = createSelector(
+    [selectWizardAPI],
+    (wizard) => wizard.clientEmail
+);
+
+export const selectClientContact = createSelector(
+    [selectWizardAPI],
+    (wizard) => wizard.clientContact
+);
+
+export const selectClientAddress = createSelector(
+    [selectWizardAPI],
+    (wizard) => wizard.clientAddress
+);
