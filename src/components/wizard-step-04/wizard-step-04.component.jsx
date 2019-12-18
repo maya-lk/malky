@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
-import { Select , Input , Switch } from 'antd';
+import { Select , Input , Switch , Icon } from 'antd';
 
 import { 
     selectReservationType , 
@@ -42,6 +42,15 @@ class WizardStepFour extends React.Component {
         setDoneSteps(5);
     }
 
+    handleNewAddonRemove = () => {
+        /* var array = [...this.state.newAddon]; // make a separate copy of the array
+        var index = array.indexOf(e.target.value)
+        if (index !== -1) {
+            array.splice(index, 1);
+            this.setState({people: array});
+        } */
+    }
+
     handleNewAddon = () => {
 
         const { newAddon } = this.state;
@@ -77,6 +86,7 @@ class WizardStepFour extends React.Component {
                     <Option value="4">4</Option>
                     <Option value="5">5</Option>
                 </Select>
+                <Icon type="close-circle" theme="filled" />
             </div>
         </div>
 
