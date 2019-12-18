@@ -157,7 +157,7 @@ const ReservationSummery = ({
                                     <DatePicker 
                                         placeholder="" 
                                         onChange={ (date, dateString) => setPickupDate(dateString) }
-                                        defaultValue={moment(pickupDate, 'YYYY-MM-DD')}
+                                        value={moment(pickupDate, 'YYYY-MM-DD')}
                                     />
                                 </span>
                             </div>
@@ -173,7 +173,7 @@ const ReservationSummery = ({
                                         use12Hours 
                                         format="h:mm A"
                                         onChange={ (time, timeString) => setPickupTime(timeString) }
-                                        defaultValue={moment(pickupTime, 'HH:mm A')}
+                                        value={moment(pickupTime, 'HH:mm A')}
                                     />
                                 </span>
                             </div>
@@ -218,7 +218,7 @@ const ReservationSummery = ({
                                     <DatePicker 
                                         placeholder="" 
                                         onChange={ (date, dateString) => setDropoffDate(dateString) }
-                                        defaultValue={moment(dropoffDate, 'YYYY-MM-DD')}
+                                        value={moment(dropoffDate, 'YYYY-MM-DD')}
                                     />
                                 </span>
                             </div>
@@ -234,7 +234,7 @@ const ReservationSummery = ({
                                         use12Hours 
                                         format="h:mm A"
                                         onChange={ (time, timeString) => setDropoffTime(timeString) }
-                                        defaultValue={moment(dropoffTime, 'HH:mm A')}
+                                        value={moment(dropoffTime, 'HH:mm A')}
                                     />
                                 </span>
                             </div>

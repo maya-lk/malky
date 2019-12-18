@@ -114,7 +114,7 @@ class WizardStepTwo extends React.Component {
                                         <DatePicker 
                                             placeholder="" 
                                             onChange={ (date, dateString) => setPickupDate(dateString) }
-                                            defaultValue={moment(pickupDate, 'YYYY-MM-DD')}
+                                            value={moment(pickupDate, 'YYYY-MM-DD')}
                                         />
                                     </div>
                                     <div className="form-group col-md-5 col-12">
@@ -123,7 +123,7 @@ class WizardStepTwo extends React.Component {
                                             use12Hours 
                                             format="h:mm A"
                                             onChange={ (time, timeString) => setPickupTime(timeString) }
-                                            defaultValue={moment(pickupTime, 'HH:mm A')}
+                                            value={moment(pickupTime, 'HH:mm A')}
                                         />
                                     </div>
                                 </div>
@@ -159,7 +159,7 @@ class WizardStepTwo extends React.Component {
                                         <DatePicker 
                                             placeholder="" 
                                             onChange={ (date, dateString) => setDropoffDate(dateString) }
-                                            defaultValue={moment(dropoffDate, 'YYYY-MM-DD')}
+                                            value={moment(dropoffDate, 'YYYY-MM-DD')}
                                         />
                                     </div>
                                     <div className="form-group col-md-5 col-12">
@@ -168,7 +168,7 @@ class WizardStepTwo extends React.Component {
                                             use12Hours 
                                             format="h:mm A"
                                             onChange={ (time, timeString) => setDropoffTime(timeString) }
-                                            defaultValue={moment(dropoffTime, 'HH:mm A')}
+                                            value={moment(dropoffTime, 'HH:mm A')}
                                         />
                                     </div>
                                 </div>
