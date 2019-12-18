@@ -4,6 +4,8 @@
     border-radius: 5px;
 
     .input-group{
+        position: relative;
+
         .form-control{
             border: none;
             background-color: #f6f6f6;
@@ -11,9 +13,19 @@
             padding: 0 1rem;
             font-weight: 600;
             font-size: 14px;
-        }
+            border-radius: .25rem !important;
+            -webkit-border-radius: .25rem !important;
+            -moz-border-radius: .25rem !important;
+            -ms-border-radius: .25rem !important;
+            -o-border-radius: .25rem !important;
+}
         
         .input-group-append{
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 10;
+
             .input-group-text{
                 padding: 2px;
                 background-color: transparent;
