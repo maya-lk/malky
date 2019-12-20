@@ -82,6 +82,8 @@ class WizardStepTwo extends React.Component {
             toggleAddNewClient
         } = this.props;
 
+        const dataSource = [ 'Milindu Mallawarachchi' , 'Viraj Sampath' , 'Danushka Dimuthu'  ];
+
         return(
             <div className="wizardContent wizardStep2 d-flex flex-wrap">
                 <div className="bookingDetailsWrap">
@@ -191,6 +193,10 @@ class WizardStepTwo extends React.Component {
                                 placeholder="Start typing here"
                                 onChange={ (value) => setCustomerName(value) }
                                 value={customerName}
+                                dataSource={dataSource}
+                                filterOption={(inputValue, option) =>
+                                    option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                }
                             />
                         </div>
                     </div>
