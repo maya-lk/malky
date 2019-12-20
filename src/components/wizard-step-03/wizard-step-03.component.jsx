@@ -31,7 +31,7 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
                         name="Maruti Suzuki Baleno"
                         numberPlate="ABS - 10258"
                         yard="Polhengoda"
-                        ID="125"
+                        ID="1"
                     />
 
                     <VehicleItem
@@ -39,23 +39,15 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
                         name="VW Golf VII Automatik"
                         numberPlate="ABS - 10258"
                         yard="Polhengoda"
-                        ID="145"
+                        ID="2"
                     />
 
                     <VehicleItem
-                        imageUrl="https://auto.ndtvimg.com/car-images/medium/maruti-suzuki/baleno/maruti-suzuki-baleno.jpg"
-                        name="Maruti Suzuki Baleno"
+                        imageUrl="https://www.freeiconspng.com/uploads/audi-png-transparent-png-12.png"
+                        name="Audi A3"
                         numberPlate="ABS - 10258"
                         yard="Polhengoda"
-                        ID="526"
-                    />
-
-                    <VehicleItem
-                        imageUrl="https://activerent.hr/content/uploads/2016/04/Golf-VIInew-675x390.jpg"
-                        name="VW Golf VII Automatik"
-                        numberPlate="ABS - 10258"
-                        yard="Polhengoda"
-                        ID="874"
+                        ID="3"
                     />
 
                 </div>
@@ -124,30 +116,6 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
                             name="Maruti Suzuki Baleno"
                             numberPlate="ABS - 10258"
                             yard="Polhengoda"
-                            ID="1"
-                        />
-
-                        <VehicleItem
-                            imageUrl="https://activerent.hr/content/uploads/2016/04/Golf-VIInew-675x390.jpg"
-                            name="VW Golf VII Automatik"
-                            numberPlate="ABS - 10258"
-                            yard="Polhengoda"
-                            ID="2"
-                        />
-
-                        <VehicleItem
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/maruti-suzuki/baleno/maruti-suzuki-baleno.jpg"
-                            name="Maruti Suzuki Baleno"
-                            numberPlate="ABS - 10258"
-                            yard="Polhengoda"
-                            ID="3"
-                        />
-
-                        <VehicleItem
-                            imageUrl="https://activerent.hr/content/uploads/2016/04/Golf-VIInew-675x390.jpg"
-                            name="VW Golf VII Automatik"
-                            numberPlate="ABS - 10258"
-                            yard="Polhengoda"
                             ID="4"
                         />
 
@@ -160,19 +128,59 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
                         />
 
                         <VehicleItem
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/maruti-suzuki/baleno/maruti-suzuki-baleno.jpg"
-                            name="Maruti Suzuki Baleno"
+                            imageUrl="https://www.freeiconspng.com/uploads/audi-png-transparent-png-12.png"
+                            name="Audi A3"
                             numberPlate="ABS - 10258"
                             yard="Polhengoda"
                             ID="6"
                         />
 
                         <VehicleItem
-                            imageUrl="https://activerent.hr/content/uploads/2016/04/Golf-VIInew-675x390.jpg"
-                            name="VW Golf VII Automatik"
+                            imageUrl="https://di-uploads-pod4.dealerinspire.com/commonwealthhonda/uploads/2018/03/2018-Honda-HR-V.png"
+                            name="CRV"
                             numberPlate="ABS - 10258"
                             yard="Polhengoda"
                             ID="7"
+                        />
+
+                        <VehicleItem
+                            imageUrl="https://i.dlpng.com/static/png/423333_preview.png"
+                            name="Mercedes-Benz C-Class"
+                            numberPlate="ABS - 10258"
+                            yard="Polhengoda"
+                            ID="8"
+                        />
+
+                        <VehicleItem
+                            imageUrl="https://www.fourjay.org/myphoto/f/79/799095_honda-civic-png.png"
+                            name="Honda Civic"
+                            numberPlate="ABS - 10258"
+                            yard="Polhengoda"
+                            ID="9"
+                        />
+
+                        <VehicleItem
+                            imageUrl="https://www.drivefivestar.com/static/dealer-12376/716354.png"
+                            name="Toyota Yaris"
+                            numberPlate="ABS - 10258"
+                            yard="Polhengoda"
+                            ID="10"
+                        />
+
+                        <VehicleItem
+                            imageUrl="https://www.astervender.mu/uploads/6790/6790_tlyTRgkw.jpg"
+                            name="Toyota Vitz"
+                            numberPlate="ABS - 10258"
+                            yard="Polhengoda"
+                            ID="11"
+                        />
+
+                        <VehicleItem
+                            imageUrl="https://s1.paultan.org/image/2014/12/toyota-aqua-x-urban-0010.jpg"
+                            name="Toyota Aqua"
+                            numberPlate="ABS - 10258"
+                            yard="Polhengoda"
+                            ID="12"
                         />
 
                     </div>
