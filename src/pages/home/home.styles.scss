@@ -434,3 +434,61 @@
         }
     }
 }
+
+@media screen and ( max-width : 767px ) {
+
+    .homeFrontWrap {
+        .bookingContainer {
+            padding: 1rem;
+
+            .reservationType {
+                flex-wrap: wrap;
+
+                .type {
+                    flex-wrap: wrap;
+                    width: 100%;
+
+                    h3 {
+                        width: 100%;
+                        margin-bottom: 1rem;
+                    }
+
+                    .custom-control {
+                        margin-right: 0;
+                        margin-bottom: 0.5rem;
+                        width: 100%;
+                    }
+                }
+
+                .btn.availibityBtn {
+                    padding: 1.5rem 0;
+                    width: 100%;
+                }
+            }
+
+            .bookingSecWrap {
+                .bookingForm {
+                    width: 100%;
+                    padding: 1.5rem;
+                }
+
+                .recomondations {
+                    width: 100%;
+                    padding: 1.5rem;
+                }
+
+                .filters {
+                    width: 100%;
+
+                    .filtersWrap {
+                        .vehiclesList {
+                            grid-template-columns: repeat(2, 1fr);
+                            gap: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
