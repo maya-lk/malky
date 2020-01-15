@@ -151,3 +151,46 @@
         }
     }
 }
+
+@media screen and ( max-width : 767px ) {
+
+    .wizardContent{
+        &.wizardStep3 {
+            .recomondations {
+                padding: 1.5rem;
+                border-radius: 6px 6px 0 0;
+                width: 100%;
+            }
+
+            .searchVehicle {
+                width: 100%;
+                padding: 1.5rem;
+
+                .searchVehicleWrap {
+                    .advancedFilters {
+                        .form-group {
+                            .ant-select {
+                                .ant-select-selection {
+                                    .ant-select-selection__placeholder {
+                                        font-size: 13px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .vehicleSearchList {
+                        grid-template-columns: repeat(2 , 1fr);
+                    }
+                }
+            }
+
+            .reservationSummery {
+                padding: 1.5rem;
+                width: 100%;
+                border-radius: 0;
+            }
+        }
+    }
+
+}

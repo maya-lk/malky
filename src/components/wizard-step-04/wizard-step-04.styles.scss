@@ -464,3 +464,66 @@
         }
     }
 }
+
+@media screen and ( max-width : 767px ) {
+
+    .wizardContent {
+        &.wizardStep4 {
+            .vehicleDetails {
+                width: 100%;
+                padding: 1.5rem;
+                border-radius: 6px 6px 0 0;
+            }
+
+            .tripDetails {
+                width: 100%;
+                padding: 1.5rem;
+
+                .tripTable {
+                    tr {
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 1rem;
+
+                        th {
+                            padding: 0;
+                        }
+                    }
+                }
+
+                .addOnList {
+                    .addonItem {
+                        flex-wrap: wrap;
+
+                        .item {
+                            max-width: 100%;
+                            flex: 1 1 100%;
+                        }
+
+                        .quantity {
+                            max-width: 100%;
+                            flex: 1 1 100%;
+                        }
+                    }
+                }
+            }
+
+            .paymentWrap {
+                width: 100%;
+                border-radius: 0;
+
+                .discounts {
+                    padding: 1.5rem;
+                    width: 100%;
+                }
+
+                .paymentTotalWrap {
+                    width: 100%;
+                    padding: 1.5rem;
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+
+}

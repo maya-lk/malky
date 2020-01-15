@@ -165,3 +165,35 @@
         }
     }
 }
+
+@media screen and ( max-width : 767px ) { 
+
+    .wizardContent {
+        &.wizardStep1 {
+            padding: 1.5rem;
+
+            .form-group {
+                .btn-group {
+                    flex-wrap: wrap;
+                    width: 100%;
+
+                    .custom-control {
+                        width: 100%;
+                        margin-bottom: 0.5rem;
+                    }
+                }
+
+                .typeWrap {
+                    width: 100%;
+                    flex-wrap: wrap;
+
+                    .type {
+                        width: 100%;
+                        margin-bottom: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+
+}
