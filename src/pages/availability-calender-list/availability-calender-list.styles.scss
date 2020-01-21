@@ -1,0 +1,319 @@
+.availabilityCalenderWrap{
+    .availabilityDetails {
+        max-width: 75%;
+        flex: 1 1 75%;
+
+        h1 {
+            background-color: #253340;
+            margin: 0;
+            color: #fff;
+            font-size: 19px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 1.5rem 2rem;
+        }
+
+        .availabileVehiclesWrap {
+            padding: 1rem 1rem 1rem 3rem;
+
+            .filter {
+                background-color: #f2f2f2;
+                padding: 1rem 2rem;
+
+                h3 {
+                    color: #6d6d6d;
+                    text-transform: uppercase;
+                    margin-bottom: 0;
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+
+                .filters {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 30%;
+
+                    .form-group {
+                        margin-bottom: 0;
+                        width: 48%;
+
+                        .ant-select {
+                            width: 100%;
+
+                            .ant-select-selection {
+                                background-color: transparent;
+                                border-radius: 0;
+                                border-left: none;
+                                border-top: none;
+                                border-right: none;
+                                border-bottom: 1px solid #cfcfcf;
+                                box-shadow: unset;
+
+                                .ant-select-selection__rendered {
+                                    .ant-select-selection__placeholder {
+                                        color: #8f8f8f;
+                                        font-weight: 600;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .vehicles {
+                margin-top: 1rem;
+                display: grid;
+                grid-template-columns: repeat(8, 1fr);
+                gap: 10px;
+            }
+        }
+    }
+
+    .avalabilityCalender {
+        max-width: 25%;
+        flex: 1 1 25%;
+        background-color: #1e222b;
+        text-align: center;
+        padding: 1.5rem;
+
+        .date {
+            color: #fffffe;
+            font-weight: 600;
+            font-size: 21px;
+        }
+
+        .booking {
+            color: #657383;
+            font-weight: 600;
+            text-transform: uppercase;
+
+            .bookingCount {
+                color: #a3b2c1;
+            }
+        }
+
+        .calenderWrap {
+            margin-top: 1.5rem;
+            background-color: #fff;
+            padding-top: 1rem;
+
+            .fc-toolbar.fc-header-toolbar {
+                margin-bottom: 0;
+                border-top: 1px solid #eee;
+
+                .fc-button-group {
+                    .fc-button {
+                        border-radius: 0 !important;
+                        background-color: #fff;
+                        color: #000;
+                        border: 1px solid #eee;
+                        box-shadow: none;
+                        outline : none;
+                    }
+                }
+
+                .fc-center {
+                    h2 {
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+
+    .bookingDetailsWrap {
+        width: 100%;
+        margin-top: 1.5rem;
+        padding: 0 3rem;
+
+        .partiallyBooked {
+            width: 48%;
+
+            .titleWrap {
+                background-color: #f2f2f2;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 1rem;
+                margin-bottom: 1rem;
+
+                h3 {
+                    margin-bottom: 0;
+                    color: #636363;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    font-size: 18px;
+                }
+
+                .form-group {
+                    margin-bottom: 0;
+
+                    .ant-select {
+                        width: 175px;
+                        
+                        .ant-select-selection {
+                            border-radius: 0;
+                            background-color: transparent;
+                            border-left: none;
+                            border-top: none;
+                            border-right: none;
+
+                            .ant-select-selection__rendered {
+                                .ant-select-selection__placeholder {
+                                    color: #959595;
+                                    font-weight: 600;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .reservedToday {
+            width: 48%;
+
+            .titleWrap {
+                background-color: #f2f2f2;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 1rem;
+                margin-bottom: 1rem;
+
+                h3 {
+                    margin-bottom: 0;
+                    color: #636363;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    font-size: 18px;
+                }
+
+                .form-group {
+                    margin-bottom: 0;
+
+                    .ant-select {
+                        width: 175px;
+                        
+                        .ant-select-selection {
+                            border-radius: 0;
+                            background-color: transparent;
+                            border-left: none;
+                            border-top: none;
+                            border-right: none;
+
+                            .ant-select-selection__rendered {
+                                .ant-select-selection__placeholder {
+                                    color: #959595;
+                                    font-weight: 600;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and ( max-width : 767px ) {
+
+    .availabilityCalenderWrap {
+        .availabilityDetails {
+            max-width: 100%;
+            flex: 1 1 100%;
+
+            .availabileVehiclesWrap {
+                padding: 1rem;
+
+                .filter {
+                    padding: 1rem;
+                    flex-wrap: wrap;
+
+                    .filters {
+                        width: 100%;
+                        margin-top: 1rem;
+                        flex-wrap: wrap;
+
+                        .form-group {
+                            width: 100%;
+                            margin-bottom: 0.5rem;
+
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+
+                .vehicles {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+        }
+
+        .avalabilityCalender {
+            max-width: 100%;
+            flex: 1 1 100%;
+
+            .calenderWrap {
+                min-height: 350px;
+            }
+        }
+
+        .bookingDetailsWrap {
+            margin: 0;
+            padding: 1.5rem;
+            flex-wrap: wrap;
+
+            .partiallyBooked {
+                width: 100%;
+                margin-bottom: 1rem;
+
+                .titleWrap {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    text-align: center;
+
+                    h3 {
+                        margin-bottom: 1rem;
+                    }
+
+                    .form-group {
+                        width: 100%;
+
+                        .ant-select {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
+            .reservedToday {
+                width: 100%;
+
+                .titleWrap {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    text-align: center;
+
+                    h3 {
+                        margin-bottom: 1rem;
+                    }
+
+                    .form-group {
+                        width: 100%;
+
+                        .ant-select {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
