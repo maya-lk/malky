@@ -1,7 +1,8 @@
 import { vehiclesActionTypes } from './vehicles.types';
+import VEHICLES from './vehicles.data';
 
 const INITIAL_STATE = {
-    allVehicles: null,
+    allVehicles: VEHICLES,
 }
 
 const vehiclesReducer = ( state = INITIAL_STATE , action ) => {
