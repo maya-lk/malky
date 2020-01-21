@@ -89,19 +89,21 @@ const AvailabilityCalenderList = ({ setListDates , listDates }) => {
                         />
                     </div>
                     <div className="calenderDatesWrap">
-                        {
-                            (listDates) ?
-                            listDates.map( date => {
-                                const weekdays = ['Sun' , 'Mon' , 'Tue' , 'Wen' , 'Thu' , 'Fri' , 'Sat'];
-                                const listDate = date.getDate();
-                                const listDateName = date.getDay();
-                                return <div key={date} className="dateItem">
-                                    <span className="date">{listDate}</span>
-                                    <span className="weekDay">{weekdays[listDateName]}</span>
-                                </div>;
-                            })
-                            : ''
-                        }
+                        <div className="calenderDatesInside" style={{ width : `${ listDates ? listDates.length * 90 : '' }px` }}>
+                            {
+                                (listDates) ?
+                                listDates.map( date => {
+                                    const weekdays = ['Sun' , 'Mon' , 'Tue' , 'Wen' , 'Thu' , 'Fri' , 'Sat'];
+                                    const listDate = date.getDate();
+                                    const listDateName = date.getDay();
+                                    return <div key={date} className="dateItem">
+                                        <span className="date">{listDate}</span>
+                                        <span className="weekDay">{weekdays[listDateName]}</span>
+                                    </div>;
+                                })
+                                : ''
+                            }
+                        </div>
                     </div>
                 </div>
                 <div className="avalibilityDetailsWrap d-flex flex-wrap">

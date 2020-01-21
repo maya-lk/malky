@@ -97,5 +97,50 @@
                 }
             }
         }
+
+        .availabilityDetails {
+            max-width: 100%;
+            flex: 1 1 100%;
+
+            .searchNCalenderDateWrap {
+                .searchWrap {
+                    max-width: 20%;
+                    flex: 1 1 20%;
+                }
+
+                .calenderDatesWrap {
+                    max-width: 80%;
+                    flex: 1 1 80%;
+                    overflow: auto;
+
+                    .calenderDatesInside {
+                        width: 100%;
+                        display: flex;
+
+                        .dateItem {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            padding: 0.5rem 0;
+                            width: 90px;
+    
+                            .date {
+                                color: #39495d;
+                                font-weight: 600;
+                                font-size: 23px;
+                            }
+    
+                            .weekDay {
+                                color: #787878;
+                                font-weight: 600;
+                                font-size: 16px;
+                                margin-top: -9px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
