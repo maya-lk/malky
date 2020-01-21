@@ -1,176 +1,112 @@
 import React from 'react';
 import { Select } from 'antd';
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
+import { Link } from 'react-router-dom';
+import { DatePicker , Input } from 'antd';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-import AvaliableVehicleItem from '../../components/avaliable-vehicle-item/avaliable-vehicle-item.component';
-import PartiallyItem from '../../components/partially-item/partially-item.component';
+import { selectAllVehicles } from '../../redux/vehicles/vehicles.selectors';
+import { selectListDates } from '../../redux/avalibility/avalibility.selectors';
+
+import { setListDates } from '../../redux/avalibility/avalibility.actions';
 
 import './availability-calender-list.styles.scss';
 import '@fullcalendar/core/main.css';
 import '@fullcalendar/daygrid/main.css';
 
+// eslint-disable-next-line
 const { Option } = Select;
+const { RangePicker } = DatePicker;
+const { Search } = Input;
 
-const AvailabilityCalenderList = () => {
+const AvailabilityCalenderList = ({ setListDates , listDates }) => {
+
+    const dateRangeChange = (date, dateString) => {
+        var dates = getDates(new Date(dateString[0]), new Date(dateString[1]));
+        setListDates(dates);
+    }
+
+    var getDates = function(startDate, endDate) {
+        var dates = [],
+            currentDate = startDate,
+            addDays = function(days) {
+              var date = new Date(this.valueOf());
+              date.setDate(date.getDate() + days);
+              return date;
+            };
+        while (currentDate <= endDate) {
+            dates.push(currentDate);
+            currentDate = addDays.call(currentDate, 1);
+        }
+        return dates;
+    };
+
+    const vehicleTypeChange = (value) => {
+        console.log(`selected ${value}`);
+    }
+
+    const onVehicleSearch = (value) => {
+        console.log(`search ${value}`);
+    }
+
     return(
-        <div className="availabilityCalenderWrap d-flex flex-wrap">
+        <div className="availabilityCalenderWrap availabilityCalenderListWrap">
+            <div className="actionBar">
+                <div className="titleWrap">
+                    <h1>Availability Calender</h1>
+                    <div className="details">Showing results for</div>
+                </div>
+                <div className="otherActions">
+                    <div className="dateWrap">
+                        <RangePicker onChange={dateRangeChange} />
+                    </div>
+                    <div className="vehicleType">
+                        <Select
+                            showSearch
+                            placeholder="Vehicle Type"
+                            optionFilterProp="children"
+                            onChange={vehicleTypeChange}
+                            filterOption={(input, option) =>
+                                option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                            }
+                        >
+
+                        </Select>
+                    </div>
+                    <div className="btnsWrap">
+                        <Link className="btn active" to="/availability-calender-list"><i className="fas fa-bars"></i></Link>
+                        <Link className="btn" to="/availability-calender"><i className="fas fa-th-large"></i></Link>
+                    </div>
+                </div>
+            </div>
             <div className="availabilityDetails">
-                <h1>Availability Calender</h1>
-                <div className="availabileVehiclesWrap">
-                    <div className="filter d-flex justify-content-between align-items-center">
-                        <h3>Avaliable Vehicles</h3>
-                        <div className="filters">
-
-                            <div className="form-group">
-                                <Select
-                                    placeholder="Vehicle Type"
-                                >
-                                    <Option value=""></Option>
-                                </Select>
-                            </div>
-
-                            <div className="form-group">
-                                <Select
-                                    placeholder="Vehicle Model"
-                                >
-                                    <Option value=""></Option>
-                                </Select>
-                            </div>
-
-                        </div>
+                
+                <div className="searchNCalenderDateWrap d-flex flex-wrap">
+                    <div className="searchWrap">
+                        <Search
+                            placeholder="Search vehicles"
+                            onSearch={value => onVehicleSearch(value)}
+                        />
                     </div>
-
-                    <div className="vehicles">
-
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-
+                    <div className="calenderDatesWrap">
+                        {
+                            (listDates) ?
+                            listDates.map( date => {
+                                const weekdays = ['Sun' , 'Mon' , 'Tue' , 'Wen' , 'Thu' , 'Fri' , 'Sat'];
+                                const listDate = date.getDate();
+                                const listDateName = date.getDay();
+                                return <div key={date} className="dateItem">
+                                    <span className="date">{listDate}</span>
+                                    <span className="weekDay">{weekdays[listDateName]}</span>
+                                </div>;
+                            })
+                            : ''
+                        }
                     </div>
-
                 </div>
-            </div>
-
-            <div className="avalabilityCalender">
-                <div className="date">Friday 6<sup>th</sup> of December</div>
-                <div className="booking">
-                    There are <span className="bookingCount">7 Booking</span> for the Day
-                </div>
-
-                <div className="calenderWrap">
-                    <FullCalendar defaultView="dayGridMonth" plugins={[ dayGridPlugin ]} header={{ left: 'prev,next', center: 'title', right: '' }} />
-                </div>
-
-            </div>
-
-            <div className="bookingDetailsWrap d-flex justify-content-between">
-
-                <div className="partiallyBooked">
-                    <div className="titleWrap">
-                        <h3>Partially Booked</h3>
-                        <div className="form-group">
-                            <Select
-                                placeholder="Vehicle Model"
-                            >
-                                <Option value=""></Option>
-                            </Select>
-                        </div>
-                    </div>
-                    
-                    <PartiallyItem
-                        imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                        name="Mercedes-Benz CLS"
-                    />
-                    
-                </div>
-
-                <div className="reservedToday">
-                    <div className="titleWrap">
-                        <h3>Reserved Today</h3>
-                        <div className="form-group">
-                            <Select
-                                placeholder="Vehicle Model"
-                            >
-                                <Option value=""></Option>
-                            </Select>
-                        </div>
-                    </div>
-
-                    <PartiallyItem
-                        imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                        name="Mercedes-Benz CLS"
-                    />
-
+                <div className="avalibilityDetailsWrap d-flex flex-wrap">
+                    <div className="vehiclesWrap"></div>
+                    <div className="avalibilityDetails"></div>
                 </div>
 
             </div>
@@ -178,4 +114,13 @@ const AvailabilityCalenderList = () => {
     )
 };
 
-export default AvailabilityCalenderList;
+const mapStateToProps = createStructuredSelector({
+    allVehicles : selectAllVehicles,
+    listDates : selectListDates,
+});
+
+const mapDispatchToProps = dispatch => ({
+    setListDates : (listDates) => dispatch(setListDates(listDates))
+});
+
+export default connect(mapStateToProps , mapDispatchToProps)(AvailabilityCalenderList);

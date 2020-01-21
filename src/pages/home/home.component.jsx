@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Icon , Input , DatePicker , Select , TimePicker , AutoComplete } from 'antd';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { selectAllVehicles } from '../../redux/vehicles/vehicles.selectors';
 
 import WizardActionBar from '../../components/wizard-action-bar/wizard-action-bar.component';
 import VehicleItem from '../../components/vehicle-item/vehicle-item.component';
@@ -20,7 +24,7 @@ const LocationIcon = props => <Icon component={locationSVG} {...props} />;
 const { Option } = Select;
 const { Search } = Input;
 
-const Home = () => (
+const Home = ({ allVehicles }) => (
     <div className="homeFrontWrap">
         <WizardActionBar reservationID="124524asdwdx" />
         <div className="bookingContainer">
@@ -277,37 +281,23 @@ const Home = () => (
                     <h3>System Recommendations</h3>
                     <div className="vehicleList">
 
-                        <VehicleItem
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/maruti-suzuki/baleno/maruti-suzuki-baleno.jpg"
-                            name="Maruti Suzuki Baleno"
-                            numberPlate="ABS - 10258"
-                            yard="Polhengoda"
-                            ID="125"
-                        />
-
-                        <VehicleItem
-                            imageUrl="https://activerent.hr/content/uploads/2016/04/Golf-VIInew-675x390.jpg"
-                            name="VW Golf VII Automatik"
-                            numberPlate="ABS - 10258"
-                            yard="Polhengoda"
-                            ID="145"
-                        />
-
-                        <VehicleItem
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/maruti-suzuki/baleno/maruti-suzuki-baleno.jpg"
-                            name="Maruti Suzuki Baleno"
-                            numberPlate="ABS - 10258"
-                            yard="Polhengoda"
-                            ID="526"
-                        />
-
-                        <VehicleItem
-                            imageUrl="https://activerent.hr/content/uploads/2016/04/Golf-VIInew-675x390.jpg"
-                            name="VW Golf VII Automatik"
-                            numberPlate="ABS - 10258"
-                            yard="Polhengoda"
-                            ID="874"
-                        />
+                        {
+                            (allVehicles) ?
+                            allVehicles
+                            .filter( (item , idx) => idx < 5 )
+                            .map( 
+                                vehicle => 
+                                <VehicleItem
+                                    key={vehicle.name}
+                                    imageUrl={vehicle.pic}
+                                    name={vehicle.name}
+                                    numberPlate=""
+                                    yard=""
+                                    ID={vehicle.name.toLowerCase().replace(/ /g,"-")}
+                                />
+                            )
+                            : ''
+                        }
 
                     </div>
                 </div>
@@ -352,101 +342,21 @@ const Home = () => (
 
                         <div className="vehiclesList">
 
-                            <VehicleItem
-                                imageUrl="https://auto.ndtvimg.com/car-images/medium/maruti-suzuki/baleno/maruti-suzuki-baleno.jpg"
-                                name="Maruti Suzuki Baleno"
-                                numberPlate="ABS - 10258"
-                                yard="Polhengoda"
-                                ID="125"
-                            />
-
-                            <VehicleItem
-                                imageUrl="https://activerent.hr/content/uploads/2016/04/Golf-VIInew-675x390.jpg"
-                                name="VW Golf VII Automatik"
-                                numberPlate="ABS - 10258"
-                                yard="Polhengoda"
-                                ID="125"
-                            />
-
-                            <VehicleItem
-                                imageUrl="https://auto.ndtvimg.com/car-images/medium/maruti-suzuki/baleno/maruti-suzuki-baleno.jpg"
-                                name="Maruti Suzuki Baleno"
-                                numberPlate="ABS - 10258"
-                                yard="Polhengoda"
-                                ID="125"
-                            />
-
-                            <VehicleItem
-                                imageUrl="https://activerent.hr/content/uploads/2016/04/Golf-VIInew-675x390.jpg"
-                                name="VW Golf VII Automatik"
-                                numberPlate="ABS - 10258"
-                                yard="Polhengoda"
-                                ID="125"
-                            />
-
-                            <VehicleItem
-                                imageUrl="https://auto.ndtvimg.com/car-images/medium/maruti-suzuki/baleno/maruti-suzuki-baleno.jpg"
-                                name="Maruti Suzuki Baleno"
-                                numberPlate="ABS - 10258"
-                                yard="Polhengoda"
-                                ID="125"
-                            />
-
-                            <VehicleItem
-                                imageUrl="https://activerent.hr/content/uploads/2016/04/Golf-VIInew-675x390.jpg"
-                                name="VW Golf VII Automatik"
-                                numberPlate="ABS - 10258"
-                                yard="Polhengoda"
-                                ID="125"
-                            />
-
-                            <VehicleItem
-                                imageUrl="https://auto.ndtvimg.com/car-images/medium/maruti-suzuki/baleno/maruti-suzuki-baleno.jpg"
-                                name="Maruti Suzuki Baleno"
-                                numberPlate="ABS - 10258"
-                                yard="Polhengoda"
-                                ID="125"
-                            />
-
-                            <VehicleItem
-                                imageUrl="https://activerent.hr/content/uploads/2016/04/Golf-VIInew-675x390.jpg"
-                                name="VW Golf VII Automatik"
-                                numberPlate="ABS - 10258"
-                                yard="Polhengoda"
-                                ID="125"
-                            />
-
-                            <VehicleItem
-                                imageUrl="https://auto.ndtvimg.com/car-images/medium/maruti-suzuki/baleno/maruti-suzuki-baleno.jpg"
-                                name="Maruti Suzuki Baleno"
-                                numberPlate="ABS - 10258"
-                                yard="Polhengoda"
-                                ID="125"
-                            />
-
-                            <VehicleItem
-                                imageUrl="https://activerent.hr/content/uploads/2016/04/Golf-VIInew-675x390.jpg"
-                                name="VW Golf VII Automatik"
-                                numberPlate="ABS - 10258"
-                                yard="Polhengoda"
-                                ID="125"
-                            />
-
-                            <VehicleItem
-                                imageUrl="https://auto.ndtvimg.com/car-images/medium/maruti-suzuki/baleno/maruti-suzuki-baleno.jpg"
-                                name="Maruti Suzuki Baleno"
-                                numberPlate="ABS - 10258"
-                                yard="Polhengoda"
-                                ID="125"
-                            />
-
-                            <VehicleItem
-                                imageUrl="https://activerent.hr/content/uploads/2016/04/Golf-VIInew-675x390.jpg"
-                                name="VW Golf VII Automatik"
-                                numberPlate="ABS - 10258"
-                                yard="Polhengoda"
-                                ID="125"
-                            />
+                            {
+                                (allVehicles) ?
+                                allVehicles.map( 
+                                    vehicle => 
+                                    <VehicleItem
+                                        key={vehicle.name}
+                                        imageUrl={vehicle.pic}
+                                        name={vehicle.name}
+                                        numberPlate=""
+                                        yard=""
+                                        ID={vehicle.name.toLowerCase().replace(/ /g,"-")}
+                                    />
+                                )
+                                : ''
+                            }
 
                         </div>
 
@@ -461,4 +371,8 @@ const Home = () => (
     </div>
 );
 
-export default Home;
+const mapStateToProps = createStructuredSelector({
+    allVehicles : selectAllVehicles
+});
+
+export default connect(mapStateToProps)(Home);

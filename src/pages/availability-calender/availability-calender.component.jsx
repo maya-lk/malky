@@ -1,7 +1,12 @@
 import React from 'react';
 import { Select } from 'antd';
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { selectAllVehicles } from '../../redux/vehicles/vehicles.selectors';
 
 import AvaliableVehicleItem from '../../components/avaliable-vehicle-item/avaliable-vehicle-item.component';
 import PartiallyItem from '../../components/partially-item/partially-item.component';
@@ -12,11 +17,17 @@ import '@fullcalendar/daygrid/main.css';
 
 const { Option } = Select;
 
-const AvailabilityCalender = () => {
+const AvailabilityCalender = ({ allVehicles }) => {
     return(
         <div className="availabilityCalenderWrap d-flex flex-wrap">
             <div className="availabilityDetails">
-                <h1>Availability Calender</h1>
+                <h1>
+                    Availability Calender
+                    <div className="btnsWrap">
+                        <Link className="btn" to="/availability-calender-list"><i className="fas fa-bars"></i></Link>
+                        <Link className="btn active" to="/availability-calender"><i className="fas fa-th-large"></i></Link>
+                    </div>
+                </h1>
                 <div className="availabileVehiclesWrap">
                     <div className="filter d-flex justify-content-between align-items-center">
                         <h3>Avaliable Vehicles</h3>
@@ -43,78 +54,21 @@ const AvailabilityCalender = () => {
 
                     <div className="vehicles">
 
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
-                        <AvaliableVehicleItem 
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                            name="Mercedes-Benz CLS"
-                            count="7"
-                            yardName="Kirulapana"
-                        />
+                        {
+                            (allVehicles) ?
+                            allVehicles
+                            .map( 
+                                vehicle => 
+                                <AvaliableVehicleItem 
+                                    key={vehicle.name}
+                                    imageUrl={vehicle.pic}
+                                    name={vehicle.name}
+                                    count="7"
+                                    yardName="Kirulapana"
+                                />
+                            )
+                            : ''
+                        }
 
                     </div>
 
@@ -178,4 +132,8 @@ const AvailabilityCalender = () => {
     )
 };
 
-export default AvailabilityCalender;
+const mapStateToProps = createStructuredSelector({
+    allVehicles : selectAllVehicles
+});
+
+export default connect(mapStateToProps)(AvailabilityCalender);

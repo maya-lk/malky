@@ -2,8 +2,11 @@ import React from 'react';
 import { Icon, Input, AutoComplete , Select } from 'antd';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { setActiveStep , setDoneSteps } from '../../redux/wizard/wizard.actions';
+
+import { selectAllVehicles } from '../../redux/vehicles/vehicles.selectors';
 
 import ReservationSummery from '../reservation-summery/reservation-summery.component';
 import VehicleItem from '../vehicle-item/vehicle-item.component';
@@ -12,7 +15,7 @@ import './wizard-step-03.styles.scss';
 
 const { Option } = Select;
 
-const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
+const WizardStepThree = ({ history , setActiveStep , setDoneSteps , allVehicles }) => {
 
     const handleNextPage = () => {
         history.push('/wizard/payment-details');
@@ -26,29 +29,23 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
                 <h3>System Recommendations</h3>
                 <div className="vehicleList">
 
-                    <VehicleItem
-                        imageUrl="https://auto.ndtvimg.com/car-images/medium/maruti-suzuki/baleno/maruti-suzuki-baleno.jpg"
-                        name="Maruti Suzuki Baleno"
-                        numberPlate="ABS - 10258"
-                        yard="Polhengoda"
-                        ID="1"
-                    />
-
-                    <VehicleItem
-                        imageUrl="https://activerent.hr/content/uploads/2016/04/Golf-VIInew-675x390.jpg"
-                        name="VW Golf VII Automatik"
-                        numberPlate="ABS - 10258"
-                        yard="Polhengoda"
-                        ID="2"
-                    />
-
-                    <VehicleItem
-                        imageUrl="https://www.freeiconspng.com/uploads/audi-png-transparent-png-12.png"
-                        name="Audi A3"
-                        numberPlate="ABS - 10258"
-                        yard="Polhengoda"
-                        ID="3"
-                    />
+                    {
+                        (allVehicles) ?
+                        allVehicles
+                        .filter( (item , idx) => idx < 10 )
+                        .map( 
+                            vehicle => 
+                            <VehicleItem
+                                key={vehicle.name}
+                                imageUrl={vehicle.pic}
+                                name={vehicle.name}
+                                numberPlate=""
+                                yard=""
+                                ID={vehicle.name.toLowerCase().replace(/ /g,"-")}
+                            />
+                        )
+                        : ''
+                    }
 
                 </div>
             </div>
@@ -111,77 +108,22 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps }) => {
 
                     <div className="vehicleSearchList">
 
-                        <VehicleItem
-                            imageUrl="https://auto.ndtvimg.com/car-images/medium/maruti-suzuki/baleno/maruti-suzuki-baleno.jpg"
-                            name="Maruti Suzuki Baleno"
-                            numberPlate="ABS - 10258"
-                            yard="Polhengoda"
-                            ID="4"
-                        />
-
-                        <VehicleItem
-                            imageUrl="https://activerent.hr/content/uploads/2016/04/Golf-VIInew-675x390.jpg"
-                            name="VW Golf VII Automatik"
-                            numberPlate="ABS - 10258"
-                            yard="Polhengoda"
-                            ID="5"
-                        />
-
-                        <VehicleItem
-                            imageUrl="https://www.freeiconspng.com/uploads/audi-png-transparent-png-12.png"
-                            name="Audi A3"
-                            numberPlate="ABS - 10258"
-                            yard="Polhengoda"
-                            ID="6"
-                        />
-
-                        <VehicleItem
-                            imageUrl="https://di-uploads-pod4.dealerinspire.com/commonwealthhonda/uploads/2018/03/2018-Honda-HR-V.png"
-                            name="CRV"
-                            numberPlate="ABS - 10258"
-                            yard="Polhengoda"
-                            ID="7"
-                        />
-
-                        <VehicleItem
-                            imageUrl="https://i.dlpng.com/static/png/423333_preview.png"
-                            name="Mercedes-Benz C-Class"
-                            numberPlate="ABS - 10258"
-                            yard="Polhengoda"
-                            ID="8"
-                        />
-
-                        <VehicleItem
-                            imageUrl="https://www.fourjay.org/myphoto/f/79/799095_honda-civic-png.png"
-                            name="Honda Civic"
-                            numberPlate="ABS - 10258"
-                            yard="Polhengoda"
-                            ID="9"
-                        />
-
-                        <VehicleItem
-                            imageUrl="https://www.drivefivestar.com/static/dealer-12376/716354.png"
-                            name="Toyota Yaris"
-                            numberPlate="ABS - 10258"
-                            yard="Polhengoda"
-                            ID="10"
-                        />
-
-                        <VehicleItem
-                            imageUrl="https://www.astervender.mu/uploads/6790/6790_tlyTRgkw.jpg"
-                            name="Toyota Vitz"
-                            numberPlate="ABS - 10258"
-                            yard="Polhengoda"
-                            ID="11"
-                        />
-
-                        <VehicleItem
-                            imageUrl="https://s1.paultan.org/image/2014/12/toyota-aqua-x-urban-0010.jpg"
-                            name="Toyota Aqua"
-                            numberPlate="ABS - 10258"
-                            yard="Polhengoda"
-                            ID="12"
-                        />
+                    {
+                        (allVehicles) ?
+                        allVehicles
+                        .map( 
+                            vehicle => 
+                            <VehicleItem
+                                key={vehicle.name}
+                                imageUrl={vehicle.pic}
+                                name={vehicle.name}
+                                numberPlate=""
+                                yard=""
+                                ID={vehicle.name.toLowerCase().replace(/ /g,"-")}
+                            />
+                        )
+                        : ''
+                    }
 
                     </div>
 
@@ -202,4 +144,8 @@ const mapDispatchToProps = dispatch => ({
     setDoneSteps : (doneSteps) => dispatch(setDoneSteps(doneSteps)),
 });
 
-export default withRouter(connect(null,mapDispatchToProps)(WizardStepThree));
+const mapStateToProps = createStructuredSelector({
+    allVehicles : selectAllVehicles
+});
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(WizardStepThree));

@@ -10,7 +10,25 @@
             font-size: 19px;
             font-weight: 600;
             text-transform: uppercase;
-            padding: 1.5rem 2rem;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .btnsWrap {
+                .btn {
+                    background-color: #37394d;
+                    margin-left: 10px;
+                    color: #b3b3b7;
+                    font-size: 20px;
+                    padding: .5rem 1rem;
+
+                    &.active {
+                        background-color: #3c4bff;
+                        color: #fff; 
+                    }
+                }
+            }
         }
 
         .availabileVehiclesWrap {
