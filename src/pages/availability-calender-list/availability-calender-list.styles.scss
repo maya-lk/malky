@@ -106,12 +106,36 @@
                 .searchWrap {
                     max-width: 20%;
                     flex: 1 1 20%;
+                    background-color: #e1e1e1;
+                    padding: 1rem;
+
+                    .ant-input-search {
+                        .ant-input { 
+                            background-color: transparent;
+                            height: 50px;
+                            box-shadow: 0 0 0;
+                            border: unset;
+                            border-radius: 0;
+                            outline: unset;
+                            color: #000;
+                            font-weight: 600;
+
+                            &::placeholder {
+                                color: #76777a;
+                            }
+                        }
+                        
+                        .ant-input-suffix {
+                            font-size: 22px;
+                        }
+                    }
                 }
 
                 .calenderDatesWrap {
                     max-width: 80%;
                     flex: 1 1 80%;
                     overflow: auto;
+                    background-color: #f2f2f2;
 
                     .calenderDatesInside {
                         width: 100%;
