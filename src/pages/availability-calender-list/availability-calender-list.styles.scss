@@ -175,6 +175,22 @@
                 .avalibilityDetails {
                     max-width: 80%;
                     flex: 1 1 80%;
+                    overflow: hidden;
+
+                    .avalibilityDetailsInside {
+                        width: 100%;
+
+                        .availibilityCalTr {
+                            border-bottom: 1px solid #f1f1f1;
+                            display: flex;
+
+                            .availibityCalTd {
+                                width: 90px;
+                                height: 100%;
+                                border-right: 1px solid #f1f1f1;
+                            }
+                        }
+                    }
                 }
             }
         }

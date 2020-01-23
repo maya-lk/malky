@@ -1,0 +1,41 @@
+.avaliableVehicleListItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #f1f1f1;
+    cursor: pointer;
+    min-height: 137px;
+
+    img {
+        max-width: 30%;
+    }
+
+    .contWrap {
+        padding-left: 0.75rem;
+        width: 70%;
+
+        h5 {
+            color: #818690;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .perDay {
+            color: #606771;
+            font-weight: 800;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .totalFare {
+            color: #292d35;
+            font-weight: 800;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
