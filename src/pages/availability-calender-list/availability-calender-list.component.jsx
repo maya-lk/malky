@@ -46,13 +46,29 @@ class AvailabilityCalenderList extends React.Component {
 
         this.state = {
             calItemHeight : '',
-            scrollLeftPosition : ''
+            scrollLeftPosition : '',
+            winWidth: 0,
+            winHeight: 0
         }
+
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+        
     }
 
     componentDidMount() {
         const { current } = this.ref;
         this.setState({ calItemHeight : current.offsetHeight });
+
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
+    }
+
+    componentWillUnmount(){
+        window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+
+    updateWindowDimensions() {
+        this.setState({ winWidth: window.innerWidth, winHeight: window.innerHeight });
     }
 
     dateRangeChange = (date, dateString) => {
@@ -71,7 +87,7 @@ class AvailabilityCalenderList extends React.Component {
 
     render(){
         const { listDates , allVehicles } = this.props;
-        const { calItemHeight , scrollLeftPosition } = this.state;
+        const { calItemHeight , scrollLeftPosition , winHeight } = this.state;
 
         return(
             <div className="availabilityCalenderWrap availabilityCalenderListWrap">
@@ -134,7 +150,7 @@ class AvailabilityCalenderList extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="avalibilityDetailsWrap d-flex flex-wrap">
+                    <div className="avalibilityDetailsWrap d-flex flex-wrap" style={{ height : `${winHeight - 265}px` }}>
                         <div className="vehiclesWrap">
                             {
                                 (allVehicles) ?
