@@ -57,10 +57,19 @@ class AvailabilityCalenderList extends React.Component {
 
     componentDidMount() {
         const { current } = this.ref;
+        const { setListDates } = this.props;
+
+        let currentDate = new Date();
+        var date = new Date();
+        let afterWeekDate = new Date(date.setDate(date.getDate() + 14));
+
         this.setState({ calItemHeight : current.offsetHeight });
 
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
+
+        var loadingDates = getDates(currentDate, afterWeekDate);
+        setListDates(loadingDates);
     }
 
     componentWillUnmount(){
