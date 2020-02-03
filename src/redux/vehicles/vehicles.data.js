@@ -784,113 +784,57 @@ const VEHICLES = [
 export default VEHICLES;
 
 export const COLORS = [
-   {
-     "Red": "Red"
-   },
-   {
-     "Black": "Black"
-   },
-   {
-     "White": "White"
-   },
-   {
-     "Silver": "Silver"
-   }
+  "Red",
+  "Black",
+  "White",
+  "Silver"
 ];
 
 export const TYPES = [
-   {
-     "Car": "Car"
-   },
-   {
-     "SUV": "SUV"
-   },
-   {
-     "Van": "Van"
-   },
-   {
-     "Bus": "Bus"
-   }
+  "Car",
+  "SUV",
+  "Van",
+  "Bus"
 ]
 
 export const CATEGORIES = [
-   {
-     "Car": [
-       {
-         "Luxuary": "Luxuary"
-       },
-       {
-         "Premium": "Premium"
-       },
-       {
-         "General Cars": "General Cars"
-       },
-       {
-         "Classic and Vintage": "Classic and Vintage"
-       }
-     ]
-   },
-   {
-     "SUV": [
-       {
-         "4WD": "4WD"
-       }
-     ]
-   },
-   {
-     "Van": [
-       {
-         "Classic and Vintage": "Classic and Vintage"
-       },
-       {
-         "Vans and MPV": "Vans and MPV"
-       }
-     ]
-   },
-   {
-     "Bus": [
-       {
-         "Buses": "Buses"
-       }
-     ]
-   }
+  {
+    "Car": [
+      "Luxuary",
+      "Premium",
+      "General Cars",
+      "Classic and Vintage"
+    ]
+  },
+  {
+    "SUV": [
+      "4WD"
+    ]
+  },
+  {
+    "Van": [
+      "Classic and Vintage",
+      "Vans and MPV"
+    ]
+  },
+  {
+    "Bus": [
+      "Buses"
+    ]
+  }
 ];
 
 export const MODELS = [
-   {
-     "Toyota Voxy": "Toyota Voxy"
-   },
-   {
-     "Mazda Mazda 6": "Mazda Mazda 6"
-   },
-   {
-     "Toyota Coaster 29 Seater (2017)": "Toyota Coaster 29 Seater (2017)"
-   },
-   {
-     "Perodua Bezza": "Perodua Bezza"
-   },
-   {
-     "Mercedes benz E250-2017": "Mercedes benz E250-2017"
-   },
-   {
-     "Toyota Hilux Double Cab 4WD": "Toyota Hilux Double Cab 4WD"
-   },
-   {
-     "Mitsubishi Montero Sport 2017": "Mitsubishi Montero Sport 2017"
-   },
-   {
-     "Toyota Alphard Executive Lounge": "Toyota Alphard Executive Lounge"
-   },
-   {
-     "Nissan X-Trail Hybrid": "Nissan X-Trail Hybrid"
-   },
-   {
-     "Mercedes benz S Class Long Wheel Base 2018": "Mercedes benz S Class Long Wheel Base 2018"
-   },
-   {
-     "Honda Vezel": "Honda Vezel"
-   },
-   {
-     "Toyota Rush 2018": "Toyota Rush 2018"
-   }
+  "Toyota Voxy",
+  "Mazda Mazda 6",
+  "Toyota Coaster 29 Seater (2017)",
+  "Perodua Bezza",
+  "Mercedes benz E250-2017",
+  "Toyota Hilux Double Cab 4WD",
+  "Mitsubishi Montero Sport 2017",
+  "Toyota Alphard Executive Lounge",
+  "Nissan X-Trail Hybrid",
+  "Mercedes benz S Class Long Wheel Base 2018",
+  "Honda Vezel",
+  "Toyota Rush 2018"
 ];

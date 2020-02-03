@@ -6,7 +6,7 @@ import { createStructuredSelector } from 'reselect';
 
 import { setActiveStep , setDoneSteps } from '../../redux/wizard/wizard.actions';
 
-import { selectAllVehicles } from '../../redux/vehicles/vehicles.selectors';
+import { selectAllVehicles , selectTypes , selectColors , selectModels } from '../../redux/vehicles/vehicles.selectors';
 
 import ReservationSummery from '../reservation-summery/reservation-summery.component';
 import VehicleItem from '../vehicle-item/vehicle-item.component';
@@ -15,7 +15,7 @@ import './wizard-step-03.styles.scss';
 
 const { Option } = Select;
 
-const WizardStepThree = ({ history , setActiveStep , setDoneSteps , allVehicles }) => {
+const WizardStepThree = ({ history , setActiveStep , setDoneSteps , allVehicles , types , colors , models }) => {
 
     const handleNextPage = () => {
         history.push('/wizard/payment-details');
@@ -67,9 +67,11 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps , allVehicles 
                                 <Select
                                     placeholder="Vehicle Type"
                                 >
-                                    <Option value="Cars">Cars</Option>
-                                    <Option value="Van">Van</Option>
-                                    <Option value="Bus">Bus</Option>
+                                    {
+                                        (types && types.length > 0) ?
+                                        types.map( type => <Option key={type} value={type}>{type}</Option> )
+                                        : ''
+                                    }
                                 </Select>
                             </div>
 
@@ -77,9 +79,11 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps , allVehicles 
                                 <Select
                                     placeholder="Vehicle Model"
                                 >
-                                    <Option value="Hatchback">Hatchback</Option>
-                                    <Option value="Sedan">Sedan</Option>
-                                    <Option value="SUV">SUV</Option>
+                                    {
+                                        (models && models.length > 0) ?
+                                        models.map( model => <Option key={model} value={model}>{model}</Option> )
+                                        : ''
+                                    }
                                 </Select>
                             </div>
 
@@ -87,9 +91,11 @@ const WizardStepThree = ({ history , setActiveStep , setDoneSteps , allVehicles 
                                 <Select
                                     placeholder="Colors"
                                 >
-                                    <Option value="Red">Red</Option>
-                                    <Option value="Green">Green</Option>
-                                    <Option value="Black">Black</Option>
+                                    {
+                                        (colors && colors.length > 0) ?
+                                        colors.map( color => <Option key={color} value={color}>{color}</Option> )
+                                        : ''
+                                    }
                                 </Select>
                             </div>
 
@@ -145,7 +151,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = createStructuredSelector({
-    allVehicles : selectAllVehicles
+    allVehicles : selectAllVehicles,
+    types : selectTypes,
+    colors : selectColors,
+    models : selectModels
 });
 
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(WizardStepThree));

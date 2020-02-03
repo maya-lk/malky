@@ -4,7 +4,7 @@ import { Icon , Input , DatePicker , Select , TimePicker , AutoComplete } from '
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectAllVehicles } from '../../redux/vehicles/vehicles.selectors';
+import { selectAllVehicles , selectTypes , selectColors , selectModels } from '../../redux/vehicles/vehicles.selectors';
 
 import WizardActionBar from '../../components/wizard-action-bar/wizard-action-bar.component';
 import VehicleItem from '../../components/vehicle-item/vehicle-item.component';
@@ -24,7 +24,7 @@ const LocationIcon = props => <Icon component={locationSVG} {...props} />;
 const { Option } = Select;
 const { Search } = Input;
 
-const Home = ({ allVehicles }) => (
+const Home = ({ allVehicles , types , colors , models }) => (
     <div className="homeFrontWrap">
         <WizardActionBar reservationID="124524asdwdx" />
         <div className="bookingContainer">
@@ -314,6 +314,11 @@ const Home = ({ allVehicles }) => (
                                 <Select
                                     placeholder="Vehicle Type"
                                 >
+                                    {
+                                        (types && types.length > 0) ?
+                                        types.map( type => <Option key={type} value={type}>{type}</Option> )
+                                        : ''
+                                    }
                                 </Select>
                             </div>
 
@@ -321,6 +326,11 @@ const Home = ({ allVehicles }) => (
                                 <Select
                                     placeholder="Vehicle Model"
                                 >
+                                    {
+                                        (models && models.length > 0) ?
+                                        models.map( model => <Option key={model} value={model}>{model}</Option> )
+                                        : ''
+                                    }
                                 </Select>
                             </div>
 
@@ -335,6 +345,11 @@ const Home = ({ allVehicles }) => (
                                 <Select
                                     placeholder="Colors"
                                 >
+                                    {
+                                        (colors && colors.length > 0) ?
+                                        colors.map( color => <Option key={color} value={color}>{color}</Option> )
+                                        : ''
+                                    }
                                 </Select>
                             </div>
                             
@@ -372,7 +387,10 @@ const Home = ({ allVehicles }) => (
 );
 
 const mapStateToProps = createStructuredSelector({
-    allVehicles : selectAllVehicles
+    allVehicles : selectAllVehicles , 
+    types : selectTypes,
+    colors : selectColors,
+    models : selectModels
 });
 
 export default connect(mapStateToProps)(Home);

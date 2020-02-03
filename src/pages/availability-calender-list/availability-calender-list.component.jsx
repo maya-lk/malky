@@ -5,7 +5,7 @@ import { DatePicker , Input } from 'antd';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectAllVehicles } from '../../redux/vehicles/vehicles.selectors';
+import { selectAllVehicles , selectTypes } from '../../redux/vehicles/vehicles.selectors';
 import { selectListDates } from '../../redux/avalibility/avalibility.selectors';
 
 import { setListDates } from '../../redux/avalibility/avalibility.actions';
@@ -95,7 +95,7 @@ class AvailabilityCalenderList extends React.Component {
     }
 
     render(){
-        const { listDates , allVehicles } = this.props;
+        const { listDates , allVehicles , types } = this.props;
         const { calItemHeight , scrollLeftPosition , winHeight } = this.state;
 
         return(
@@ -119,7 +119,11 @@ class AvailabilityCalenderList extends React.Component {
                                     option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                                 }
                             >
-    
+                                {
+                                    (types && types.length > 0) ?
+                                    types.map( type => <Option key={type} value={type}>{type}</Option> )
+                                    : ''
+                                }
                             </Select>
                         </div>
                         <div className="btnsWrap">
@@ -223,6 +227,7 @@ class AvailabilityCalenderList extends React.Component {
 const mapStateToProps = createStructuredSelector({
     allVehicles : selectAllVehicles,
     listDates : selectListDates,
+    types : selectTypes
 });
 
 const mapDispatchToProps = dispatch => ({

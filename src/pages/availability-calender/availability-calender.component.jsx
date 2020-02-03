@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectAllVehicles } from '../../redux/vehicles/vehicles.selectors';
+import { selectAllVehicles , selectTypes , selectModels } from '../../redux/vehicles/vehicles.selectors';
 
 import AvaliableVehicleItem from '../../components/avaliable-vehicle-item/avaliable-vehicle-item.component';
 import PartiallyItem from '../../components/partially-item/partially-item.component';
@@ -17,7 +17,7 @@ import '@fullcalendar/daygrid/main.css';
 
 const { Option } = Select;
 
-const AvailabilityCalender = ({ allVehicles }) => {
+const AvailabilityCalender = ({ allVehicles , types , models }) => {
     return(
         <div className="availabilityCalenderWrap d-flex flex-wrap">
             <div className="availabilityDetails">
@@ -37,7 +37,11 @@ const AvailabilityCalender = ({ allVehicles }) => {
                                 <Select
                                     placeholder="Vehicle Type"
                                 >
-                                    <Option value=""></Option>
+                                    {
+                                        (types && types.length > 0) ?
+                                        types.map( type => <Option key={type} value={type}>{type}</Option> )
+                                        : ''
+                                    }
                                 </Select>
                             </div>
 
@@ -45,7 +49,11 @@ const AvailabilityCalender = ({ allVehicles }) => {
                                 <Select
                                     placeholder="Vehicle Model"
                                 >
-                                    <Option value=""></Option>
+                                    {
+                                        (models && models.length > 0) ?
+                                        models.map( model => <Option key={model} value={model}>{model}</Option> )
+                                        : ''
+                                    }
                                 </Select>
                             </div>
 
@@ -133,7 +141,9 @@ const AvailabilityCalender = ({ allVehicles }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-    allVehicles : selectAllVehicles
+    allVehicles : selectAllVehicles,
+    types : selectTypes,
+    models : selectModels
 });
 
 export default connect(mapStateToProps)(AvailabilityCalender);
