@@ -1,3 +1,7 @@
 export const vehiclesActionTypes = {
     SET_ALL_VEHICLES : 'SET_ALL_VEHICLES',
+    SET_COLORS : 'SET_COLORS',
+    SET_TYPES : 'SET_TYPES',
+    SET_CATEGORY : 'SET_CATEGORY',
+    SET_MODELS : 'SET_MODELS',
 }
