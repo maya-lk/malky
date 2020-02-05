@@ -41,8 +41,6 @@ class Home extends React.Component {
         const { allVehicles , types , colors , models } = this.props;
         const { selectType , selectColor , selectModel } = this.state;
 
-        console.log('allVehicles' , allVehicles);
-
         return(
             <div className="homeFrontWrap">
                 <WizardActionBar reservationID="124524asdwdx" />

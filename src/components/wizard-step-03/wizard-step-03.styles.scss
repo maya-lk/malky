@@ -100,7 +100,7 @@
                 .vehicleSearchList {
                     margin-top: 2rem;
                     display: grid;
-                    grid-template-columns: auto auto auto auto auto auto;
+                    grid-template-columns: repeat(6, 1fr);
                     gap: 10px;
 
                     .vehicleItem {
@@ -109,6 +109,7 @@
                             
                             .vehicleImage {
                                 width: 100%;
+                                margin-bottom: 0.5rem;
                             }
                             
                             .vehicleContent {
