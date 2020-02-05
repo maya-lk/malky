@@ -387,7 +387,7 @@ class Home extends React.Component {
                                         allVehicles
                                         .filter( vehicle => (selectType) ? vehicle.vehicle_type.toLowerCase() === selectType.toLowerCase() : vehicle.vehicle_type.toLowerCase() )
                                         .filter( vehicle => (selectModel) ? vehicle.vehicle_model.toLowerCase() === selectModel.toLowerCase() : vehicle.vehicle_model.toLowerCase() )
-                                        .filter( vehicle => (selectColor) ? vehicle.color.indexOf(selectColor) !== -1 : vehicle.color )
+                                        .filter( vehicle => (selectColor) ? vehicle.color.indexOf(selectColor) >= 0 : vehicle.color )
                                         .map( 
                                             vehicle => 
                                             <VehicleItem

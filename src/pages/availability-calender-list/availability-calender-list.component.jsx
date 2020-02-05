@@ -48,7 +48,9 @@ class AvailabilityCalenderList extends React.Component {
             calItemHeight : '',
             scrollLeftPosition : '',
             winWidth: 0,
-            winHeight: 0
+            winHeight: 0,
+            selectType : null,
+            searchName : null
         }
 
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -86,17 +88,9 @@ class AvailabilityCalenderList extends React.Component {
         setListDates(dates);
     }
 
-    vehicleTypeChange = (value) => {
-        console.log(`selected ${value}`);
-    }
-
-    onVehicleSearch = (value) => {
-        console.log(`search ${value}`);
-    }
-
     render(){
         const { listDates , allVehicles , types } = this.props;
-        const { calItemHeight , scrollLeftPosition , winHeight } = this.state;
+        const { calItemHeight , scrollLeftPosition , winHeight , selectType } = this.state;
 
         return(
             <div className="availabilityCalenderWrap availabilityCalenderListWrap">
@@ -114,11 +108,12 @@ class AvailabilityCalenderList extends React.Component {
                                 showSearch
                                 placeholder="Vehicle Type"
                                 optionFilterProp="children"
-                                onChange={this.vehicleTypeChange}
+                                onChange={ value => this.setState({ selectType : value }) }
                                 filterOption={(input, option) =>
                                     option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                                 }
                             >
+                                <Option value="">Vehicle Type</Option>
                                 {
                                     (types && types.length > 0) ?
                                     types.map( type => <Option key={type} value={type}>{type}</Option> )
@@ -138,7 +133,7 @@ class AvailabilityCalenderList extends React.Component {
                         <div className="searchWrap">
                             <Search
                                 placeholder="Search vehicles"
-                                onSearch={value => this.onVehicleSearch(value)}
+                                onSearch={value => this.setState({ searchName : value })}
                             />
                         </div>
                         <div
@@ -168,6 +163,7 @@ class AvailabilityCalenderList extends React.Component {
                             {
                                 (allVehicles) ?
                                 allVehicles
+                                .filter( vehicle => (selectType) ? vehicle.vehicle_type.toLowerCase() === selectType.toLowerCase() : vehicle.vehicle_type.toLowerCase() )
                                 .map( 
                                     vehicle => 
                                     <AvaliableListVehicleItem
@@ -196,6 +192,7 @@ class AvailabilityCalenderList extends React.Component {
                                 {
                                     (allVehicles) ?
                                     allVehicles
+                                    .filter( vehicle => (selectType) ? vehicle.vehicle_type.toLowerCase() === selectType.toLowerCase() : vehicle.vehicle_type.toLowerCase() )
                                     .map( 
                                         vehicle => 
                                         <div
