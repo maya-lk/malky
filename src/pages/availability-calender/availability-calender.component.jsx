@@ -17,127 +17,147 @@ import '@fullcalendar/daygrid/main.css';
 
 const { Option } = Select;
 
-const AvailabilityCalender = ({ allVehicles , types , models }) => {
-    return(
-        <div className="availabilityCalenderWrap d-flex flex-wrap">
-            <div className="availabilityDetails">
-                <h1>
-                    Availability Calender
-                    <div className="btnsWrap">
-                        <Link className="btn" to="/availability-calender-list"><i className="fas fa-bars"></i></Link>
-                        <Link className="btn active" to="/availability-calender"><i className="fas fa-th-large"></i></Link>
-                    </div>
-                </h1>
-                <div className="availabileVehiclesWrap">
-                    <div className="filter d-flex justify-content-between align-items-center">
-                        <h3>Avaliable Vehicles</h3>
-                        <div className="filters">
+class AvailabilityCalender extends React.Component {
 
-                            <div className="form-group">
-                                <Select
-                                    placeholder="Vehicle Type"
-                                >
-                                    {
-                                        (types && types.length > 0) ?
-                                        types.map( type => <Option key={type} value={type}>{type}</Option> )
-                                        : ''
-                                    }
-                                </Select>
+    constructor(props){
+        super(props);
+        this.state = {
+            selectType : null,
+            selectModel : null,
+        }
+    }
+
+    render(){
+
+        const { allVehicles , types , models } = this.props;
+        const { selectType , selectModel } = this.state;
+
+        return(
+            <div className="availabilityCalenderWrap d-flex flex-wrap">
+                <div className="availabilityDetails">
+                    <h1>
+                        Availability Calender
+                        <div className="btnsWrap">
+                            <Link className="btn" to="/availability-calender-list"><i className="fas fa-bars"></i></Link>
+                            <Link className="btn active" to="/availability-calender"><i className="fas fa-th-large"></i></Link>
+                        </div>
+                    </h1>
+                    <div className="availabileVehiclesWrap">
+                        <div className="filter d-flex justify-content-between align-items-center">
+                            <h3>Avaliable Vehicles</h3>
+                            <div className="filters">
+
+                                <div className="form-group">
+                                    <Select
+                                        placeholder="Vehicle Type"
+                                        onChange={ value => this.setState({ selectType : value }) }
+                                    >
+                                        <Option value="">Vehicle Type</Option>
+                                        {
+                                            (types && types.length > 0) ?
+                                            types.map( type => <Option key={type} value={type}>{type}</Option> )
+                                            : ''
+                                        }
+                                    </Select>
+                                </div>
+
+                                <div className="form-group">
+                                    <Select
+                                        placeholder="Vehicle Model"
+                                        onChange={ value => this.setState({ selectModel : value }) }
+                                    >
+                                        {
+                                            (models && models.length > 0) ?
+                                            models.map( model => <Option key={model} value={model}>{model}</Option> )
+                                            : ''
+                                        }
+                                    </Select>
+                                </div>
+
                             </div>
+                        </div>
 
+                        <div className="vehicles">
+
+                            {
+                                (allVehicles) ?
+                                allVehicles
+                                .filter( vehicle => (selectType) ? vehicle.vehicle_type.toLowerCase() === selectType.toLowerCase() : vehicle.vehicle_type.toLowerCase() )
+                                .filter( vehicle => (selectModel) ? vehicle.vehicle_model.toLowerCase() === selectModel.toLowerCase() : vehicle.vehicle_model.toLowerCase() )
+                                .map( 
+                                    vehicle => 
+                                    <AvaliableVehicleItem 
+                                        key={vehicle.name}
+                                        imageUrl={vehicle.pic}
+                                        name={vehicle.name}
+                                        count="7"
+                                        yardName="Kirulapana"
+                                    />
+                                )
+                                : ''
+                            }
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div className="avalabilityCalender">
+                    <div className="date">Friday 6<sup>th</sup> of December</div>
+                    <div className="booking">
+                        There are <span className="bookingCount">7 Booking</span> for the Day
+                    </div>
+
+                    <div className="calenderWrap">
+                        <FullCalendar defaultView="dayGridMonth" plugins={[ dayGridPlugin ]} header={{ left: 'prev,next', center: 'title', right: '' }} />
+                    </div>
+
+                </div>
+
+                <div className="bookingDetailsWrap d-flex justify-content-between">
+
+                    <div className="partiallyBooked">
+                        <div className="titleWrap">
+                            <h3>Partially Booked</h3>
                             <div className="form-group">
                                 <Select
                                     placeholder="Vehicle Model"
                                 >
-                                    {
-                                        (models && models.length > 0) ?
-                                        models.map( model => <Option key={model} value={model}>{model}</Option> )
-                                        : ''
-                                    }
+                                    <Option value=""></Option>
                                 </Select>
                             </div>
-
                         </div>
+                        
+                        <PartiallyItem
+                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
+                            name="Mercedes-Benz CLS"
+                        />
+                        
                     </div>
 
-                    <div className="vehicles">
+                    <div className="reservedToday">
+                        <div className="titleWrap">
+                            <h3>Reserved Today</h3>
+                            <div className="form-group">
+                                <Select
+                                    placeholder="Vehicle Model"
+                                >
+                                    <Option value=""></Option>
+                                </Select>
+                            </div>
+                        </div>
 
-                        {
-                            (allVehicles) ?
-                            allVehicles
-                            .map( 
-                                vehicle => 
-                                <AvaliableVehicleItem 
-                                    key={vehicle.name}
-                                    imageUrl={vehicle.pic}
-                                    name={vehicle.name}
-                                    count="7"
-                                    yardName="Kirulapana"
-                                />
-                            )
-                            : ''
-                        }
+                        <PartiallyItem
+                            imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
+                            name="Mercedes-Benz CLS"
+                        />
 
                     </div>
 
                 </div>
             </div>
-
-            <div className="avalabilityCalender">
-                <div className="date">Friday 6<sup>th</sup> of December</div>
-                <div className="booking">
-                    There are <span className="bookingCount">7 Booking</span> for the Day
-                </div>
-
-                <div className="calenderWrap">
-                    <FullCalendar defaultView="dayGridMonth" plugins={[ dayGridPlugin ]} header={{ left: 'prev,next', center: 'title', right: '' }} />
-                </div>
-
-            </div>
-
-            <div className="bookingDetailsWrap d-flex justify-content-between">
-
-                <div className="partiallyBooked">
-                    <div className="titleWrap">
-                        <h3>Partially Booked</h3>
-                        <div className="form-group">
-                            <Select
-                                placeholder="Vehicle Model"
-                            >
-                                <Option value=""></Option>
-                            </Select>
-                        </div>
-                    </div>
-                    
-                    <PartiallyItem
-                        imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                        name="Mercedes-Benz CLS"
-                    />
-                    
-                </div>
-
-                <div className="reservedToday">
-                    <div className="titleWrap">
-                        <h3>Reserved Today</h3>
-                        <div className="form-group">
-                            <Select
-                                placeholder="Vehicle Model"
-                            >
-                                <Option value=""></Option>
-                            </Select>
-                        </div>
-                    </div>
-
-                    <PartiallyItem
-                        imageUrl="https://auto.ndtvimg.com/car-images/medium/mercedes-benz/cls/mercedes-benz-cls.jpg"
-                        name="Mercedes-Benz CLS"
-                    />
-
-                </div>
-
-            </div>
-        </div>
-    )
+        )
+    }
 };
 
 const mapStateToProps = createStructuredSelector({
