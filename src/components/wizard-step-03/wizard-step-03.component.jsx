@@ -151,7 +151,7 @@ class WizardStepThree extends React.Component {
                                     name={vehicle.name}
                                     numberPlate=""
                                     yard=""
-                                    ID={vehicle.name.toLowerCase().replace(/ /g,"-")}
+                                    ID={`list${vehicle.name.toLowerCase().replace(/ /g,"-")}`}
                                 />
                             )
                             : ''
