@@ -50,7 +50,7 @@ class AvailabilityCalenderList extends React.Component {
             winWidth: 0,
             winHeight: 0,
             selectType : null,
-            searchName : null
+            searchName : ''
         }
 
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -90,7 +90,9 @@ class AvailabilityCalenderList extends React.Component {
 
     render(){
         const { listDates , allVehicles , types } = this.props;
-        const { calItemHeight , scrollLeftPosition , winHeight , selectType } = this.state;
+        const { calItemHeight , scrollLeftPosition , winHeight , selectType , searchName } = this.state;
+
+        console.log('searchName' , searchName);
 
         return(
             <div className="availabilityCalenderWrap availabilityCalenderListWrap">
@@ -133,7 +135,7 @@ class AvailabilityCalenderList extends React.Component {
                         <div className="searchWrap">
                             <Search
                                 placeholder="Search vehicles"
-                                onSearch={value => this.setState({ searchName : value })}
+                                onChange={e => this.setState({ searchName : e.target.value })}
                             />
                         </div>
                         <div
@@ -164,6 +166,7 @@ class AvailabilityCalenderList extends React.Component {
                                 (allVehicles) ?
                                 allVehicles
                                 .filter( vehicle => (selectType) ? vehicle.vehicle_type.toLowerCase() === selectType.toLowerCase() : vehicle.vehicle_type.toLowerCase() )
+                                .filter( vehicle => vehicle.name.toLowerCase().search(searchName.toLowerCase()) !== -1 )
                                 .map( 
                                     vehicle => 
                                     <AvaliableListVehicleItem
@@ -193,6 +196,7 @@ class AvailabilityCalenderList extends React.Component {
                                     (allVehicles) ?
                                     allVehicles
                                     .filter( vehicle => (selectType) ? vehicle.vehicle_type.toLowerCase() === selectType.toLowerCase() : vehicle.vehicle_type.toLowerCase() )
+                                    .filter( vehicle => vehicle.name.toLowerCase().search(searchName.toLowerCase()) !== -1 )
                                     .map( 
                                         vehicle => 
                                         <div
