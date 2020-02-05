@@ -8,9 +8,10 @@ import { createStructuredSelector } from 'reselect';
 import { selectAllVehicles , selectTypes } from '../../redux/vehicles/vehicles.selectors';
 import { selectListDates } from '../../redux/avalibility/avalibility.selectors';
 
-import { setListDates } from '../../redux/avalibility/avalibility.actions';
+import { setListDates , setClickedVehicle } from '../../redux/avalibility/avalibility.actions';
 
 import AvaliableListVehicleItem from '../../components/avaliable-list-vehicle-item/avaliable-list-vehicle-item.component';
+import AvailibilityDetails from '../../components/availibility-details/availibility-details.component';
 
 import './availability-calender-list.styles.scss';
 import '@fullcalendar/core/main.css';
@@ -40,6 +41,7 @@ class AvailabilityCalenderList extends React.Component {
 
     ref = React.createRef();
     scrollDates = React.createRef();
+    availibilityCalRef = React.createRef();
 
     constructor(props){
         super(props)
@@ -50,7 +52,10 @@ class AvailabilityCalenderList extends React.Component {
             winWidth: 0,
             winHeight: 0,
             selectType : null,
-            searchName : ''
+            searchName : '',
+            toggleDetailPop : false,
+            selectedVehicle : null,
+            clickedDate : ''
         }
 
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -72,6 +77,7 @@ class AvailabilityCalenderList extends React.Component {
 
         var loadingDates = getDates(currentDate, afterWeekDate);
         setListDates(loadingDates);
+
     }
 
     componentWillUnmount(){
@@ -88,11 +94,17 @@ class AvailabilityCalenderList extends React.Component {
         setListDates(dates);
     }
 
-    render(){
-        const { listDates , allVehicles , types } = this.props;
-        const { calItemHeight , scrollLeftPosition , winHeight , selectType , searchName } = this.state;
+    clickedVehicle = () => {
+        this.setState({ toggleDetailPop : true })
+    }
 
-        console.log('searchName' , searchName);
+    hidePopup = () => {
+        this.setState({ toggleDetailPop : false })
+    }
+
+    render(){
+        const { listDates , allVehicles , types , setClickedVehicle } = this.props;
+        const { calItemHeight , scrollLeftPosition , winHeight , selectType , searchName , toggleDetailPop , clickedDate } = this.state;
 
         return(
             <div className="availabilityCalenderWrap availabilityCalenderListWrap">
@@ -129,7 +141,7 @@ class AvailabilityCalenderList extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="availabilityDetails">
+                <div className="availabilityDetails" ref={this.availibilityCalRef}>
                     
                     <div className="searchNCalenderDateWrap d-flex flex-wrap">
                         <div className="searchWrap">
@@ -175,7 +187,7 @@ class AvailabilityCalenderList extends React.Component {
                                         imageUrl={vehicle.pic}
                                         name={vehicle.name}
                                         yardName="Kirulapana"
-                                        vehiNo=""
+                                        vehiNo={vehicle.registration_no}
                                         perDay=""
                                         totalFare=""
                                         heightEle={`${calItemHeight}px`}
@@ -207,7 +219,15 @@ class AvailabilityCalenderList extends React.Component {
                                             {
                                                 (listDates) ?
                                                 listDates.map( date => {
-                                                    return <div key={date} className="availibityCalTd"></div>;
+                                                    return <div 
+                                                            key={date} 
+                                                            className="availibityCalTd"
+                                                            onClick={() => {
+                                                                setClickedVehicle(vehicle);
+                                                                this.clickedVehicle();
+                                                                this.setState({ clickedDate : date });
+                                                            }}
+                                                            ></div>;
                                                 })
                                                 : ''
                                             }
@@ -220,6 +240,17 @@ class AvailabilityCalenderList extends React.Component {
                     </div>
     
                 </div>
+
+                {
+                    (toggleDetailPop) ?
+                    <AvailibilityDetails 
+                        hidePopup={this.hidePopup}
+                        mainWrapRef={this.availibilityCalRef.current}
+                        clickedDate={clickedDate}
+                    />
+                    : ''
+                }
+
             </div>
         )
     }
@@ -232,7 +263,8 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-    setListDates : (listDates) => dispatch(setListDates(listDates))
+    setListDates : (listDates) => dispatch(setListDates(listDates)),
+    setClickedVehicle : (clickedVehicle) => dispatch(setClickedVehicle(clickedVehicle))
 });
 
 export default connect(mapStateToProps , mapDispatchToProps)(AvailabilityCalenderList);

@@ -2,6 +2,7 @@ import { avalibilityActionTypes } from './avalibility.types';
 
 const INITIAL_STATE = {
     listDates : null,
+    clickedVehicle : null
 }
 
 const avalibilityReducer = ( state = INITIAL_STATE , action ) => {
@@ -10,6 +11,11 @@ const avalibilityReducer = ( state = INITIAL_STATE , action ) => {
             return{
                 ...state , 
                 listDates : action.payload
+            }
+        case avalibilityActionTypes.SET_CLICKED_VEHICLE:
+            return {
+                ...state,
+                clickedVehicle : action.payload
             }
         default:
             return state;

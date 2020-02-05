@@ -6,3 +6,8 @@ export const selectListDates = createSelector(
     [selectAvalibilityAPI],
     (avalibility) => avalibility.listDates
 );
+
+export const selectClickedVehicle = createSelector(
+    [selectAvalibilityAPI],
+    (avalibility) => avalibility.clickedVehicle
+);

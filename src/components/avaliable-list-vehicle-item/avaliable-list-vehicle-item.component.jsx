@@ -2,8 +2,20 @@ import React from 'react';
 
 import './avaliable-list-vehicle-item.styles.scss';
 
-const AvaliableListVehicleItem = ({ refProp , imageUrl , name , vehiNo , yardName , perDay , totalFare , heightEle }) => (
-    <div ref={refProp} className="avaliableVehicleListItem" style={{ height : `${heightEle}px` }}>
+const AvaliableListVehicleItem = ({ 
+    refProp , 
+    imageUrl , 
+    name , 
+    vehiNo , 
+    yardName , 
+    perDay , 
+    totalFare , 
+    heightEle ,
+}) => (
+    <div 
+        ref={refProp} 
+        className="avaliableVehicleListItem" style={{ height : `${heightEle}px` }}
+    >
         <img src={imageUrl} alt={name} />
         <div className="contWrap">
             <h5>{name}</h5>
