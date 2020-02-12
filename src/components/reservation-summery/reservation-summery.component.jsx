@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse , Select , AutoComplete , Input , DatePicker , TimePicker } from 'antd';
+import { Collapse , Select , AutoComplete  , DatePicker , TimePicker } from 'antd';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import moment from 'moment';
