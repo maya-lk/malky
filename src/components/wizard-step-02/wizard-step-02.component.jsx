@@ -83,6 +83,7 @@ class WizardStepTwo extends React.Component {
         } = this.props;
 
         const dataSource = [ 'Milindu Mallawarachchi' , 'Viraj Sampath' , 'Danushka Dimuthu'  ];
+        const locations = ['Colombo' , 'Bandaranayake International Airport' , 'Katunayaka Head Office' , 'Kirulapana Head Office'];
 
         return(
             <div className="wizardContent wizardStep2 d-flex flex-wrap">
@@ -100,14 +101,18 @@ class WizardStepTwo extends React.Component {
 
                                 <div className="form-group">
                                     <label>Pickup Location</label>
-                                    <Input
-                                        suffix={
-                                            <LocationIcon />
+                                    <AutoComplete
+                                        placeholder="Start typing here"
+                                        onChange={ (value) => setPickupLocation(value) }
+                                        value={pickupLocation}
+                                        dataSource={locations}
+                                        filterOption={(inputValue, option) =>
+                                            option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                                         }
                                         className="location"
-                                        onChange={ (e) => setPickupLocation(e.target.value) }
-                                        value={pickupLocation}
-                                    />
+                                    >
+                                        <Input suffix={<LocationIcon />} />
+                                    </AutoComplete>
                                 </div>
 
                                 <div className="d-flex row">
@@ -145,14 +150,18 @@ class WizardStepTwo extends React.Component {
 
                                 <div className="form-group">
                                     <label>Drop Off Location</label>
-                                    <Input
-                                        suffix={
-                                            <LocationIcon />
+                                    <AutoComplete
+                                        placeholder="Start typing here"
+                                        onChange={ (value) => setDropoffLocation(value) }
+                                        value={dropoffLocation}
+                                        dataSource={locations}
+                                        filterOption={(inputValue, option) =>
+                                            option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                                         }
                                         className="location"
-                                        onChange={ (e) => setDropoffLocation(e.target.value) }
-                                        value={dropoffLocation}
-                                    />
+                                    >
+                                        <Input suffix={<LocationIcon />} />
+                                    </AutoComplete>
                                 </div>
 
                                 <div className="d-flex row">
