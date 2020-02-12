@@ -2,17 +2,21 @@ import React from 'react';
 
 import './avaliable-vehicle-item.styles.scss';
 
-const AvaliableVehicleItem = ({ imageUrl , name , count , yardName }) => (
+const AvaliableVehicleItem = ({ imageUrl , name , vehiNo , yardName , perDay , totalFare }) => (
     <div className="avaliableVehicleItem">
-        <img src={imageUrl} alt={name} />
+        <div className="imgWrap">
+            {
+                (imageUrl) ?
+                <img src={imageUrl} alt={name} />
+                : ''
+            }
+        </div>
         <h5>{name}</h5>
         <div className="avalibilityDetails">
-            <span className="avalibilityCount">
-                <span>{count}</span> <br/> Available
-            </span>
-            <span className="yardWrap">
-                YARD <span className="yardName">{yardName}</span>
-            </span>
+            <div className="vehicleNo">{vehiNo}</div>
+            <div className="yardName">{yardName}</div>
+            <div className="perDay">Per day <span>{perDay}</span></div>
+            <div className="totalFare">Total fare <span>{totalFare}</span></div>
         </div>
     </div>
 );

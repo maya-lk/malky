@@ -66,6 +66,7 @@ class AvailabilityCalender extends React.Component {
                                         placeholder="Vehicle Model"
                                         onChange={ value => this.setState({ selectModel : value }) }
                                     >
+                                        <Option value="">Vehicle Model</Option>
                                         {
                                             (models && models.length > 0) ?
                                             models.map( model => <Option key={model} value={model}>{model}</Option> )
@@ -90,8 +91,10 @@ class AvailabilityCalender extends React.Component {
                                         key={vehicle.name}
                                         imageUrl={vehicle.pic}
                                         name={vehicle.name}
-                                        count="7"
                                         yardName="Kirulapana"
+                                        vehiNo={vehicle.registration_no}
+                                        perDay=""
+                                        totalFare=""
                                     />
                                 )
                                 : ''
