@@ -39,6 +39,7 @@ import './reservation-summery.styles.scss';
 
 const { Panel } = Collapse;
 const { Option } = Select;
+const locations = ['Colombo' , 'Bandaranayake International Airport' , 'Katunayaka Head Office' , 'Kirulapana Head Office'];
 
 const ReservationSummery = ({ 
         reservationType , 
@@ -139,10 +140,15 @@ const ReservationSummery = ({
                             <div className="summeryItem">
                                 <span className="label">Location</span>
                                 <span className="value">
-                                    <Input
-                                        className="location"
-                                        onChange={ (e) => setPickupLocation(e.target.value) }
+                                    <AutoComplete
+                                        placeholder="Start typing here"
+                                        onChange={ (value) => setPickupLocation(value) }
                                         value={pickupLocation}
+                                        dataSource={locations}
+                                        filterOption={(inputValue, option) =>
+                                            option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                        }
+                                        className="location"
                                     />
                                 </span>
                             </div>
@@ -200,10 +206,15 @@ const ReservationSummery = ({
                             <div className="summeryItem">
                                 <span className="label">Location</span>
                                 <span className="value">
-                                    <Input
-                                        className="location"
-                                        onChange={ (e) => setDropoffLocation(e.target.value) }
+                                    <AutoComplete
+                                        placeholder="Start typing here"
+                                        onChange={ (value) => setDropoffLocation(value) }
                                         value={dropoffLocation}
+                                        dataSource={locations}
+                                        filterOption={(inputValue, option) =>
+                                            option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                        }
+                                        className="location"
                                     />
                                 </span>
                             </div>
