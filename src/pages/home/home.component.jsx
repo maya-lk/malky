@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Icon , Input , DatePicker , Select , TimePicker , AutoComplete } from 'antd';
+import { Input , Select , AutoComplete } from 'antd';
+import Icon from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -8,6 +9,8 @@ import { selectAllVehicles , selectTypes , selectColors , selectModels } from '.
 
 import WizardActionBar from '../../components/wizard-action-bar/wizard-action-bar.component';
 import VehicleItem from '../../components/vehicle-item/vehicle-item.component';
+import DateRangePicker from '../../components/date-range-picker/date-range-picker.component';
+import TimeRangePickerCom from '../../components/time-range-picker/time-range-picker.component';
 
 import SelfDriveInactive from '../../assets/images/self-drive-inactive.png';
 import WithDriveInactive from '../../assets/images/with-driver-inactive.png';
@@ -23,7 +26,6 @@ const locationSVG = () => (
 const LocationIcon = props => <Icon component={locationSVG} {...props} />;
 const { Option } = Select;
 const { Search } = Input;
-const { RangePicker } = DatePicker;
 
 class Home extends React.Component {
 
@@ -33,7 +35,9 @@ class Home extends React.Component {
             selectType : null,
             selectColor : null,
             selectModel : null,
-            selectPrice : null
+            selectPrice : null,
+            pickupLocation : 'Bandaranayake International Airport',
+            dropoffLocation : 'Bandaranayake International Airport',
         }
     }
 
@@ -41,10 +45,24 @@ class Home extends React.Component {
         console.log('dateString' , dateString);
     }
 
+    timeRangeChange = (time, timeString) => {
+        console.log('timeString' , timeString);
+    }
+
+    changePickUpLocation = (data) => {
+        console.log('data' , data);
+    }
+
+    changeDropOffLocation = (data) => {
+        console.log('data' , data);
+    }
+
     render(){
 
         const { allVehicles , types , colors , models } = this.props;
-        const { selectType , selectColor , selectModel } = this.state;
+        const { selectType , selectColor , selectModel , pickupLocation , dropoffLocation } = this.state;
+
+        const locations = ['Colombo' , 'Bandaranayake International Airport' , 'Katunayaka Head Office' , 'Kirulapana Head Office'];
 
         return(
             <div className="homeFrontWrap">
@@ -133,93 +151,46 @@ class Home extends React.Component {
 
                             <div className="bookingDetailsWrap">
 
+                                <DateRangePicker 
+                                    labelTitle="Pickup / Drop Off Date"
+                                    onChange={this.dateRangeChange}
+                                />
+                                
+                                <TimeRangePickerCom
+                                    labelTitle="Pickup / Drop Off Time"
+                                    onChange={this.timeRangeChange}
+                                />
+                                
                                 <div className="form-group">
-                                    <label>Pickup / Drop Off Date</label>
-                                    <RangePicker onChange={this.dateRangeChange} />
+                                    <label>Pickup Location</label>
+                                    <AutoComplete
+                                        placeholder="Start typing here"
+                                        onChange={ (value) => this.changePickUpLocation(value) }
+                                        value={pickupLocation}
+                                        dataSource={locations}
+                                        filterOption={(inputValue, option) =>
+                                            option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                        }
+                                        className="location"
+                                    >
+                                        <Input suffix={<LocationIcon />} />
+                                    </AutoComplete>
                                 </div>
 
-                            </div>
-
-                            <div className="d-flex flex-wrap row">
-
-                                <div className="tabWrap col-md-6 col-12">
-                                    <ul className="nav nav-pills" id="pickupTab" role="tablist">
-                                        <li className="nav-item">
-                                            <span className="nav-link active" id="pickUp-tab" data-toggle="pill" href="#pickUp" role="tab" aria-controls="pickUp" aria-selected="true">Pick Up</span>
-                                        </li>
-                                    </ul>
-                                    <div className="tab-content" id="pickupTabContent">
-                                        <div className="tab-pane fade show active" id="pickUp" role="tabpanel" aria-labelledby="pickUp-tab">
-
-                                            <div className="form-group">
-                                                <label>Pickup Location</label>
-                                                <Input
-                                                    suffix={
-                                                        <LocationIcon />
-                                                    }
-                                                    className="location"
-                                                />
-                                            </div>
-
-                                            <div className="d-flex row">
-                                                <div className="form-group col-md-7 col-12">
-                                                    <label>Pickup Date</label>
-                                                    <DatePicker 
-                                                        placeholder="" 
-                                                    />
-                                                </div>
-                                                <div className="form-group col-md-5 col-12">
-                                                    <label>Pickup Time</label>
-                                                    <TimePicker 
-                                                        use12Hours 
-                                                        format="h:mm A"
-                                                        placeholder=""
-                                                    />
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="tabWrap col-md-6 col-12">
-                                    <ul className="nav nav-pills" id="dropOffTab" role="tablist">
-                                        <li className="nav-item">
-                                            <span className="nav-link active" id="dropOff-tab" data-toggle="pill" href="#dropOff" role="tab" aria-controls="dropOff" aria-selected="true">Drop Off</span>
-                                        </li>
-                                    </ul>
-                                    <div className="tab-content" id="dropOffTabContent">
-                                        <div className="tab-pane fade show active" id="dropOff" role="tabpanel" aria-labelledby="dropOff-tab">
-
-                                            <div className="form-group">
-                                                <label>Drop Off Location</label>
-                                                <Input
-                                                    suffix={
-                                                        <LocationIcon />
-                                                    }
-                                                    className="location"
-                                                />
-                                            </div>
-
-                                            <div className="d-flex row">
-                                                <div className="form-group col-md-7 col-12">
-                                                    <label>Drop Off Date</label>
-                                                    <DatePicker 
-                                                        placeholder=""
-                                                    />
-                                                </div>
-                                                <div className="form-group col-md-5 col-12">
-                                                    <label>Drop Off Time</label>
-                                                    <TimePicker 
-                                                        use12Hours 
-                                                        format="h:mm A"
-                                                        placeholder=""
-                                                    />
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
+                                <div className="form-group">
+                                    <label>Drop Off Location</label>
+                                    <AutoComplete
+                                        placeholder="Start typing here"
+                                        onChange={ (value) => this.changeDropOffLocation(value) }
+                                        value={dropoffLocation}
+                                        dataSource={locations}
+                                        filterOption={(inputValue, option) =>
+                                            option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                        }
+                                        className="location"
+                                    >
+                                        <Input suffix={<LocationIcon />} />
+                                    </AutoComplete>
                                 </div>
 
                             </div>

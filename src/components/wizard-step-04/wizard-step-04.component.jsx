@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
-import { Select , Input , Switch , Icon } from 'antd';
+import { Select , Input , Switch } from 'antd';
+import { CloseCircleFilled } from '@ant-design/icons';
 
 import { 
     selectReservationType , 
@@ -86,7 +87,7 @@ class WizardStepFour extends React.Component {
                     <Option value="4">4</Option>
                     <Option value="5">5</Option>
                 </Select>
-                <Icon type="close-circle" theme="filled" />
+                <CloseCircleFilled />
             </div>
         </div>
 

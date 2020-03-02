@@ -1,5 +1,6 @@
 import React from 'react';
-import { Icon, Input, AutoComplete , Select } from 'antd';
+import { Input, AutoComplete , Select } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -74,7 +75,7 @@ class WizardStepThree extends React.Component {
                             className="searchVehicleInput"
                             placeholder="Enter vehicle name or plate number"
                         >
-                            <Input suffix={<Icon type="search" />} />
+                            <Input suffix={<SearchOutlined />} />
                         </AutoComplete>
 
                         <div className="advancedFilters">

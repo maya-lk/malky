@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from 'antd';
+import { FileSyncOutlined , PrinterOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
 import './wizard-action-bar.styles.scss';
@@ -13,8 +13,8 @@ const WizardActionBar = ({ reservationID , isWizard }) => (
                 <Link className="btn" to="/availability-calender">View Availibility Calender</Link>
                 : ''
             }
-            <span className="btn"><Icon type="file-sync" /> Convert to an Estimation</span>
-            <span className="btn"><Icon type="printer" /> Print Reservation</span>
+            <span className="btn"><FileSyncOutlined /> Convert to an Estimation</span>
+            <span className="btn"><PrinterOutlined /> Print Reservation</span>
         </div>
     </div>
 );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from 'antd';
+import { CloseCircleFilled } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import moment from 'moment';
@@ -14,7 +14,7 @@ const AvailibilityDetails = ({ hidePopup , mainWrapRef , clickedVehicle , clicke
 
     return (
         <div className="availibilityDetailsWrap" style={{ height : `${mainWrapRef.clientHeight}px` }}>
-            <span className="closePop" onClick={ () => hidePopup() }><Icon type="close" /></span>
+            <span className="closePop" onClick={ () => hidePopup() }><CloseCircleFilled /></span>
             <div className="vehicleDetails">
                 <div className="vehicleName">{clickedVehicle.name}</div>
                 <div className="bookingDate">

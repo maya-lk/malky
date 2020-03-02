@@ -158,7 +158,7 @@
 
         .bookingSecWrap{
             .bookingForm{
-                width: 40%;
+                width: 30%;
                 padding: 1rem 2rem;
                 background-color: #edf0f5;
 
@@ -174,59 +174,21 @@
                     background-color: #fff;
                     padding: 1rem;
                     margin-bottom: 1rem;
-                }
 
-                .tabWrap{
-                    margin-bottom: 1rem;
-    
-                    .nav-link{
-                        &.active{
-                            background-color: #374d64;
-                            border-radius: 3px 3px 0 0;
-                            text-transform: uppercase;
-                            font-weight: 600;
-                            padding: 0.5rem 2.5rem;
-                            min-width: 158px;
+                    .form-group {
+                        .ant-picker {
+                            width: 100%;
                         }
-                    }
-                    
-                    .tab-content{
-                        background-color: #fff;
-    
-                        .tab-pane{
-                            padding: 1.5rem;
-    
-                            .form-group{
-    
-                                .location{
-                                    .anticon{
-                                        width: 10px;
-                                        color: #9b9b9c;
-                                    }
-                                }
-    
-                                .ant-input {
-                                    height: 45px;
-                                    border-color: #ced8e0;
-                                    background-color: #fafafa;
-                                }
-    
-                                label {
-                                    color: #a2a2a2;
-                                    font-weight: 600;
-                                    font-size: 12px;
-                                    display: inline-block;
-                                    width: 100%;
-                                }
-    
-                                .ant-time-picker{
-                                    width: 100%;
-    
-                                    .ant-time-picker-input{
-                                        height: 45px;
-                                        border-color: #ced8e0;
-                                        background-color: #fafafa;
-                                    }
+
+                        .ant-select {
+                            width: 100%;
+                        }
+
+                        .ant-select-selector {
+                            .ant-input-suffix{
+                                .anticon{
+                                    width: 10px;
+                                    color: #9b9b9c;
                                 }
                             }
                         }
@@ -295,14 +257,18 @@
                             width: 100%;
                             flex: 1 1 0%;
                             height: 52px;
-    
-                            .ant-select-selection__rendered{
+
+                            .ant-select-selector {
                                 height: 52px;
+
+                                .ant-select-selection-search-input{
+                                    height: 52px;
+                                }
                             }
-    
-                            .ant-input {
-                                height: 52px;
-                                border-radius: 0;
+
+                            .ant-select-selection-placeholder {
+                                display: flex;
+                                align-items: center;
                             }
                         }
                     }
@@ -331,7 +297,7 @@
         }
 
         .recomondations {
-            width: 20%;
+            width: 30%;
             padding: 1rem;
             background-color: #fff;
 
@@ -353,6 +319,8 @@
             width: 40%;
 
             .ant-input-search{
+                padding: 0;
+
                 .ant-input {
                     width: 100%;
                     border-radius: 0;

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Icon , Input , DatePicker , Select , TimePicker , AutoComplete } from 'antd';
+import { Input , DatePicker , Select , TimePicker , AutoComplete } from 'antd';
+import Icon from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
