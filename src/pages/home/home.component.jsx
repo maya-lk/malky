@@ -4,6 +4,7 @@ import { Input , Select , AutoComplete } from 'antd';
 import Icon from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import moment from 'moment';
 
 import { selectAllVehicles , selectTypes , selectColors , selectModels } from '../../redux/vehicles/vehicles.selectors';
 
@@ -62,7 +63,12 @@ class Home extends React.Component {
         const { allVehicles , types , colors , models } = this.props;
         const { selectType , selectColor , selectModel , pickupLocation , dropoffLocation } = this.state;
 
-        const locations = ['Colombo' , 'Bandaranayake International Airport' , 'Katunayaka Head Office' , 'Kirulapana Head Office'];
+        const locations = [
+            { value: 'Colombo' },
+            { value: 'Bandaranayake International Airport' },
+            { value: 'Katunayaka Head Office' },
+            { value: 'Kirulapana Head Office' }
+        ];
 
         return(
             <div className="homeFrontWrap">
@@ -154,11 +160,15 @@ class Home extends React.Component {
                                 <DateRangePicker 
                                     labelTitle="Pickup / Drop Off Date"
                                     onChange={this.dateRangeChange}
+                                    startDate={moment().format('YYYY-MM-DD')}
+                                    endDate={moment().format('YYYY-MM-DD')}
                                 />
                                 
                                 <TimeRangePickerCom
                                     labelTitle="Pickup / Drop Off Time"
                                     onChange={this.timeRangeChange}
+                                    startTime={moment().format('HH:MM A')}
+                                    endTime={moment().format('HH:MM A')}
                                 />
                                 
                                 <div className="form-group">
@@ -167,9 +177,9 @@ class Home extends React.Component {
                                         placeholder="Start typing here"
                                         onChange={ (value) => this.changePickUpLocation(value) }
                                         value={pickupLocation}
-                                        dataSource={locations}
+                                        locations={locations}
                                         filterOption={(inputValue, option) =>
-                                            option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                            option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                                         }
                                         className="location"
                                     >
@@ -183,9 +193,9 @@ class Home extends React.Component {
                                         placeholder="Start typing here"
                                         onChange={ (value) => this.changeDropOffLocation(value) }
                                         value={dropoffLocation}
-                                        dataSource={locations}
+                                        locations={locations}
                                         filterOption={(inputValue, option) =>
-                                            option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                            option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                                         }
                                         className="location"
                                     >

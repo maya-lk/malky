@@ -1,10 +1,9 @@
 import React from 'react';
-import { Input , DatePicker , Select , TimePicker , AutoComplete } from 'antd';
+import { Input , Select , AutoComplete } from 'antd';
 import Icon from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
-import moment from 'moment';
 
 import { 
     setPickupLocation , 
@@ -58,14 +57,26 @@ class WizardStepTwo extends React.Component {
         setDoneSteps(3);
     }
 
+    dateRangeChange = (date, dateString) => {
+
+        const { setPickupDate , setDropoffDate } = this.props;
+
+        setPickupDate(dateString[0]);
+        setDropoffDate(dateString[1]);
+    }
+
+    timeRangeChange = (time, timeString) => {
+
+        const { setPickupTime , setDropoffTime } = this.props;
+
+        setPickupTime(timeString[0]);
+        setDropoffTime(timeString[1]);
+    }
+
     render(){
         const { 
             setPickupLocation , 
-            setPickupDate , 
-            setPickupTime , 
-            setDropoffLocation , 
-            setDropoffDate , 
-            setDropoffTime , 
+            setDropoffLocation ,
             setCustomerName , 
             setAdults , 
             setKids , 
@@ -85,8 +96,17 @@ class WizardStepTwo extends React.Component {
             toggleAddNewClient
         } = this.props;
 
-        const dataSource = [ 'Milindu Mallawarachchi' , 'Viraj Sampath' , 'Danushka Dimuthu'  ];
-        const locations = ['Colombo' , 'Bandaranayake International Airport' , 'Katunayaka Head Office' , 'Kirulapana Head Office'];
+        const dataSource = [ 
+            { value: 'Milindu Mallawarachchi' },
+            { value: 'Viraj Sampath' },
+            { value: 'Danushka Dimuthu' }
+        ];
+        const locations = [
+            { value: 'Colombo' },
+            { value: 'Bandaranayake International Airport' },
+            { value: 'Katunayaka Head Office' },
+            { value: 'Kirulapana Head Office' }
+        ];
 
         return(
             <div className="wizardContent wizardStep2 d-flex flex-wrap">
@@ -99,11 +119,15 @@ class WizardStepTwo extends React.Component {
                         <DateRangePicker 
                             labelTitle="Pickup / Drop Off Date"
                             onChange={this.dateRangeChange}
+                            startDate={pickupDate}
+                            endDate={dropoffDate}
                         />
                         
                         <TimeRangePickerCom
                             labelTitle="Pickup / Drop Off Time"
                             onChange={this.timeRangeChange}
+                            startTime={pickupTime}
+                            endTime={dropoffTime}
                         />
 
                         <div className="form-group">
@@ -112,9 +136,9 @@ class WizardStepTwo extends React.Component {
                                 placeholder="Start typing here"
                                 onChange={ (value) => setPickupLocation(value) }
                                 value={pickupLocation}
-                                dataSource={locations}
+                                options={locations}
                                 filterOption={(inputValue, option) =>
-                                    option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                    option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                                 }
                                 className="location"
                             >
@@ -128,9 +152,9 @@ class WizardStepTwo extends React.Component {
                                 placeholder="Start typing here"
                                 onChange={ (value) => setDropoffLocation(value) }
                                 value={dropoffLocation}
-                                dataSource={locations}
+                                options={locations}
                                 filterOption={(inputValue, option) =>
-                                    option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                    option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                                 }
                                 className="location"
                             >
@@ -138,107 +162,6 @@ class WizardStepTwo extends React.Component {
                             </AutoComplete>
                         </div>
 
-                    </div>
-
-                    
-
-
-                    <div className="tabWrap">
-                        <ul className="nav nav-pills" id="pickupTab" role="tablist">
-                            <li className="nav-item">
-                                <span className="nav-link active" id="pickUp-tab" data-toggle="pill" href="#pickUp" role="tab" aria-controls="pickUp" aria-selected="true">Pick Up</span>
-                            </li>
-                        </ul>
-                        <div className="tab-content" id="pickupTabContent">
-                            <div className="tab-pane fade show active" id="pickUp" role="tabpanel" aria-labelledby="pickUp-tab">
-
-                                <div className="form-group">
-                                    <label>Pickup Location</label>
-                                    <AutoComplete
-                                        placeholder="Start typing here"
-                                        onChange={ (value) => setPickupLocation(value) }
-                                        value={pickupLocation}
-                                        dataSource={locations}
-                                        filterOption={(inputValue, option) =>
-                                            option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-                                        }
-                                        className="location"
-                                    >
-                                        <Input suffix={<LocationIcon />} />
-                                    </AutoComplete>
-                                </div>
-
-                                <div className="d-flex row">
-                                    <div className="form-group col-md-7 col-12">
-                                        <label>Pickup Date</label>
-                                        <DatePicker 
-                                            placeholder="" 
-                                            onChange={ (date, dateString) => setPickupDate(dateString) }
-                                            value={moment(pickupDate, 'YYYY-MM-DD')}
-                                        />
-                                    </div>
-                                    <div className="form-group col-md-5 col-12">
-                                        <label>Pickup Time</label>
-                                        <TimePicker 
-                                            use12Hours 
-                                            format="h:mm A"
-                                            onChange={ (time, timeString) => setPickupTime(timeString) }
-                                            value={moment(pickupTime, 'HH:mm A')}
-                                        />
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="tabWrap">
-                        <ul className="nav nav-pills" id="dropOffTab" role="tablist">
-                            <li className="nav-item">
-                                <span className="nav-link active" id="dropOff-tab" data-toggle="pill" href="#dropOff" role="tab" aria-controls="dropOff" aria-selected="true">Drop Off</span>
-                            </li>
-                        </ul>
-                        <div className="tab-content" id="dropOffTabContent">
-                            <div className="tab-pane fade show active" id="dropOff" role="tabpanel" aria-labelledby="dropOff-tab">
-
-                                <div className="form-group">
-                                    <label>Drop Off Location</label>
-                                    <AutoComplete
-                                        placeholder="Start typing here"
-                                        onChange={ (value) => setDropoffLocation(value) }
-                                        value={dropoffLocation}
-                                        dataSource={locations}
-                                        filterOption={(inputValue, option) =>
-                                            option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-                                        }
-                                        className="location"
-                                    >
-                                        <Input suffix={<LocationIcon />} />
-                                    </AutoComplete>
-                                </div>
-
-                                <div className="d-flex row">
-                                    <div className="form-group col-md-7 col-12">
-                                        <label>Drop Off Date</label>
-                                        <DatePicker 
-                                            placeholder="" 
-                                            onChange={ (date, dateString) => setDropoffDate(dateString) }
-                                            value={moment(dropoffDate, 'YYYY-MM-DD')}
-                                        />
-                                    </div>
-                                    <div className="form-group col-md-5 col-12">
-                                        <label>Drop Off Time</label>
-                                        <TimePicker 
-                                            use12Hours 
-                                            format="h:mm A"
-                                            onChange={ (time, timeString) => setDropoffTime(timeString) }
-                                            value={moment(dropoffTime, 'HH:mm A')}
-                                        />
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
 
                 </div>
@@ -255,9 +178,9 @@ class WizardStepTwo extends React.Component {
                                 placeholder="Start typing here"
                                 onChange={ (value) => setCustomerName(value) }
                                 value={customerName}
-                                dataSource={dataSource}
+                                options={dataSource}
                                 filterOption={(inputValue, option) =>
-                                    option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                    option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                                 }
                             />
                         </div>
