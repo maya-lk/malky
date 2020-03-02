@@ -38,6 +38,8 @@ import {
 
 import ReservationSummery from '../reservation-summery/reservation-summery.component';
 import AddNewClient from '../add-new-client/add-new-client.component';
+import DateRangePicker from '../date-range-picker/date-range-picker.component';
+import TimeRangePickerCom from '../time-range-picker/time-range-picker.component';
 
 import './wizard-step-02.styles.scss';
 
@@ -91,6 +93,56 @@ class WizardStepTwo extends React.Component {
                 <div className="bookingDetailsWrap">
 
                     <h3>Booking Details</h3>
+
+                    <div className="bookingWrapper">
+                        
+                        <DateRangePicker 
+                            labelTitle="Pickup / Drop Off Date"
+                            onChange={this.dateRangeChange}
+                        />
+                        
+                        <TimeRangePickerCom
+                            labelTitle="Pickup / Drop Off Time"
+                            onChange={this.timeRangeChange}
+                        />
+
+                        <div className="form-group">
+                            <label>Pickup Location</label>
+                            <AutoComplete
+                                placeholder="Start typing here"
+                                onChange={ (value) => setPickupLocation(value) }
+                                value={pickupLocation}
+                                dataSource={locations}
+                                filterOption={(inputValue, option) =>
+                                    option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                }
+                                className="location"
+                            >
+                                <Input suffix={<LocationIcon />} />
+                            </AutoComplete>
+                        </div>
+
+                        <div className="form-group">
+                            <label>Drop Off Location</label>
+                            <AutoComplete
+                                placeholder="Start typing here"
+                                onChange={ (value) => setDropoffLocation(value) }
+                                value={dropoffLocation}
+                                dataSource={locations}
+                                filterOption={(inputValue, option) =>
+                                    option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                }
+                                className="location"
+                            >
+                                <Input suffix={<LocationIcon />} />
+                            </AutoComplete>
+                        </div>
+
+                    </div>
+
+                    
+
+
                     <div className="tabWrap">
                         <ul className="nav nav-pills" id="pickupTab" role="tablist">
                             <li className="nav-item">
