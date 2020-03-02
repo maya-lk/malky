@@ -23,6 +23,7 @@ const locationSVG = () => (
 const LocationIcon = props => <Icon component={locationSVG} {...props} />;
 const { Option } = Select;
 const { Search } = Input;
+const { RangePicker } = DatePicker;
 
 class Home extends React.Component {
 
@@ -34,6 +35,10 @@ class Home extends React.Component {
             selectModel : null,
             selectPrice : null
         }
+    }
+
+    dateRangeChange = (date, dateString) => {
+        console.log('dateString' , dateString);
     }
 
     render(){
@@ -125,6 +130,15 @@ class Home extends React.Component {
                         <div className="bookingForm">
                             
                             <h3>Booking Details</h3>
+
+                            <div className="bookingDetailsWrap">
+
+                                <div className="form-group">
+                                    <label>Pickup / Drop Off Date</label>
+                                    <RangePicker onChange={this.dateRangeChange} />
+                                </div>
+
+                            </div>
 
                             <div className="d-flex flex-wrap row">
 
