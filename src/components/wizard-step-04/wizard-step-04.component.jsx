@@ -232,40 +232,38 @@ class WizardStepFour extends React.Component {
                 </div>
                 <div className="tripDetails">
                     <h3>Trip Details</h3>
-                    <table className="tripTable">
-                        <tbody>
-                            <tr>
-                                <th>Pick Up</th>
-                                <td>
-                                    <span>Location</span>
-                                    {pickupLocation}
-                                </td>
-                                <td>
-                                    <span>Date</span>
-                                    {pickupDate}
-                                </td>
-                                <td>
-                                    <span>Time</span>
-                                    {pickupTime}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Drop Off</th>
-                                <td>
-                                    <span>Location</span>
-                                    {dropoffLocation}
-                                </td>
-                                <td>
-                                    <span>Date</span>
-                                    {dropoffDate}
-                                </td>
-                                <td>
-                                    <span>Time</span>
-                                    {dropoffTime}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    
+                    <div className="tripTable d-flex flex-wrap justify-content-between">
+                        <div className="tableTh">Pick Up</div>
+                        <div className="tableTd location">
+                            <span>Location</span>
+                            {pickupLocation}
+                        </div>
+                        <div className="tableTd date">
+                            <span>Date</span>
+                            {pickupDate}
+                        </div>
+                        <div className="tableTd time">
+                            <span>Time</span>
+                            {pickupTime}
+                        </div>
+                    </div>
+
+                    <div className="tripTable d-flex flex-wrap justify-content-between">
+                        <div className="tableTh">Drop Off</div>
+                        <div className="tableTd location">
+                            <span>Location</span>
+                            {dropoffLocation}
+                        </div>
+                        <div className="tableTd date">
+                            <span>Date</span>
+                            {dropoffDate}
+                        </div>
+                        <div className="tableTd time">
+                            <span>Time</span>
+                            {dropoffTime}
+                        </div>
+                    </div>
 
                     <div className="tripOtherDetail d-flex flex-wrap row">
 
