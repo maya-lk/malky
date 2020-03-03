@@ -11,7 +11,7 @@ const INITIAL_STATE = {
     pickupLocation: 'Bandaranayake International Airport',
     pickupDate: moment().format('YYYY-MM-DD'),
     pickupTime: moment().format('HH:MM A'),
-    dropoffLocation: 'Bandaranayake International Airport',
+    dropoffLocation: '',
     dropoffDate: moment().format('YYYY-MM-DD'),
     dropoffTime: moment().format('HH:MM A'),
     customerName: '',

@@ -40,7 +40,7 @@ class Home extends React.Component {
             selectModel : null,
             selectPrice : null,
             pickupLocation : 'Bandaranayake International Airport',
-            dropoffLocation : 'Bandaranayake International Airport',
+            dropoffLocation : '',
         }
     }
 
