@@ -22,6 +22,11 @@ import {
 } from '../../redux/wizard/wizard.selectors';
 import { setActiveStep , setDoneSteps } from '../../redux/wizard/wizard.actions';
 
+import AdultsIcon from '../../assets/images/adults.png';
+import BabyIcon from '../../assets/images/baby.png';
+import KidsIcon from '../../assets/images/kids.png';
+import LaugageIcon from '../../assets/images/laugage.png';
+
 import './wizard-step-04.styles.scss';
 
 const { Option } = Select;
@@ -166,17 +171,41 @@ class WizardStepFour extends React.Component {
                                 <span className="value">
                                     {
                                         (adults)?
-                                        <span style={{ marginRight : '10px' }}>{adults} Adults</span>
+                                        <span style={{ 
+                                            marginRight : '10px' , 
+                                            backgroundImage : `url(${AdultsIcon})` ,
+                                            display : 'inline-block',
+                                            paddingLeft : '30px',
+                                            backgroundSize : 'contain',
+                                            backgroundRepeat : 'no-repeat',
+                                            backgroundPosition : 'center left'
+                                        }}>{adults}</span>
                                         : ''
                                     } 
                                     {
                                         (kids)?
-                                        <span style={{ margin : '0px 15px' }}>{kids} Kids</span>
+                                        <span style={{ 
+                                            margin : '0px 15px' , 
+                                            backgroundImage : `url(${KidsIcon})`,
+                                            display : 'inline-block',
+                                            paddingLeft : '30px',
+                                            backgroundSize : 'contain',
+                                            backgroundRepeat : 'no-repeat',
+                                            backgroundPosition : 'center left'
+                                        }}>{kids}</span>
                                         : ''
                                     }
                                     {
                                         (toddlers)?
-                                        <span style={{ marginLeft : '10px' }}>{toddlers} Toddlers</span>
+                                        <span style={{ 
+                                            marginLeft : '10px' , 
+                                            backgroundImage : `url(${BabyIcon})`,
+                                            display : 'inline-block',
+                                            paddingLeft : '30px',
+                                            backgroundSize : 'contain',
+                                            backgroundRepeat : 'no-repeat',
+                                            backgroundPosition : 'center left' 
+                                        }}>{toddlers}</span>
                                         : ''
                                     }
                                 </span>
@@ -188,7 +217,14 @@ class WizardStepFour extends React.Component {
                             (laguage)?
                             <div className="summeryItem">
                                 <span className="label">Laguage Details</span>
-                                <span className="value">{laguage} Travaling Bags</span>
+                                <span className="value" style={{ 
+                                    backgroundImage : `url(${LaugageIcon})`,
+                                    display : 'inline-block',
+                                    paddingLeft : '30px',
+                                    backgroundSize : 'contain',
+                                    backgroundRepeat : 'no-repeat',
+                                    backgroundPosition : 'center left' 
+                                }}>{laguage} Travaling Bags</span>
                             </div>
                             : ''
                         }
