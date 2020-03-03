@@ -50,6 +50,7 @@
                 color: #626a7a;
                 font-weight: 600;
                 font-size: 13px;
+                overflow: hidden;
             }
 
             .numberPlate {
@@ -62,6 +63,30 @@
                 color: #8caece;
                 font-weight: 600;
                 font-size: 11px;
+            }
+
+            .perDay {
+                color: #606771;
+                font-weight: 800;
+                font-size: 12px;
+                display: flex;
+                justify-content: space-between;
+
+                span {
+                    margin-left: 5px;
+                }
+            }
+    
+            .totalFare {
+                color: #292d35;
+                font-weight: 800;
+                font-size: 12px;
+                display: flex;
+                justify-content: space-between;
+
+                span {
+                    margin-left: 5px;
+                }
             }
         }
     }

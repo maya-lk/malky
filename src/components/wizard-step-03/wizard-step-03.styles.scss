@@ -100,7 +100,7 @@
                 .vehicleSearchList {
                     margin-top: 2rem;
                     display: grid;
-                    grid-template-columns: repeat(6, 1fr);
+                    grid-template-columns: repeat(5, 1fr);
                     gap: 10px;
 
                     .vehicleItem {
@@ -110,12 +110,28 @@
                             .vehicleImage {
                                 width: 100%;
                                 margin-bottom: 0.5rem;
+                                min-height: 113px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
                             }
                             
                             .vehicleContent {
                                 width: 100%;
                                 padding-left: 0;
                                 text-align: center;
+
+                                .name {
+                                    height: 31px;
+                                }
+
+                                .perDay {
+                                    justify-content: center;
+                                }
+
+                                .totalFare {
+                                    justify-content: center; 
+                                }
                             }
                         }
                     }

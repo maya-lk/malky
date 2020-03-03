@@ -2,7 +2,7 @@ import React from 'react';
 
 import './vehicle-item.styles.scss';
 
-const VehicleItem = ({ imageUrl , name , numberPlate , yard , ID , type='radio' }) => (
+const VehicleItem = ({ imageUrl , name , numberPlate , yard , ID , type='radio' , perDay , totalFare }) => (
     <div className="vehicleItem">
         {
             (type === 'radio') ?
@@ -34,6 +34,8 @@ const VehicleItem = ({ imageUrl , name , numberPlate , yard , ID , type='radio' 
                 <h4 className="name">{name}</h4>
                 <div className="numberPlate">{numberPlate}</div>
                 <div className="yard">YARD : {yard}</div>
+                <div className="perDay">Per day <span>{perDay}</span></div>
+                <div className="totalFare">Total fare <span>{totalFare}</span></div>
             </div>
         </label>
     </div>

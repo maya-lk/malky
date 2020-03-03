@@ -40,6 +40,11 @@ import AddNewClient from '../add-new-client/add-new-client.component';
 import DateRangePicker from '../date-range-picker/date-range-picker.component';
 import TimeRangePickerCom from '../time-range-picker/time-range-picker.component';
 
+import AdultsIcon from '../../assets/images/adults.png';
+import BabyIcon from '../../assets/images/baby.png';
+import KidsIcon from '../../assets/images/kids.png';
+import LaugageIcon from '../../assets/images/laugage.png';
+
 import './wizard-step-02.styles.scss';
 
 const locationSVG = () => (
@@ -197,71 +202,83 @@ class WizardStepTwo extends React.Component {
 
                         <div className="d-flex flex-wrap row">
 
-                            <div className="form-group col-md-4 col-12">
-                                <label>Number of Adults</label>
-                                <Select
-                                    defaultValue="2"
-                                    onChange={ (value) => setAdults(value) }
-                                    value={adults}
-                                >
-                                    <Option value="1">1 Person</Option>
-                                    <Option value="2">2 Person</Option>
-                                    <Option value="3">3 Person</Option>
-                                    <Option value="4">4 Person</Option>
-                                    <Option value="5">5 Person</Option>
-                                    <Option value="6">6 Person</Option>
-                                </Select>
+                            <div className="form-group col-md-6 col-12">
+                                <div className="icon" style={{ backgroundImage : `url(${AdultsIcon})` }}></div>
+                                <div className="field">
+                                    <label>Number of Adults</label>
+                                    <Select
+                                        defaultValue="2"
+                                        onChange={ (value) => setAdults(value) }
+                                        value={adults}
+                                    >
+                                        <Option value="1">1</Option>
+                                        <Option value="2">2</Option>
+                                        <Option value="3">3</Option>
+                                        <Option value="4">4</Option>
+                                        <Option value="5">5</Option>
+                                        <Option value="6">6</Option>
+                                    </Select>
+                                </div>
                             </div>
 
-                            <div className="form-group col-md-4 col-12">
-                                <label>Number of Kids</label>
-                                <Select
-                                    defaultValue="2"
-                                    onChange={ (value) => setKids(value) }
-                                    value={kids}
-                                >
-                                    <Option value="">None</Option>
-                                    <Option value="1">1 Kids</Option>
-                                    <Option value="2">2 Kids</Option>
-                                    <Option value="3">3 Kids</Option>
-                                    <Option value="4">4 Kids</Option>
-                                    <Option value="5">5 Kids</Option>
-                                    <Option value="6">6 Kids</Option>
-                                </Select>
+                            <div className="form-group col-md-6 col-12">
+                                <div className="icon" style={{ backgroundImage : `url(${KidsIcon})` }}></div>
+                                <div className="field">
+                                    <label>Number of Kids</label>
+                                    <Select
+                                        defaultValue="2"
+                                        onChange={ (value) => setKids(value) }
+                                        value={kids}
+                                    >
+                                        <Option value="">None</Option>
+                                        <Option value="1">1</Option>
+                                        <Option value="2">2</Option>
+                                        <Option value="3">3</Option>
+                                        <Option value="4">4</Option>
+                                        <Option value="5">5</Option>
+                                        <Option value="6">6</Option>
+                                    </Select>
+                                </div>
                             </div>
 
-                            <div className="form-group col-md-4 col-12">
-                                <label>Number of Toddlers</label>
-                                <Select
-                                    defaultValue="2"
-                                    onChange={ (value) => setToddlers(value) }
-                                    value={toddlers}
-                                >
-                                    <Option value="">None</Option>
-                                    <Option value="1">1 Toddlers</Option>
-                                    <Option value="2">2 Toddlers</Option>
-                                    <Option value="3">3 Toddlers</Option>
-                                    <Option value="4">4 Toddlers</Option>
-                                    <Option value="5">5 Toddlers</Option>
-                                    <Option value="6">6 Toddlers</Option>
-                                </Select>
+                            <div className="form-group col-md-6 col-12">
+                                <div className="icon" style={{ backgroundImage : `url(${BabyIcon})` }}></div>
+                                <div className="field">
+                                    <label>Number of Toddlers</label>
+                                    <Select
+                                        defaultValue="2"
+                                        onChange={ (value) => setToddlers(value) }
+                                        value={toddlers}
+                                    >
+                                        <Option value="">None</Option>
+                                        <Option value="1">1</Option>
+                                        <Option value="2">2</Option>
+                                        <Option value="3">3</Option>
+                                        <Option value="4">4</Option>
+                                        <Option value="5">5</Option>
+                                        <Option value="6">6</Option>
+                                    </Select>
+                                </div>
                             </div>
 
-                            <div className="form-group col-md-4 col-12">
-                                <label>Number of Laguage</label>
-                                <Select
-                                    defaultValue="4"
-                                    onChange={ (value) => setLaguage(value) }
-                                    value={laguage}
-                                >
-                                    <Option value="">None</Option>
-                                    <Option value="1">1 Bags</Option>
-                                    <Option value="2">2 Bags</Option>
-                                    <Option value="3">3 Bags</Option>
-                                    <Option value="4">4 Bags</Option>
-                                    <Option value="5">5 Bags</Option>
-                                    <Option value="6">6 Bags</Option>
-                                </Select>
+                            <div className="form-group col-md-6 col-12">
+                                <div className="icon" style={{ backgroundImage : `url(${LaugageIcon})` }}></div>
+                                <div className="field">
+                                    <label>Number of Laguage</label>
+                                    <Select
+                                        defaultValue="4"
+                                        onChange={ (value) => setLaguage(value) }
+                                        value={laguage}
+                                    >
+                                        <Option value="">None</Option>
+                                        <Option value="1">1</Option>
+                                        <Option value="2">2</Option>
+                                        <Option value="3">3</Option>
+                                        <Option value="4">4</Option>
+                                        <Option value="5">5</Option>
+                                        <Option value="6">6</Option>
+                                    </Select>
+                                </div>
                             </div>
 
                         </div>

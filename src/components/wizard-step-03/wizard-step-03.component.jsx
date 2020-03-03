@@ -61,6 +61,7 @@ class WizardStepThree extends React.Component {
                                     numberPlate=""
                                     yard=""
                                     ID={vehicle.name.toLowerCase().replace(/ /g,"-")}
+                                    type="checkbox"
                                 />
                             )
                             : ''
@@ -153,6 +154,8 @@ class WizardStepThree extends React.Component {
                                     numberPlate=""
                                     yard=""
                                     ID={`list${vehicle.name.toLowerCase().replace(/ /g,"-")}`}
+                                    type="checkbox"
+                                    perDay="Rs. 100000.00"
                                 />
                             )
                             : ''

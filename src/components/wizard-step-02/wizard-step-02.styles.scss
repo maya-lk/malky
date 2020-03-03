@@ -119,6 +119,22 @@
 
             .passengerWrap {
                 margin-top: 3rem;
+
+                .form-group {
+                    display: flex;
+
+                    .icon {
+                        min-width: 50px;
+                        margin-right: 1rem;
+                        background-repeat: no-repeat;
+                        background-size: 50px 50px;
+                        background-position: center;
+                    }
+
+                    .field {
+                        flex: 1;
+                    }
+                }
             }
 
             .btn.submitBtn {

@@ -29,27 +29,31 @@
                 display: flex;
 
                 .dateWrap {
-                    .ant-calendar-picker {
+                    .ant-picker {
                         max-width: 300px;
+                        background-color: #2b3747;
+                        border-color: #2b3747;
+                        padding: 0 7px;
+                        border-radius: 0;
 
-                        .ant-calendar-picker-input {
-                            background-color: #2b3747;
-                            border-color: #2b3747;
+                        .ant-picker-input {
                             color: #fff;
                             height: 48px;
 
-                            .ant-calendar-range-picker-input {
+                            input {
                                 font-weight: 600;
-                            }
-
-                            .ant-calendar-range-picker-separator {
-                                color: #fff;
-                                line-height: 39px;
-                            }
-
-                            .anticon-calendar {
                                 color: #fff;
                             }
+                        }                        
+
+                        .ant-picker-range-separator {
+                            .ant-picker-separator {
+                                color: #fff;
+                            }
+                        }
+
+                        .anticon-calendar {
+                            color: #fff;
                         }
                     }
                 }
@@ -60,28 +64,26 @@
                     .ant-select {
                         width: 200px;
 
-                        .ant-select-selection {
+                        .ant-select-selector {
+                            height: 48px;
                             background-color: #2b3747;
                             border-color: #2b3747;
-                            height: 48px;
 
-                            .ant-select-selection__rendered {
+                            .ant-select-selection-placeholder {
                                 line-height: 45px;
-
-                                .ant-select-selection__placeholder {
-                                    color: #fff;
-                                    font-weight: 600;
-                                }
-                                
-                                .ant-select-selection-selected-value {
-                                    color: #fff;
-                                    font-weight: 600;
-                                }
-                            }
-
-                            .ant-select-arrow {
                                 color: #fff;
+                                font-weight: 600;
                             }
+
+                            .ant-select-selection-item {
+                                line-height: 45px;
+                                color: #fff;
+                                font-weight: 600;
+                            }
+                        }
+
+                        .ant-select-arrow {
+                            color: #fff;
                         }
                     }
                 }
@@ -132,6 +134,7 @@
                         
                         .ant-input-suffix {
                             font-size: 22px;
+                            line-height: 45px;
                         }
                     }
                 }
