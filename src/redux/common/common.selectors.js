@@ -11,3 +11,8 @@ export const selectToggleMobileMenu = createSelector(
     [selectCommonAPI],
     (common) => common.toggleMobileMenu
 );
+
+export const selectToggleAdvancedFeatures = createSelector(
+    [selectCommonAPI],
+    (common) => common.toggleAdvancedFeatures
+);

@@ -1,0 +1,16 @@
+.advancedFeaturesWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 200px;
+    background-color: #ffffff;
+    text-align: center;
+
+    h1 {
+        text-transform: uppercase;
+        font-weight: 800;
+        color: #eeeeee;
+        margin-bottom: 0;
+    }
+}

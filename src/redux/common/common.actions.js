@@ -7,3 +7,7 @@ export const setToggleMenu = () => ({
 export const setToggleMobileMenu = () => ({
     type : commonActionTypes.SET_TOGGLE_MOBILE_MENU,
 });
+
+export const setToggleAdvancedFeatures = () => ({
+    type : commonActionTypes.SET_TOGGLE_ADVANCED_FEATURES,
+});

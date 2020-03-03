@@ -7,11 +7,13 @@ import { createStructuredSelector } from 'reselect';
 import moment from 'moment';
 
 import { selectAllVehicles , selectTypes , selectColors , selectModels } from '../../redux/vehicles/vehicles.selectors';
+import { selectToggleAdvancedFeatures } from '../../redux/common/common.selectors';
 
 import WizardActionBar from '../../components/wizard-action-bar/wizard-action-bar.component';
 import VehicleItem from '../../components/vehicle-item/vehicle-item.component';
 import DateRangePicker from '../../components/date-range-picker/date-range-picker.component';
 import TimeRangePickerCom from '../../components/time-range-picker/time-range-picker.component';
+import AdvancedFeatures from '../../components/advanced-features/advanced-features.component';
 
 import SelfDriveInactive from '../../assets/images/self-drive-inactive.png';
 import WithDriveInactive from '../../assets/images/with-driver-inactive.png';
@@ -60,7 +62,7 @@ class Home extends React.Component {
 
     render(){
 
-        const { allVehicles , types , colors , models } = this.props;
+        const { allVehicles , types , colors , models , toggleAdvancedFeatures } = this.props;
         const { selectType , selectColor , selectModel , pickupLocation , dropoffLocation } = this.state;
 
         const locations = [
@@ -73,6 +75,12 @@ class Home extends React.Component {
         return(
             <div className="homeFrontWrap">
                 <WizardActionBar reservationID="124524asdwdx" />
+                {
+                    (toggleAdvancedFeatures) ?
+                    <AdvancedFeatures />
+                    : ''
+                }
+                
                 <div className="bookingContainer">
 
                     <div className="reservationType">
@@ -416,7 +424,8 @@ const mapStateToProps = createStructuredSelector({
     allVehicles : selectAllVehicles , 
     types : selectTypes,
     colors : selectColors,
-    models : selectModels
+    models : selectModels,
+    toggleAdvancedFeatures : selectToggleAdvancedFeatures
 });
 
 export default connect(mapStateToProps)(Home);

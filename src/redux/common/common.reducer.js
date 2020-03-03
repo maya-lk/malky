@@ -3,6 +3,7 @@ import { commonActionTypes } from './common.types';
 const INITIAL_STATE = {
     toggleMenu: false,
     toggleMobileMenu: false,
+    toggleAdvancedFeatures : false,
 }
 
 const commonReducer = ( state = INITIAL_STATE , action ) => {
@@ -16,6 +17,11 @@ const commonReducer = ( state = INITIAL_STATE , action ) => {
             return{
                 ...state , 
                 toggleMobileMenu : !state.toggleMobileMenu
+            }
+        case commonActionTypes.SET_TOGGLE_ADVANCED_FEATURES:
+            return{
+                ...state , 
+                toggleAdvancedFeatures : !state.toggleAdvancedFeatures
             }
         default:
             return state;
