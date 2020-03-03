@@ -10,7 +10,6 @@ img {
   and (-webkit-min-device-pixel-ratio: 1) { 
 
     .homeFrontWrap .bookingContainer .type h3 {
-        width: auto;
         font-size: 14px;
     }
     .homeFrontWrap .bookingContainer .type .custom-control {
@@ -97,6 +96,22 @@ img {
         padding: 0;
     }
     .wizardContent.wizardStep3 .searchVehicle .searchVehicleWrap .vehicleSearchList {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .homeFrontWrap .bookingContainer .bookingSecWrap .bookingForm .passengerWrap .form-group {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .homeFrontWrap .bookingContainer .recomondations {
+        width: 20%;
+    }
+    .homeFrontWrap .bookingContainer .filters {
+        width: 50%;
+    }
+    .homeFrontWrap .bookingContainer .filters .ant-input-search .ant-input-suffix {
+        display: none;
+    }
+    .homeFrontWrap .bookingContainer .filters .filtersWrap .vehiclesList {
         grid-template-columns: repeat(4, 1fr);
     }
 

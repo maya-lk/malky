@@ -314,6 +314,7 @@ class Home extends React.Component {
                                             numberPlate=""
                                             yard=""
                                             ID={vehicle.name.toLowerCase().replace(/ /g,"-")}
+                                            type="checkbox"
                                         />
                                     )
                                     : ''
@@ -400,6 +401,7 @@ class Home extends React.Component {
                                                 numberPlate=""
                                                 yard=""
                                                 ID={vehicle.name.toLowerCase().replace(/ /g,"-")}
+                                                type="checkbox"
                                             />
                                         )
                                         : ''

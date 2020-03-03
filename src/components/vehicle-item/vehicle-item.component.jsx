@@ -2,14 +2,26 @@ import React from 'react';
 
 import './vehicle-item.styles.scss';
 
-const VehicleItem = ({ imageUrl , name , numberPlate , yard , ID }) => (
+const VehicleItem = ({ imageUrl , name , numberPlate , yard , ID , type='radio' }) => (
     <div className="vehicleItem">
-        <input 
-            type="radio" 
-            name="vehicle"
-            id={`vehicle${ID}`}
-            value={ID}
-        />
+        {
+            (type === 'radio') ?
+            <input 
+                type="radio" 
+                name="vehicle"
+                id={`vehicle${ID}`}
+                value={ID}
+            />
+            : (type === 'checkbox') ?
+            <input 
+                type="checkbox" 
+                name="vehicle"
+                id={`vehicle${ID}`}
+                value={ID}
+            />
+            : ''
+        }
+        
         <label className="vehicleLable d-flex" htmlFor={`vehicle${ID}`}>
             <div className="vehicleImage">
                 {
