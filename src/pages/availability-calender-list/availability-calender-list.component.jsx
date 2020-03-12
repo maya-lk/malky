@@ -270,15 +270,17 @@ class AvailabilityCalenderList extends React.Component {
                                                     return <div 
                                                             key={dateobj.date} 
                                                             className="availibityCalTd"
-                                                            onClick={() => {
-                                                                setClickedVehicle(vehicle);
-                                                                this.clickedVehicle();
-                                                                this.setState({ clickedDate : dateobj.date });
-                                                            }}
                                                             >
                                                                 {
                                                                     (dateobj.vehicles.indexOf(vehicle.name) !== -1) ?
-                                                                    <div className="availible"></div>
+                                                                    <div 
+                                                                        className="availible"
+                                                                        onClick={() => {
+                                                                            setClickedVehicle(vehicle);
+                                                                            this.clickedVehicle();
+                                                                            this.setState({ clickedDate : dateobj.date });
+                                                                        }}
+                                                                    ></div>
                                                                     : ''
                                                                 }
                                                             </div>;
