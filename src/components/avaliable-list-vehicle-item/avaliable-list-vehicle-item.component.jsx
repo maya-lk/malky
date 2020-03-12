@@ -10,11 +10,11 @@ const AvaliableListVehicleItem = ({
     yardName , 
     perDay , 
     totalFare , 
-    heightEle ,
+    heightEle
 }) => (
     <div 
         ref={refProp} 
-        className="avaliableVehicleListItem" style={{ height : `${heightEle}px` }}
+        className="avaliableVehicleListItem" style={{ minHeight : heightEle }}
     >
         <img src={imageUrl} alt={name} />
         <div className="contWrap">

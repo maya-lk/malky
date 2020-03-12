@@ -68,7 +68,7 @@ class AvailabilityCalenderList extends React.Component {
 
         let currentDate = new Date();
         var date = new Date();
-        let afterWeekDate = new Date(date.setDate(date.getDate() + 14));
+        let afterWeekDate = new Date(date.setDate(date.getDate() + 30));
 
         this.setState({ calItemHeight : current.offsetHeight });
 
@@ -76,7 +76,39 @@ class AvailabilityCalenderList extends React.Component {
         window.addEventListener('resize', this.updateWindowDimensions);
 
         var loadingDates = getDates(currentDate, afterWeekDate);
-        setListDates(loadingDates);
+
+        if( loadingDates.length > 0 ){
+            var i;
+            var listDatesObj = [];
+            var item = {};
+            for (i = 0; i < loadingDates.length; i++) {
+                if( i === 5 ){
+                    item = {
+                        'date' : loadingDates[i],
+                        'vehicles' : [
+                            'Suzuki Alto - Premium - Manual',
+                            'Perodua(Daihatsu) Axia '
+                        ]
+                    }
+                }else if( i === 8 ){
+                    item = {
+                        'date' : loadingDates[i],
+                        'vehicles' : [
+                            'Suzuki Alto - K10 - Auto',
+                            'Toyota Corolla NZE 141'
+                        ]
+                    }
+                }else {
+                    item = {
+                        'date' : loadingDates[i],
+                        'vehicles' : []
+                    }
+                }
+                listDatesObj.push(item);
+            } 
+        }
+
+        setListDates(listDatesObj);
 
     }
 
@@ -91,7 +123,23 @@ class AvailabilityCalenderList extends React.Component {
     dateRangeChange = (date, dateString) => {
         const { setListDates } = this.props;
         var dates = getDates(new Date(dateString[0]), new Date(dateString[1]));
-        setListDates(dates);
+
+        if( dates.length > 0 ){
+            var i;
+            var listDatesObj = [];
+            for (i = 0; i < dates.length; i++) {
+                var item = {
+                    'date' : dates[i],
+                    'vehicles' : [
+                        'Suzuki Alto - Premium - Manual',
+                        'Perodua(Daihatsu) Axia '
+                    ]
+                }
+                listDatesObj.push(item);
+            } 
+        }
+
+        setListDates(listDatesObj);
     }
 
     clickedVehicle = () => {
@@ -158,11 +206,11 @@ class AvailabilityCalenderList extends React.Component {
                             <div className="calenderDatesInside" style={{ width : `${ listDates ? listDates.length * 90 : '' }px` }}>
                                 {
                                     (listDates) ?
-                                    listDates.map( date => {
+                                    listDates.map( dateObj => {
                                         const weekdays = ['Sun' , 'Mon' , 'Tue' , 'Wen' , 'Thu' , 'Fri' , 'Sat'];
-                                        const listDate = date.getDate();
-                                        const listDateName = date.getDay();
-                                        return <div key={date} className="dateItem">
+                                        const listDate = dateObj.date.getDate();
+                                        const listDateName = dateObj.date.getDay();
+                                        return <div key={dateObj.date} className="dateItem">
                                             <span className="date">{listDate}</span>
                                             <span className="weekDay">{weekdays[listDateName]}</span>
                                         </div>;
@@ -218,16 +266,22 @@ class AvailabilityCalenderList extends React.Component {
                                         >
                                             {
                                                 (listDates) ?
-                                                listDates.map( date => {
+                                                listDates.map( dateobj => {
                                                     return <div 
-                                                            key={date} 
+                                                            key={dateobj.date} 
                                                             className="availibityCalTd"
                                                             onClick={() => {
                                                                 setClickedVehicle(vehicle);
                                                                 this.clickedVehicle();
-                                                                this.setState({ clickedDate : date });
+                                                                this.setState({ clickedDate : dateobj.date });
                                                             }}
-                                                            ></div>;
+                                                            >
+                                                                {
+                                                                    (dateobj.vehicles.indexOf(vehicle.name) !== -1) ?
+                                                                    <div className="availible"></div>
+                                                                    : ''
+                                                                }
+                                                            </div>;
                                                 })
                                                 : ''
                                             }
